@@ -2,11 +2,25 @@
 
 ## Course Overview
 
+This course will teach how you to think about **data** and **modeling** for **computational social science**. This will involve raising and examining questions like:
 
+- How is a dataset **formatted**, and is this the appropriate format for what I want to do? 
+- Is this dataset **representative** or does it reflect a **biased sample**? 
+- What **ethical considerations** should I take into account when obtaining and analyzing data? 
+- What kind of **model** is the most appropriate for these data? 
+- How do I **design and implement** these models––ranging in complexity from [linear regression](https://en.wikipedia.org/wiki/Linear_regression) to [support vector machines](https://en.wikipedia.org/wiki/Support_vector_machine)? 
+
+These topics will be discussed in the context of **hands-on practice** with real-world datasets in a **Python programming environment**.
 
 ## Key Learning Outcomes
 
+This course is designed to give students a range of conceptual and technical tools. My goal is that by the end, you are able to:
 
+- **Identify** and **explain** ethical issues that arise in CSS, along with analytical issues more broadly.  
+- **Design** and **implement** clear, concise, and accurate visualizations of data.  
+- **Propose** and **test** hypotheses about data using statistical models.  
+- **Construct** statistical models in Python and **interpret** the results. 
+- **Weigh** the pros and cons of different model evaluation metrics.  
 
 
 ## Course Logistics

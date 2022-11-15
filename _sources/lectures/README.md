@@ -1,2 +1,2 @@
-# css1_lectures
-Lectures for CSS 1
+# lectures
+Lectures for CSS 2.
