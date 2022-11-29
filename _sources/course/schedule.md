@@ -29,9 +29,9 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | M-02-15-2023 | Polynomial regression: overfitting, bias-variance trade-off | | | |
 | M-02-17-2023 | Logistic regression| | | |
 | **Week 7** | **Advanced Classification** | | | |
-| M-02-20-2023 | Intro to Classification | | | |
-| M-02-22-2023 | Naive Bayes, Random Forest | | | |
-| M-02-24-2023 | Support Vector Machine (SVM) | | | |
+| M-02-20-2023 | **Holiday (President's Day)** | | | |
+| M-02-22-2023 | Classification, pt. 1 | | | |
+| M-02-24-2023 | Classification, pt. 2 | | | |
 | **Week 8** | **Model Evaluation** | | | |
 | M-02-27-2023 | Overfitting and its discontents | | | |
 | M-03-01-2023 | Cross-validation | | | |

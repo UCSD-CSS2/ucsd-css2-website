@@ -50,7 +50,7 @@ Your grade will be determined by three kinds of assessments: [coding labs](../la
 
 | Grade Component | Percentage of Final Grade |
 | --------------- | ------------------------- |
-| 10 Coding Labs | 50% (5% each) |
+| 8 Coding Labs | 50% (6.25% each) |
 | 4 Problem Sets | 32% (8% each) |
 | 1 Final Project| 18% |
 
