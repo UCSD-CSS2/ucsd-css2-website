@@ -6,36 +6,36 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | ---- | ------ | -------------- | ----- | ------- |
 | **Week 1** | **Introduction, Ethics** | | | |
 | M-01-09-2023 | Introduction | | | |
-| M-01-11-2023 | Ethics: Bias and Fairness | | | |
+| M-01-11-2023 | Ethics: Bias and Fairness | | | [Are computer-aided decisions actually fair?](https://www.bu.edu/articles/2018/algorithmic-fairness/)|
 | M-01-13-2023 | Ethics: Privacy, CSS for Social Good | | | |
 | **Week 2** | **Python Review** | | | |
-| M-01-16-2023 | **Holiday (MLK, Jr. Day)** | Lab 1 due | | |
+| M-01-16-2023 | **Holiday (MLK, Jr. Day)** | Lab 1 due  | | |
 | M-01-18-2023 | Python review: Fundamentals | | | |
-| M-01-20-2023 | Python review: `numpy`, `pandas` | | | |
+| M-01-20-2023 | Python review: `.txt` files, `pandas` | | | |
 | **Week 3** | **Data Visualization** | | | |
-| M-01-23-2023 | Data visualization | | | |
-| M-01-25-2023 | Data visualization | | | |
-| M-01-27-2023 | Data visualization | | | |
+| M-01-23-2023 | Data visualization (`matplotlib.pyplot`) | | | [Kieran Healy: Why look at data?](https://socviz.co/lookatdata.html#why-look-at-data)|
+| M-01-25-2023 | Data visualization (`seaborn`) | | | |
+| M-01-27-2023 | Data visualization (principles) | | | |
 | **Week 4** | **Working with Data** | | | |
 | M-01-30-2023 | Data cleaning | | | |
 | M-02-01-2023 | Data wrangling, "tidy" data | | | |
 | M-02-03-2023 | Descriptive statistics, data transformations | | | |
 | **Week 5** | **Linear Models** | | | |
-| M-02-06-2023 | Linear regression | | | |
-| M-02-08-2023 | Linear regression | | | |
-| M-02-10-2023 | Multiple linear regression regression | | | |
-| **Week 6** | **Generalized Linear Models** | | | |
+| M-02-06-2023 | Linear regression, pt. 1 | | | |
+| M-02-08-2023 | Linear regression, pt. 2 | | | |
+| M-02-10-2023 | Other issues (prediction error, heteroscedasticity) | | | |
+| **Week 6** | **Advanced regression** | | | |
 | M-02-13-2023 | Multiple regression | | | |
-| M-02-15-2023 | Polynomial regression: overfitting, bias-variance trade-off | | | |
-| M-02-17-2023 | Logistic regression| | | |
-| **Week 7** | **Advanced Classification** | | | |
+| M-02-15-2023 | Polynomial regression, overfitting, and the bias-variance trade-off | | | |
+| M-02-17-2023 | Cross-validation | | | |
+| **Week 7** | **Classification** | | | |
 | M-02-20-2023 | **Holiday (President's Day)** | | | |
-| M-02-22-2023 | Classification, pt. 1 | | | |
-| M-02-24-2023 | Classification, pt. 2 | | | |
-| **Week 8** | **Model Evaluation** | | | |
-| M-02-27-2023 | Overfitting and its discontents | | | |
-| M-03-01-2023 | Cross-validation | | | |
-| M-03-03-2023 | Metrics: RMSE, AIC, Confusion Matrix | | | |
+| M-02-22-2023 | Logistic regression | | | |
+| M-02-24-2023 | Basic evaluation: Type 1 vs. Type 2 errors | | | |
+| **Week 8** | **Advanced Classification and Evaluation** | | | |
+| M-02-27-2023 | Advanced methods: Random Forest | | | |
+| M-03-01-2023 | Advanced methods: SVM | | | |
+| M-03-03-2023 | Metrics: AIC, Confusion Matrix | | | |
 | **Week 9** | **Unsupervised Approaches** | | | |
 | M-03-06-2023 | Clustering with K-means | | | |
 | M-03-08-2023 | Principal Component Analysis (PCA) | | | |

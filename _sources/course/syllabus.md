@@ -34,13 +34,16 @@ This course is designed to give students a range of conceptual and technical too
 
 | Who? | When? | Where? |
 | ---- | ----- | ------ |
-| Sean Trott | Monday 10-11 | CSB Courtyard |
+| Sean Trott | Monday 11-12 | Zoom (link on Canvas) |
 
 
 ### When/Where?:
 
-- Lecture: ?
-- Coding Lab Sections:
+- Lecture: MWF 2-3pm (HSS 1330)
+- Coding Lab Sections (optional): 
+   - Monday, 4-6 (ERCA 117)
+   - Wednesday, 4-6 (ERCA 117)
+   - Friday, 10-12 (ERCA 117)
 
 ## Grading
 
@@ -72,19 +75,10 @@ Note that the number on the **right-hand** side of the range is *not included* i
 77-80%   | C+
 73-77%   | C
 70-73%   | C-
-67-79%   | D+
-63-67%   | D
-60-63%   | D-
+60-69%   | D
 <60%     | F
 
 
-### Extra Credit
-
-You will have at least one opportunity to earn 2% extra credit by filling out a survey about your:
-
-- Experience/comfort with programming.  
-- Major (or intended major).  
-- Other background information.  
 
 ### On Rounding 
 
@@ -108,7 +102,7 @@ Instructors can be reached in the following ways:
 - Private message over Piazza.  
 - Email. 
 
-The course Piazza can be found here: piazza.com/ucsd/fall2022/css1
+The course Piazza can be found here: https://piazza.com/ucsd/winter2023/602
 
 Note that in general, we prefer communication over Piazza as opposed to email. 
 
