@@ -28,7 +28,7 @@ This course is designed to give students a range of conceptual and technical too
 ### Teaching Team:
 
 - [Sean Trott](https://seantrott.github.io/): Assistant Teaching Professor in Cognitive Science and CSS.
-- TAs:
+- TAs: Nikolay Kudrin
 
 #### Teaching Team OH
 
