@@ -641,11 +641,155 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-z-scores">
-   Using
+  <a class="reference internal nav-link" href="#detecting-potential-outliers-with-z-scores">
+   Detecting (potential) outliers with z-scores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-z-score">
+     What is a z-score?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calculating-z-scores">
+       Calculating z-scores
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       Check-in
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#z-scores-and-outliers">
+     Z-scores and outliers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-our-operationalization">
+     Testing our operationalization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#z-scoring-our-distribution">
+       Z-scoring our distribution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#removing-outliers">
+       Removing outliers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     Check-in
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caveats-complexity-and-context">
+     Caveats, complexity, and context
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#describing-bivariate-data-with-correlations">
+   Describing
    <em>
-    z-scores
+    bivariate
    </em>
+   data with correlations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bivariate-relationships-height">
+     Bivariate relationships:
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       height
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plotting-pearson-s-height-data">
+       Plotting Pearson’s height data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-linear-correlations">
+     Introducing linear correlations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-pearson-s-r-with-scipy">
+     Calculating Pearson’s
+     <span class="math notranslate nohighlight">
+      \(r\)
+     </span>
+     with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scipy
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       Check-in
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       Solution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       Check-in
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limitations-of-pearson-s-r">
+     Limitations of Pearson’s
+     <span class="math notranslate nohighlight">
+      \(r\)
+     </span>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#non-linear-data-where-r-0">
+       Non-linear data where
+       <span class="math notranslate nohighlight">
+        \(r = 0\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#when-r-is-invariant-to-the-real-relationship">
+       When
+       <span class="math notranslate nohighlight">
+        \(r\)
+       </span>
+       is invariant to the real relationship
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
   </a>
  </li>
 </ul>
@@ -916,11 +1060,155 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-z-scores">
-   Using
+  <a class="reference internal nav-link" href="#detecting-potential-outliers-with-z-scores">
+   Detecting (potential) outliers with z-scores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-z-score">
+     What is a z-score?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calculating-z-scores">
+       Calculating z-scores
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       Check-in
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#z-scores-and-outliers">
+     Z-scores and outliers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-our-operationalization">
+     Testing our operationalization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#z-scoring-our-distribution">
+       Z-scoring our distribution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#removing-outliers">
+       Removing outliers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     Check-in
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caveats-complexity-and-context">
+     Caveats, complexity, and context
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#describing-bivariate-data-with-correlations">
+   Describing
    <em>
-    z-scores
+    bivariate
    </em>
+   data with correlations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bivariate-relationships-height">
+     Bivariate relationships:
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       height
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plotting-pearson-s-height-data">
+       Plotting Pearson’s height data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-linear-correlations">
+     Introducing linear correlations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-pearson-s-r-with-scipy">
+     Calculating Pearson’s
+     <span class="math notranslate nohighlight">
+      \(r\)
+     </span>
+     with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scipy
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       Check-in
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       Solution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       Check-in
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limitations-of-pearson-s-r">
+     Limitations of Pearson’s
+     <span class="math notranslate nohighlight">
+      \(r\)
+     </span>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#non-linear-data-where-r-0">
+       Non-linear data where
+       <span class="math notranslate nohighlight">
+        \(r = 0\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#when-r-is-invariant-to-the-real-relationship">
+       When
+       <span class="math notranslate nohighlight">
+        \(r\)
+       </span>
+       is invariant to the real relationship
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
   </a>
  </li>
 </ul>
@@ -950,7 +1238,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>Measures of <strong>central tendency</strong>: what’s the typical value in this distribution?</p></li>
 <li><p>Measures of <strong>variability</strong>: how much do values differ from each other?</p></li>
-<li><p><strong>Normalizing</strong> a distribution with <strong>z-scores</strong>.</p></li>
+<li><p>Detecting (potential) outliers with <strong>z-scores</strong>.</p></li>
 <li><p>Measuring how distributions relate with <strong>linear correlations</strong>.</p></li>
 </ul>
 </section>
@@ -962,6 +1250,7 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1">### importing seaborn</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">ss</span>
 </pre></div>
 </div>
 </div>
@@ -1158,7 +1447,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fb0386842e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fee735b4340&gt;
 </pre></div>
 </div>
 <img alt="../_images/10-stats-basics_20_1.png" src="../_images/10-stats-basics_20_1.png" />
@@ -1259,7 +1548,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fb0690e5430&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fee735b4100&gt;
 </pre></div>
 </div>
 <img alt="../_images/10-stats-basics_32_1.png" src="../_images/10-stats-basics_32_1.png" />
@@ -1415,7 +1704,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.392317869737701
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.873938772637224
 </pre></div>
 </div>
 </div>
@@ -1427,7 +1716,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.25232009399734
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.28173486614538
 </pre></div>
 </div>
 </div>
@@ -1448,7 +1737,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3579402734491794
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3727581756928007
 </pre></div>
 </div>
 </div>
@@ -1462,7 +1751,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.716522971054049
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.59263685354572
 </pre></div>
 </div>
 </div>
@@ -1574,7 +1863,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.030006639337102
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0470647325861573
 </pre></div>
 </div>
 </div>
@@ -1587,7 +1876,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0305220292314192
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0475886579292195
 </pre></div>
 </div>
 </div>
@@ -1595,34 +1884,343 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </section>
 </section>
 </section>
-<section id="using-z-scores">
-<h2>Using <em>z-scores</em><a class="headerlink" href="#using-z-scores" title="Permalink to this headline">#</a></h2>
-<p>Basics of describing data:</p>
+<section id="detecting-potential-outliers-with-z-scores">
+<h2>Detecting (potential) outliers with z-scores<a class="headerlink" href="#detecting-potential-outliers-with-z-scores" title="Permalink to this headline">#</a></h2>
+<p>Defining and detecting outliers is notoriously difficult.</p>
 <ul class="simple">
-<li><p>Dispersion: the mean “masks” a lot of variance. How can we capture this dispersion/variability?</p>
+<li><p>Sometimes, an observation in a histogram clearly <em>looks</em> like an outlier.</p></li>
+<li><p>But how do we quantify this?</p></li>
+</ul>
+<section id="what-is-a-z-score">
+<h3>What is a z-score?<a class="headerlink" href="#what-is-a-z-score" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>A <strong>z-score</strong> is a <em>standardized</em> measure of how many any given point deviates from the mean:</p>
+</div></blockquote>
+<p><span class="math notranslate nohighlight">\(Z = \frac{X - \mu}{\sigma}\)</span></p>
+<p>This is useful because it allows us to quantify the <strong>standardized distance</strong> between some observation and the mean.</p>
+<section id="calculating-z-scores">
+<h4>Calculating z-scores<a class="headerlink" href="#calculating-z-scores" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Original distribution</span>
+<span class="n">numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## z-scored distribution</span>
+<span class="n">numbers_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">numbers</span> <span class="o">-</span> <span class="n">numbers</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">numbers</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">numbers_z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.161895  , -0.38729833,  0.38729833,  1.161895  ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h4>Check-in<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<p>Can anyone deduce why a z-score would be useful for <strong>defining</strong> outliers?</p>
+</section>
+</section>
+<section id="z-scores-and-outliers">
+<h3>Z-scores and outliers<a class="headerlink" href="#z-scores-and-outliers" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p><strong>Outliers</strong> are data points that differ significantly from other points in a distribution.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>A <strong>z-score</strong> gives us a <em>standardized measure</em> of how different a given value is from the rest of the distribution.</p></li>
+<li><p>We can define thresholds, e.g.:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\Large z ≥ |3|\)</span></p>
+</section>
+<section id="testing-our-operationalization">
+<h3>Testing our operationalization<a class="headerlink" href="#testing-our-operationalization" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## First, let&#39;s define a distribution with some possible outliers</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">upper_outliers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">21</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">21</span><span class="p">])</span> <span class="c1">## some random outliers</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">norm</span><span class="p">,</span> <span class="n">upper_outliers</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">.6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/10-stats-basics_71_0.png" src="../_images/10-stats-basics_71_0.png" />
+</div>
+</div>
+<section id="z-scoring-our-distribution">
+<h4>Z-scoring our distribution<a class="headerlink" href="#z-scoring-our-distribution" title="Permalink to this headline">#</a></h4>
+<p>What is the <strong>z-score</strong> of the values way off to the right?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data_z</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">.6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/10-stats-basics_73_0.png" src="../_images/10-stats-basics_73_0.png" />
+</div>
+</div>
+</section>
+<section id="removing-outliers">
+<h4>Removing outliers<a class="headerlink" href="#removing-outliers" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_z_filtered</span> <span class="o">=</span> <span class="n">data_z</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">data_z</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data_z_filtered</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">.6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/10-stats-basics_75_0.png" src="../_images/10-stats-basics_75_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h3>Check-in<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<p>Can anyone think of challenges or problems with this approach to detecting outliers?</p>
+</section>
+<section id="caveats-complexity-and-context">
+<h3>Caveats, complexity, and context<a class="headerlink" href="#caveats-complexity-and-context" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>There is not a single unifying definition of what an outlier is.</p></li>
+<li><p>Depending on the <em>shape</em> of the distribution, removing observations where <span class="math notranslate nohighlight">\(z &gt; |3|\)</span> might be removing important data.</p>
 <ul>
-<li><p>Range, SD, etc.</p></li>
+<li><p>E.g., in a <strong>skewed</strong> distribution, we might just be “cutting off the tail”.</p></li>
 </ul>
 </li>
-<li><p>Describing particular values.</p>
+<li><p>Even if the values <em>do</em> seem like outliers, there’s a philosophical question of <strong>why</strong> and <strong>what that means</strong>.</p>
 <ul>
-<li><p>Z-scores.</p>
-<ul>
-<li><p>Using z-scores to define/detect outliers.</p></li>
-<li><p>Introducing the standard normal distribution.</p></li>
+<li><p>Are those values “random”? What’s the underlying *<em>data-generating process</em>?</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Connecting this to <strong>inferential statistics</strong>.</p>
+<p>This is why statistics is not a mere matter of applying <em>formulas</em>. <strong>Context always matters!</strong></p>
+</section>
+</section>
+<section id="describing-bivariate-data-with-correlations">
+<h2>Describing <em>bivariate</em> data with correlations<a class="headerlink" href="#describing-bivariate-data-with-correlations" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>So far, we’ve been focusing on <em>univariate data</em>: a single distribution.</p></li>
+<li><p>What if we want to describe how <em>two distributions</em> relate to each other?</p>
 <ul>
-<li><p>Populations vs. samples, <strong>sampling error</strong>.</p></li>
-<li><p>Standard error as a measure of <strong>sampling error</strong> associated with samples of this size.</p></li>
-<li><p>Central Limit Theorem.</p></li>
+<li><p>For today, we’ll focus on <em>continuous distributions</em>.</p></li>
 </ul>
 </li>
-<li><p>Basic bivariate relationships: Pearson’s correlation coefficient</p></li>
 </ul>
+<section id="bivariate-relationships-height">
+<h3>Bivariate relationships: <code class="docutils literal notranslate"><span class="pre">height</span></code><a class="headerlink" href="#bivariate-relationships-height" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>A classic example of <strong>continuous bivariate data</strong> is the <code class="docutils literal notranslate"><span class="pre">height</span></code> of a <code class="docutils literal notranslate"><span class="pre">parent</span></code> and <code class="docutils literal notranslate"><span class="pre">child</span></code>.</p></li>
+<li><p><a class="reference external" href="https://www.kaggle.com/datasets/abhilash04/fathersandsonheight">These data were famously collected by Karl Pearson</a>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_height</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/wrangling/height.csv&quot;</span><span class="p">)</span>
+<span class="n">df_height</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Father</th>
+      <th>Son</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>65.0</td>
+      <td>59.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>63.3</td>
+      <td>63.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="plotting-pearson-s-height-data">
+<h4>Plotting Pearson’s height data<a class="headerlink" href="#plotting-pearson-s-height-data" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_height</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Father&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Son&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Father&#39;, ylabel=&#39;Son&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/10-stats-basics_82_1.png" src="../_images/10-stats-basics_82_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="introducing-linear-correlations">
+<h3>Introducing linear correlations<a class="headerlink" href="#introducing-linear-correlations" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>A <strong>correlation coefficient</strong> is a number between <span class="math notranslate nohighlight">\([–1, 1]\)</span> that describes the relationship between a pair of variables.</p>
+</div></blockquote>
+<p>Specifically, <strong>Pearson’s correlation coefficient</strong> (or Pearson’s <span class="math notranslate nohighlight">\(r\)</span>) describes a (presumed) <em>linear</em> relationship.</p>
+<p>Two key properties:</p>
+<ul class="simple">
+<li><p><strong>Sign</strong>: whether a relationship is positive (+) or negative (–).</p></li>
+<li><p><strong>Magnitude</strong>: the strength of the linear relationship.</p></li>
+</ul>
+</section>
+<section id="calculating-pearson-s-r-with-scipy">
+<h3>Calculating Pearson’s <span class="math notranslate nohighlight">\(r\)</span> with <code class="docutils literal notranslate"><span class="pre">scipy</span></code><a class="headerlink" href="#calculating-pearson-s-r-with-scipy" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> has a function called <code class="docutils literal notranslate"><span class="pre">pearsonr</span></code>, which will calculate this relationship for you.</p>
+<p>Returns two numbers:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r\)</span>: the correlation coefficent.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span>: the <strong>p-value</strong> of this correlation coefficient, i.e., whether it’s <em>significantly different</em> from <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df_height</span><span class="p">[</span><span class="s1">&#39;Father&#39;</span><span class="p">],</span> <span class="n">df_height</span><span class="p">[</span><span class="s1">&#39;Son&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5011626808075925, 1.2729275743643463e-69)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id11">
+<h4>Check-in<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h4>
+<p>Using <code class="docutils literal notranslate"><span class="pre">scipy.stats.pearsonr</span></code> (here, <code class="docutils literal notranslate"><span class="pre">ss.pearsonr</span></code>), calculate Pearson’s <span class="math notranslate nohighlight">\(r\)</span> for the relationship between the <code class="docutils literal notranslate"><span class="pre">Attack</span></code> and <code class="docutils literal notranslate"><span class="pre">Defense</span></code> of Pokemon.</p>
+<ul class="simple">
+<li><p>Is this relationship positive or negative?</p></li>
+<li><p>How strong is this relationship?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id12">
+<h4>Solution<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df_pokemon</span><span class="p">[</span><span class="s1">&#39;Attack&#39;</span><span class="p">],</span> <span class="n">df_pokemon</span><span class="p">[</span><span class="s1">&#39;Defense&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.4386870551184888, 5.858479864290367e-39)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id13">
+<h4>Check-in<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h4>
+<p>Pearson’r <span class="math notranslate nohighlight">\(r\)</span> measures the <em>linear correlation</em> between two variables. Can anyone think of potential limitations to this approach?</p>
+</section>
+</section>
+<section id="limitations-of-pearson-s-r">
+<h3>Limitations of Pearson’s <span class="math notranslate nohighlight">\(r\)</span><a class="headerlink" href="#limitations-of-pearson-s-r" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Pearson’s <span class="math notranslate nohighlight">\(r\)</span> <em>presumes</em> a linear relationship and tries to quantify its strength and direction.</p></li>
+<li><p>But many relationships are <strong>non-linear</strong>!</p></li>
+<li><p>Unless we visualize our data, relying only on Pearson’r <span class="math notranslate nohighlight">\(r\)</span> could mislead us.</p></li>
+</ul>
+<section id="non-linear-data-where-r-0">
+<h4>Non-linear data where <span class="math notranslate nohighlight">\(r = 0\)</span><a class="headerlink" href="#non-linear-data-where-r-0" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/10-stats-basics_93_0.png" src="../_images/10-stats-basics_93_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### r is close to 0, despite there being a clear relationship!</span>
+<span class="n">ss</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.04067793461845844, 0.8057827185936633)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="when-r-is-invariant-to-the-real-relationship">
+<h4>When <span class="math notranslate nohighlight">\(r\)</span> is invariant to the real relationship<a class="headerlink" href="#when-r-is-invariant-to-the-real-relationship" title="Permalink to this headline">#</a></h4>
+<p>All these datasets have roughly the same <strong>correlation coefficient</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_anscombe</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;anscombe&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_anscombe</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fee6133c580&gt;
+</pre></div>
+</div>
+<img alt="../_images/10-stats-basics_96_1.png" src="../_images/10-stats-basics_96_1.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<p>There are many ways to <em>describe our data</em>:</p>
+<ul class="simple">
+<li><p>Measuring its <strong>central tendency</strong>.</p></li>
+<li><p>Measuring its <strong>variability</strong>.</p></li>
+<li><p>Measuring how it <strong>correlates</strong> with other data.</p></li>
+</ul>
+<p>All of these are <strong>useful</strong>, and all are also <strong>simplifications</strong>.</p>
 </section>
 </section>
 

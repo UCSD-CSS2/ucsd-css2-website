@@ -11,7 +11,7 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | **Week 2** | **Python Review** | | | |
 | M-01-16-2023 | **Holiday (MLK, Jr. Day)** |  | | |
 | W-01-18-2023 | Python review: Fundamentals | | | |
-| F-01-20-2023 | Python review: `.txt` files, `pandas` | Lab 1 due | | |
+| F-01-20-2023 | Python review: `pandas` | Lab 1 due | | |
 | **Week 3** | **Data Visualization** | | | |
 | M-01-23-2023 | Data visualization (`matplotlib.pyplot`) | | | [Kieran Healy: Why look at data?](https://socviz.co/lookatdata.html#why-look-at-data)|
 | W-01-25-2023 | Data visualization (`seaborn`) | PS 1 due | | |
