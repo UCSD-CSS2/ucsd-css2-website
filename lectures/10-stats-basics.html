@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Statistics and Sampling" href="11-stats-sampling.html" />
+    <link rel="prev" title="Data wrangling" href="09-wrangling.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -145,7 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
   Lectures
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01-intro.html">
    01-Introduction
@@ -184,6 +186,21 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="08-dataviz-principles.html">
    08-Data Visualization (Principles)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09-wrangling.html">
+   09-Data Wrangling
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10-Descriptive Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11-stats-sampling.html">
+   11-Foundations of Inferential Statistics
   </a>
  </li>
 </ul>
@@ -1447,7 +1464,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fee735b4340&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fbe18681d90&gt;
 </pre></div>
 </div>
 <img alt="../_images/10-stats-basics_20_1.png" src="../_images/10-stats-basics_20_1.png" />
@@ -1548,7 +1565,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fee735b4100&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fbe2c2c1ee0&gt;
 </pre></div>
 </div>
 <img alt="../_images/10-stats-basics_32_1.png" src="../_images/10-stats-basics_32_1.png" />
@@ -1704,7 +1721,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.873938772637224
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.3235111934983745
 </pre></div>
 </div>
 </div>
@@ -1716,7 +1733,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.28173486614538
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.242459022855314
 </pre></div>
 </div>
 </div>
@@ -1737,7 +1754,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3727581756928007
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2384696737993601
 </pre></div>
 </div>
 </div>
@@ -1751,7 +1768,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.59263685354572
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.0238440573674055
 </pre></div>
 </div>
 </div>
@@ -1863,7 +1880,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0470647325861573
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9673458848700524
 </pre></div>
 </div>
 </div>
@@ -1876,7 +1893,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0475886579292195
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9678299208697545
 </pre></div>
 </div>
 </div>
@@ -2203,7 +2220,7 @@ Name: gdp_cap, Length: 1704, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fee6133c580&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fbe08171070&gt;
 </pre></div>
 </div>
 <img alt="../_images/10-stats-basics_96_1.png" src="../_images/10-stats-basics_96_1.png" />
@@ -2251,6 +2268,20 @@ Name: gdp_cap, Length: 1704, dtype: float64
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="09-wrangling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data wrangling</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="11-stats-sampling.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Statistics and Sampling</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
