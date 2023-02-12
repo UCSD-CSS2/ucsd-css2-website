@@ -22,20 +22,20 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | F-02-03-2023 | Data wrangling, "tidy" data"| Lab 3 due | | |
 | **Week 5** | **Linear Models** | | | |
 | M-02-06-2023 | Descriptive statistics, data transformations | | | |
-| W-02-08-2023 | Introduction to statistical modeling | PS 2 due | | |
-| F-02-10-2023 | Linear regression: basics | Lab 4 due | | |
+| W-02-08-2023 | Descriptive statistics, data transformations | PS 2 due | | |
+| F-02-10-2023 | Introduction to statistical modeling | Lab 4 due | | |
 | **Week 6** | **Advanced regression** | | | |
-| M-02-13-2023 | Linear regression: heteroscedasticity, residuals | | | |
-| W-02-15-2023 | Multiple regression | | | |
-| F-02-17-2023 | Polynomial regression, overfitting, and the bias-variance trade-off | Lab 5 due | | |
+| M-02-13-2023 | Linear regression: basics | | | |
+| W-02-15-2023 | Linear regression: heteroscedasticity, residuals | | | |
+| F-02-17-2023 | Multiple regression | Lab 5 due | | |
 | **Week 7** | **Classification** | | | |
 | M-02-20-2023 | **Holiday (President's Day)** | | | |
-| W-02-22-2023 | Cross-validation | PS 3 due | | |
+| W-02-22-2023 | Polynomial regression; overfitting; bias-variance trade-off; cross-validation | PS 3 due | | |
 | F-02-24-2023 | Logistic regression | Lab 6 due | | |
 | **Week 8** | **Advanced Classification and Evaluation** | | | |
-| M-02-27-2023 | Basic model evaluation: Type 1 vs. Type 2 errors| | | |
+| M-02-27-2023 | Basic model evaluation: Type 1 vs. Type 2 errors; ROC Curve| | | |
 | W-03-01-2023 | Advanced methods: SVM | | | |
-| F-03-03-2023 | Metrics: AIC, Confusion Matrix | Lab 7 due | | |
+| F-03-03-2023 | More metrics: AIC, Confusion Matrix | Lab 7 due | | |
 | **Week 9** | **Unsupervised Approaches** | | | |
 | M-03-06-2023 | Clustering with K-means | | | |
 | W-03-08-2023 | Principal Component Analysis (PCA) | PS 4 due | | |

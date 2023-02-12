@@ -8,13 +8,13 @@ You'll work independently, but we highly encourage you to come to office hours a
 
 ## Grading and Deliverables
 
-Your final deliverable (what you turn in) will be a Jupyter notebook with the following sections (See the table below); each section is worth a certain number of points, adding up to 18.
+Your final deliverable (what you turn in) will be a Jupyter notebook with the following sections (See the table below); each section is worth a certain number of points, adding up to 17; the **final project proposal** is also worth 1 point.
 
 
 | Section | Points | Description | Example 1| Example 2 |
 | --------------- | ---- | ---------- | -------- | ------- |
 | Introduction |  2 | What dataset are you looking at? Where/how was it created? What question(s) will you be asking? | Dataset about which construction people use in the [dative alternation](http://www.glottopedia.org/index.php/Dative_alternation): do they use NP ("She gave the man the box") or PP ("She gave the box to the man"). I will ask which features predict the use of one construction vs. the other. | |
-| Data |  4|  Descriptive statistics about the dataset: number of rows/columns, central tendency (mean/median/mode), variability, any missing values, etc. Should also include details of **cleaning** or **merging** datasets, should you need to do that. | The [dativeSimplified](https://rdrr.io/cran/languageR/man/dativeSimplified.html) dataset contains 903 observations with 5 variables; it was created by examining transcriptions of conversational data from Switchboard. No cleaning was required. | |
+| Data |  3 |  Descriptive statistics about the dataset: number of rows/columns, central tendency (mean/median/mode), variability, any missing values, etc. Should also include details of **cleaning** or **merging** datasets, should you need to do that. | The [dativeSimplified](https://rdrr.io/cran/languageR/man/dativeSimplified.html) dataset contains 903 observations with 5 variables; it was created by examining transcriptions of conversational data from Switchboard. No cleaning was required. | |
 | Visualizations | 4 |2-3 graphs showing specific patterns or features you'd like to highlight. Each visualization should be accompanied by a short (1-2 sentences) description of what you think it shows. | Boxplot showing **length** of the *theme* argument when recipient is realized as a noun phrase vs. prepositional phrase. Barplot showing proportion of **NP** realizations depending on animacy of recipient. | | 
 | Analyses |  4| 2-3 analyses discussed in class (e.g., linear regression, etc.) to address your question. Each analysis should be accompanied by a short (1-3 sentences) *interpretation*. Should also include **evaluation** of your model somehow, e.g., $R^2$, AIC, etc. | Logistic regression predicting **realization** (NP vs. PP) from Animacy and Length. Compare AIC of this model to a model omitting each variable in turn. | |
 | Limitations and Ethical Issues| 3 | Discuss any limitations to your approach, as well as potential ethical issues (if relevant). | Variables could be inter-related; also only 4 predictor variables total. |  |
