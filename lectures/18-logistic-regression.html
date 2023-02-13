@@ -209,6 +209,16 @@ const thebe_selector_output = ".output, .cell_output"
    12-Introduction to Statistical Modeling
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13-regression-intro.html">
+   13-Linear Regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14-regression-predictions.html">
+   14-Prediction Error and More
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -569,10 +579,10 @@ title="Print to PDF"
   <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     1</td>  
 </tr>
 <tr>
-  <th>Date:</th>            <td>Sun, 12 Feb 2023</td> <th>  Pseudo R-squ.:     </th>  <td>0.07936</td> 
+  <th>Date:</th>            <td>Mon, 13 Feb 2023</td> <th>  Pseudo R-squ.:     </th>  <td>0.07936</td> 
 </tr>
 <tr>
-  <th>Time:</th>                <td>15:42:40</td>     <th>  Log-Likelihood:    </th> <td> -996.59</td> 
+  <th>Time:</th>                <td>13:11:34</td>     <th>  Log-Likelihood:    </th> <td> -996.59</td> 
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -1082.5</td> 
@@ -593,10 +603,37 @@ title="Print to PDF"
 </tr>
 </table></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.7161</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.7161</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.7161</span> <span class="o">-</span> <span class="mf">3.0166</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.7161</span> <span class="o">-</span> <span class="mf">3.0166</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p2</span><span class="o">/</span><span class="n">p1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04938404110250623
+</pre></div>
+</div>
+</div>
+</div>
 <p>Datasets:</p>
 <ul class="simple">
 <li><p>BES (Brexit)</p></li>
 <li><p>Pfizer (vaccine)</p></li>
+<li><p>Spam</p></li>
 </ul>
 
     <script type="text/x-thebe-config">

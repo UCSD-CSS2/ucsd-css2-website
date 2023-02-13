@@ -209,6 +209,16 @@ const thebe_selector_output = ".output, .cell_output"
    12-Introduction to Statistical Modeling
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13-regression-intro.html">
+   13-Linear Regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="14-regression-predictions.html">
+   14-Prediction Error and More
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -416,6 +426,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#libraries">
+   Libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#goals-of-this-lecture">
    Goals of this lecture
   </a>
@@ -440,6 +455,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#libraries">
+   Libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#goals-of-this-lecture">
    Goals of this lecture
   </a>
@@ -456,6 +476,37 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="multiple-regression">
 <h1>Multiple regression<a class="headerlink" href="#multiple-regression" title="Permalink to this headline">#</a></h1>
+<section id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Imports</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">ss</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/lib/python3.9/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.23.1
+  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;  # makes figs nicer!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="goals-of-this-lecture">
 <h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -463,6 +514,16 @@ title="Print to PDF"
 <li><p>Implementing and interpreting models with multiple predictors.</p></li>
 <li><p>Models with <strong>interactions</strong>.</p></li>
 <li><p>Techniques for identifying (or <em>selecting</em>) important predictors.</p></li>
+</ul>
+<p>Why multiple regression?</p>
+<ul class="simple">
+<li><p>Adjusting for confounds / correlated variables.</p>
+<ul>
+<li><p>Example: shark attacks, ice cream sales, and temperature.</p></li>
+</ul>
+</li>
+<li><p>Similarly, identifying the <strong>independent effect</strong> of two variables.</p></li>
+<li><p>Improving model fit/accuracy.</p></li>
 </ul>
 <p>Interactions: pg. 89 of ISLR.</p>
 <p>Identifying important predictors (pg. 88 of ISLR):</p>

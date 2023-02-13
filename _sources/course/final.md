@@ -33,11 +33,13 @@ With that in mind, here are some ideas for **suitable datasets**. You can use on
 | Dataset | Social Science Domain | Description | Accessing |
 | ------ | ---- | ---------- | ------- |
 | World Bank Open Data | Economics / Global Development | Contains time series data for **many domains**, such as agricultural development, rural poverty, carbon emissions, and much, much more. | [Link to Data Bank](https://data.worldbank.org/); can browse by "indicator"; may require merging datasets for more information. |
+| [World Happiness Report](https://www.kaggle.com/datasets/ajaypalsinghlo/world-happiness-report-2021) | Economics / Global Development | Dataset about global happiness scores; might need to be merged with other datasets to ask useful questions. | [Kaggle](https://www.kaggle.com/datasets/ajaypalsinghlo/world-happiness-report-2021)|
 | World Energy Consumption | Contains time series data about consumption of **energy** and **electricity**. | [Link on Kaggle](https://www.kaggle.com/datasets/pralabhpoudel/world-energy-consumption) |
 | SCARFS (Spontaneous, controlled, acts of reference between friends and strangers) | Linguistics/Communication | Data about friends and strangers playing the game **Taboo**, which clues they gave, and whether a trial was wason. | [GitHub Link](https://github.com/seantrott/scarfs) |
 | [California Housing Prices](https://www.kaggle.com/datasets/camnugent/california-housing-prices) | Economics | Information about the median house value for different districts in California. | [Link on Kaggle](https://www.kaggle.com/datasets/camnugent/california-housing-prices). |
 | [Student alcohol consumption](https://www.kaggle.com/datasets/uciml/student-alcohol-consumption?select=student-por.csv) | Public Health | Information about student behavior, including alcohol consumption and more. |  [Link on Kaggle](https://www.kaggle.com/datasets/uciml/student-alcohol-consumption?select=student-por.csv). |
 | [Dative Alternation](https://rdrr.io/cran/languageR/man/dative.html) | Linguistics | Dataset about which construction people use in the dative alternation: do they use NP ("She gave the man the box") or PP ("She gave the box to the man"). | Online, or ask Professor Trott for `.csv` file |
+
 
 
 
