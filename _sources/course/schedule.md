@@ -31,19 +31,19 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | **Week 7** | **Regression, generalized** | | | |
 | M-02-20-2023 | **Holiday (President's Day)** | | | |
 | W-02-22-2023 | Polynomial regression; overfitting; bias-variance trade-off; cross-validation | PS 3 due | | |
-| F-02-24-2023 | Logistic regression | Project proposal due; Lab 6 due | | |
+| F-02-24-2023 | Logistic regression | Project proposal due | | |
 | **Week 8** | **Advanced Classification and Evaluation** | | | |
 | M-02-27-2023 | Basic model evaluation: Type 1 vs. Type 2 errors; ROC Curve| | | |
 | W-03-01-2023 | More metrics: AIC, Confusion Matrix| | | |
-| F-03-03-2023 | Advanced methods: SVM | Lab 7 due | | |
+| F-03-03-2023 | Advanced methods: SVM | Lab 6 due | | |
 | **Week 9** | **Unsupervised Approaches** | | | |
 | M-03-06-2023 | Clustering with K-means | | | |
 | W-03-08-2023 | Principal Component Analysis (PCA) | PS 4 due | | |
-| F-03-10-2023 | Principal Component Analysis (PCA) | Lab 8 due | | |
+| F-03-10-2023 | Principal Component Analysis (PCA) | Lab 7 due | | |
 | **Week 10** | **Why CSS is Hard** | | | |
 | M-03-13-2023 | Bad Data: construct validity, generalizability | | | |
 | W-03-15-2023 | Baselines and Statistical Paradoxes |  | | |
-| F-03-17-2023 | Wrap-up, final project work | | | |
+| F-03-17-2023 | Wrap-up, final project work | Lab 8 due | | |
 | **Finals week** | | | | |
 | M-03-20-2023 |  | | | |
 | W-03-22-2023 |  | **Final project due** | | |
