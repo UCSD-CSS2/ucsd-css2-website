@@ -639,6 +639,79 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#models-with-interactions">
    Models with “interactions”
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-the-additive-assumption">
+     Removing the additive assumption
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-common-interactions">
+     Examples of common interactions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#double-dissociations">
+       Double dissociations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discovering-interactions-with-data-visualization">
+     Discovering interactions with data visualization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#first-steps-main-effects-pt-1">
+       First steps: main effects (pt. 1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#first-steps-main-effects-pt-2">
+       First steps: main effects (pt. 2)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Check-in
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-for-interactions-with-statsmodels">
+     Testing for interactions with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       statsmodels
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Check-in
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model-output">
+       Model output
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interpreting-parameters">
+       Interpreting parameters
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#which-predictors-matter">
@@ -697,7 +770,7 @@ title="Print to PDF"
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id3">
+        <a class="reference internal nav-link" href="#id6">
          Sub-optimal, but computationally efficient
         </a>
        </li>
@@ -743,6 +816,38 @@ title="Print to PDF"
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stepwise-selection-in-practice">
+     Stepwise selection in practice
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-1-null-model">
+       Step 1: Null model
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-2-univariate-models">
+       Step 2: univariate models
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-3-adding-more-parameters">
+       Step 3: Adding more parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interpreting-our-results">
+       Interpreting our results
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusion">
+     Conclusion
+    </a>
    </li>
   </ul>
  </li>
@@ -977,6 +1082,79 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#models-with-interactions">
    Models with “interactions”
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-the-additive-assumption">
+     Removing the additive assumption
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-common-interactions">
+     Examples of common interactions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#double-dissociations">
+       Double dissociations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discovering-interactions-with-data-visualization">
+     Discovering interactions with data visualization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#first-steps-main-effects-pt-1">
+       First steps: main effects (pt. 1)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#first-steps-main-effects-pt-2">
+       First steps: main effects (pt. 2)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Check-in
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-for-interactions-with-statsmodels">
+     Testing for interactions with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       statsmodels
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Check-in
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model-output">
+       Model output
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interpreting-parameters">
+       Interpreting parameters
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#which-predictors-matter">
@@ -1035,7 +1213,7 @@ title="Print to PDF"
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id3">
+        <a class="reference internal nav-link" href="#id6">
          Sub-optimal, but computationally efficient
         </a>
        </li>
@@ -1081,6 +1259,38 @@ title="Print to PDF"
       </a>
      </li>
     </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stepwise-selection-in-practice">
+     Stepwise selection in practice
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-1-null-model">
+       Step 1: Null model
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-2-univariate-models">
+       Step 2: univariate models
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-3-adding-more-parameters">
+       Step 3: Adding more parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interpreting-our-results">
+       Interpreting our results
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusion">
+     Conclusion
+    </a>
    </li>
   </ul>
  </li>
@@ -1200,7 +1410,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fc8ba876e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcee12b6e20&gt;
 </pre></div>
 </div>
 <img alt="../_images/15-multiple-regression_9_1.png" src="../_images/15-multiple-regression_9_1.png" />
@@ -1253,7 +1463,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fc8c8599370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcef3e69250&gt;
 </pre></div>
 </div>
 <img alt="../_images/15-multiple-regression_15_1.png" src="../_images/15-multiple-regression_15_1.png" />
@@ -1615,6 +1825,332 @@ dtype: float64
 </section>
 <section id="models-with-interactions">
 <h2>Models with “interactions”<a class="headerlink" href="#models-with-interactions" title="Permalink to this headline">#</a></h2>
+<section id="removing-the-additive-assumption">
+<h3>Removing the additive assumption<a class="headerlink" href="#removing-the-additive-assumption" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>An <strong>“interaction effect”</strong> occurs when the effect of one variable (<span class="math notranslate nohighlight">\(X_1\)</span>) depends on the value of another variable (<span class="math notranslate nohighlight">\(X_2\)</span>).</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>So far, we’ve assumed that different predictors have <strong>independent</strong> and <strong>additive</strong> effects.</p>
+<ul>
+<li><p>I.e., <strong>main effects</strong> of a variable <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span>.</p></li>
+</ul>
+</li>
+<li><p>An “interaction” (or “synergistic”) effect removes that assumption.</p>
+<ul>
+<li><p>In model, allows for <strong>interaction</strong> <span class="math notranslate nohighlight">\(X_1 X_2\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="examples-of-common-interactions">
+<h3>Examples of common interactions<a class="headerlink" href="#examples-of-common-interactions" title="Permalink to this headline">#</a></h3>
+<p>Interaction effects are often easiest to observe and understand between two <strong>categorical variables</strong>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Treatment</span> <span class="pre">x</span> <span class="pre">Gender</span></code>: <code class="docutils literal notranslate"><span class="pre">Treatment</span></code> works in <code class="docutils literal notranslate"><span class="pre">males</span></code> but not <code class="docutils literal notranslate"><span class="pre">females</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Brain</span> <span class="pre">Region</span> <span class="pre">x</span> <span class="pre">Task</span></code>: <strong>double dissociation</strong> between <code class="docutils literal notranslate"><span class="pre">Region</span></code> of damage and which <code class="docutils literal notranslate"><span class="pre">Task</span></code> impairment is observed on.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Food</span> <span class="pre">x</span> <span class="pre">Condiment</span></code>: enjoyment of a <code class="docutils literal notranslate"><span class="pre">Condiment</span></code> depends on kind of food.</p>
+<ul>
+<li><p>E.g., <code class="docutils literal notranslate"><span class="pre">Ketchup</span></code> is good on <code class="docutils literal notranslate"><span class="pre">Hot</span> <span class="pre">Dog</span></code>, while <code class="docutils literal notranslate"><span class="pre">Chocolate</span> <span class="pre">Sauce</span></code> is good on <code class="docutils literal notranslate"><span class="pre">Ice</span> <span class="pre">Cream</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<section id="double-dissociations">
+<h4>Double dissociations<a class="headerlink" href="#double-dissociations" title="Permalink to this headline">#</a></h4>
+<blockquote>
+<div><p>In neuroscience, a <a class="reference external" href="https://dictionary.apa.org/double-dissociation"><strong>double dissociation</strong></a> is a demonstration that two brain areas (or biological systems) have <em>independent</em> or <em>localizable</em> effects.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_damage</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Region&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Motor Cortex&#39;</span><span class="p">,</span> <span class="s1">&#39;Motor Cortex&#39;</span><span class="p">,</span> <span class="s1">&#39;Visual Cortex&#39;</span><span class="p">,</span> <span class="s1">&#39;Visual Cortex&#39;</span><span class="p">],</span>
+                         <span class="s1">&#39;Task&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Hand Movements&#39;</span><span class="p">,</span> <span class="s1">&#39;Object ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Hand Movements&#39;</span><span class="p">,</span> <span class="s1">&#39;Object ID&#39;</span><span class="p">],</span>
+                         <span class="s1">&#39;Performance&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">50</span><span class="p">]})</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_damage</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Region&quot;</span><span class="p">,</span> 
+            <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Performance&quot;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;Task&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Region&#39;, ylabel=&#39;Performance&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/15-multiple-regression_53_1.png" src="../_images/15-multiple-regression_53_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="discovering-interactions-with-data-visualization">
+<h3>Discovering interactions with data visualization<a class="headerlink" href="#discovering-interactions-with-data-visualization" title="Permalink to this headline">#</a></h3>
+<p>As a first illustration of an interaction between <strong>categorical</strong> and <strong>continuous</strong> variable, let’s consider the <code class="docutils literal notranslate"><span class="pre">mtcars</span></code> dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cars</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/models/mtcars.csv&quot;</span><span class="p">)</span>
+<span class="n">df_cars</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>model</th>
+      <th>mpg</th>
+      <th>cyl</th>
+      <th>disp</th>
+      <th>hp</th>
+      <th>drat</th>
+      <th>wt</th>
+      <th>qsec</th>
+      <th>vs</th>
+      <th>am</th>
+      <th>gear</th>
+      <th>carb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mazda RX4</td>
+      <td>21.0</td>
+      <td>6</td>
+      <td>160.0</td>
+      <td>110</td>
+      <td>3.90</td>
+      <td>2.620</td>
+      <td>16.46</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mazda RX4 Wag</td>
+      <td>21.0</td>
+      <td>6</td>
+      <td>160.0</td>
+      <td>110</td>
+      <td>3.90</td>
+      <td>2.875</td>
+      <td>17.02</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Datsun 710</td>
+      <td>22.8</td>
+      <td>4</td>
+      <td>108.0</td>
+      <td>93</td>
+      <td>3.85</td>
+      <td>2.320</td>
+      <td>18.61</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="first-steps-main-effects-pt-1">
+<h4>First steps: main effects (pt. 1)<a class="headerlink" href="#first-steps-main-effects-pt-1" title="Permalink to this headline">#</a></h4>
+<p>This dataset contains at least two <em>main effects</em>: a correlation between <code class="docutils literal notranslate"><span class="pre">wt</span></code> and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>, and a correlation between <code class="docutils literal notranslate"><span class="pre">am</span></code> (automatic = 0, manual = 1) and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;wt&#39;, ylabel=&#39;mpg&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/15-multiple-regression_57_1.png" src="../_images/15-multiple-regression_57_1.png" />
+</div>
+</div>
+</section>
+<section id="first-steps-main-effects-pt-2">
+<h4>First steps: main effects (pt. 2)<a class="headerlink" href="#first-steps-main-effects-pt-2" title="Permalink to this headline">#</a></h4>
+<p>This dataset contains at least two <em>main effects</em>: a correlation between <code class="docutils literal notranslate"><span class="pre">wt</span></code> and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>, and a correlation between <code class="docutils literal notranslate"><span class="pre">am</span></code> (automatic = 0, manual = 1) and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;am&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;am&#39;, ylabel=&#39;mpg&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/15-multiple-regression_59_1.png" src="../_images/15-multiple-regression_59_1.png" />
+</div>
+</div>
+</section>
+<section id="id3">
+<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<p>How could we use <strong>data visualization</strong> to ask whether <code class="docutils literal notranslate"><span class="pre">wt</span></code> and <code class="docutils literal notranslate"><span class="pre">am</span></code> have an <strong>interaction effect</strong> on <code class="docutils literal notranslate"><span class="pre">mpg</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h4>Solution<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;am&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcef4a81940&gt;
+</pre></div>
+</div>
+<img alt="../_images/15-multiple-regression_63_1.png" src="../_images/15-multiple-regression_63_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="testing-for-interactions-with-statsmodels">
+<h3>Testing for interactions with <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code><a class="headerlink" href="#testing-for-interactions-with-statsmodels" title="Permalink to this headline">#</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, an <strong>interaction term</strong> can be added between two variables using the <code class="docutils literal notranslate"><span class="pre">*</span></code> syntax (rather than <code class="docutils literal notranslate"><span class="pre">+</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;Y ~ X1 * X2`</span>
+</pre></div>
+</div>
+<section id="id5">
+<h4>Check-in<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<p>Build a linear model predicting <code class="docutils literal notranslate"><span class="pre">mpg</span></code>, with an interaction between <code class="docutils literal notranslate"><span class="pre">am</span></code> and <code class="docutils literal notranslate"><span class="pre">wt</span></code>. What can we conclude about the result?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-output">
+<h4>Model output<a class="headerlink" href="#model-output" title="Permalink to this headline">#</a></h4>
+<p>The <span class="math notranslate nohighlight">\(p\)</span>-value for <code class="docutils literal notranslate"><span class="pre">wt:am</span></code> is significant, suggesting a significant interaction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_interaction</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;mpg ~ wt * am&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mod_interaction</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>mpg</td>       <th>  R-squared:         </th> <td>   0.833</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.815</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   46.57</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Mon, 20 Feb 2023</td> <th>  Prob (F-statistic):</th> <td>5.21e-11</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>09:40:30</td>     <th>  Log-Likelihood:    </th> <td> -73.738</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>    32</td>      <th>  AIC:               </th> <td>   155.5</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    28</td>      <th>  BIC:               </th> <td>   161.3</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   31.4161</td> <td>    3.020</td> <td>   10.402</td> <td> 0.000</td> <td>   25.230</td> <td>   37.602</td>
+</tr>
+<tr>
+  <th>wt</th>        <td>   -3.7859</td> <td>    0.786</td> <td>   -4.819</td> <td> 0.000</td> <td>   -5.395</td> <td>   -2.177</td>
+</tr>
+<tr>
+  <th>am</th>        <td>   14.8784</td> <td>    4.264</td> <td>    3.489</td> <td> 0.002</td> <td>    6.144</td> <td>   23.613</td>
+</tr>
+<tr>
+  <th>wt:am</th>     <td>   -5.2984</td> <td>    1.445</td> <td>   -3.667</td> <td> 0.001</td> <td>   -8.258</td> <td>   -2.339</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 3.839</td> <th>  Durbin-Watson:     </th> <td>   1.793</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.147</td> <th>  Jarque-Bera (JB):  </th> <td>   3.088</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.761</td> <th>  Prob(JB):          </th> <td>   0.213</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.963</td> <th>  Cond. No.          </th> <td>    40.1</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+</section>
+<section id="interpreting-parameters">
+<h4>Interpreting parameters<a class="headerlink" href="#interpreting-parameters" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wt</span></code>: negative slope, i.e., heavier cars have lower <code class="docutils literal notranslate"><span class="pre">mpg</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">am</span></code>: positive slope, i.e., manual cars have higher <code class="docutils literal notranslate"><span class="pre">mpg</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wt:am</span></code>: negative slope, i.e., a <strong>stronger (steeper) effect</strong> of <code class="docutils literal notranslate"><span class="pre">wt</span></code> on <code class="docutils literal notranslate"><span class="pre">mpg</span></code> for <em>manual</em> than <em>automatic</em> cars.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\hat{Y} = 31.41 - 3.79*X_{weight} + 14.88*X_{am} - 5.3 * X_{weight} * X_{am}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_interaction</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    31.416055
+wt           -3.785908
+am           14.878423
+wt:am        -5.298360
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="which-predictors-matter">
 <h2>Which predictors <em>matter</em>?<a class="headerlink" href="#which-predictors-matter" title="Permalink to this headline">#</a></h2>
@@ -1642,7 +2178,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;R^2&#39;, ylabel=&#39;Predictors&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_56_1.png" src="../_images/15-multiple-regression_56_1.png" />
+<img alt="../_images/15-multiple-regression_74_1.png" src="../_images/15-multiple-regression_74_1.png" />
 </div>
 </div>
 </section>
@@ -1690,7 +2226,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Number of possible models&#39;)
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_60_1.png" src="../_images/15-multiple-regression_60_1.png" />
+<img alt="../_images/15-multiple-regression_78_1.png" src="../_images/15-multiple-regression_78_1.png" />
 </div>
 </div>
 </section>
@@ -1731,8 +2267,8 @@ dtype: float64
 <li><p>Repeat this iteratively, until we’ve excluded all predictors <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
 </ol>
 <p>Using this procedure, the <strong>order</strong> in which predictors are removed corresponds to how little they help the model.</p>
-<section id="id3">
-<h5>Sub-optimal, but computationally efficient<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h5>
+<section id="id6">
+<h5>Sub-optimal, but computationally efficient<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h5>
 <ul class="simple">
 <li><p>Backward selection is much more <strong>efficient</strong> than best subset selection.</p></li>
 <li><p>However, the “Best” model is not guaranteed.</p>
@@ -1795,7 +2331,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$R^2$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_69_1.png" src="../_images/15-multiple-regression_69_1.png" />
+<img alt="../_images/15-multiple-regression_87_1.png" src="../_images/15-multiple-regression_87_1.png" />
 </div>
 </div>
 </section>
@@ -1821,17 +2357,118 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Interactions: pg. 89 of ISLR.</p>
-<p>Other problems (ISLR, pg. 93):</p>
-<ol class="simple">
-<li><p>Non-linearity</p></li>
-<li><p>Correlation of error terms</p></li>
-<li><p>Heteroscedasticity</p></li>
-<li><p>Outliers</p></li>
-<li><p>High-leverage points</p></li>
-<li><p>Collinearity</p></li>
-</ol>
 </section>
+</section>
+<section id="stepwise-selection-in-practice">
+<h3>Stepwise selection in practice<a class="headerlink" href="#stepwise-selection-in-practice" title="Permalink to this headline">#</a></h3>
+<p>Let’s consider the case of <strong>forward stepwise selection</strong>, focusing on just these two variables predicting <code class="docutils literal notranslate"><span class="pre">median_house_value</span></code>.</p>
+<section id="step-1-null-model">
+<h4>Step 1: Null model<a class="headerlink" href="#step-1-null-model" title="Permalink to this headline">#</a></h4>
+<p>The <strong>null model</strong> can be fit by simply adding <code class="docutils literal notranslate"><span class="pre">1</span></code> as a predictor, i.e., an <code class="docutils literal notranslate"><span class="pre">Intercept</span></code>-only model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_null</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ 1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mod_null</span><span class="o">.</span><span class="n">rsquared_adj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.220446049250313e-16
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-univariate-models">
+<h4>Step 2: univariate models<a class="headerlink" href="#step-2-univariate-models" title="Permalink to this headline">#</a></h4>
+<p>Now, we fit a model for each of our <span class="math notranslate nohighlight">\(p\)</span> predictors (<code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">income</span></code>).</p>
+<p><strong>Which parameter yields the biggest improvement in model fit?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_age</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ housing_median_age&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mod_income</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ median_income&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mod_age</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mod_income</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.011108391530169626
+0.47342197807000574
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-adding-more-parameters">
+<h4>Step 3: Adding more parameters<a class="headerlink" href="#step-3-adding-more-parameters" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>In step 2, we decided that <code class="docutils literal notranslate"><span class="pre">median_income</span></code> was the best parameter for the <em>univariate</em> model.</p></li>
+<li><p>Now we add <code class="docutils literal notranslate"><span class="pre">housing_median_age</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_both</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span>
+                   <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ housing_median_age + median_income&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mod_both</span><span class="o">.</span><span class="n">rsquared_adj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5090720171306611
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="interpreting-our-results">
+<h4>Interpreting our results<a class="headerlink" href="#interpreting-our-results" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>The model with <em>both</em> predictors explains about <span class="math notranslate nohighlight">\(51\%\)</span> of the variance.</p></li>
+<li><p>The model with <code class="docutils literal notranslate"><span class="pre">age</span></code> explains about <span class="math notranslate nohighlight">\(1\%\)</span> of the variance.</p></li>
+<li><p>The model with <code class="docutils literal notranslate"><span class="pre">income</span></code> explains about <span class="math notranslate nohighlight">\(47\%\)</span> of the variance.</p></li>
+</ul>
+<p>If we had to pick <em>just one</em> variable, we should go with <code class="docutils literal notranslate"><span class="pre">income</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Both parameters: </span><span class="si">{x}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mod_both</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Age: </span><span class="si">{x}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mod_age</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Income: </span><span class="si">{x}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">mod_income</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Both parameters: 0.51.
+Age: 0.01.
+Income: 0.47.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Multiple regression</strong> allows us to:</p>
+<ul>
+<li><p>Identify independent effects of our predictors.</p></li>
+<li><p>Build better, more predictive models.</p></li>
+</ul>
+</li>
+<li><p>We can also test for <strong>interactions</strong> between our predictors.</p></li>
+<li><p>There are <em>many</em> techniques for identifying which predictors are most “important”.</p>
+<ul>
+<li><p>Includes <em>forward</em> and <em>backward</em> stepwise selection.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 </section>
