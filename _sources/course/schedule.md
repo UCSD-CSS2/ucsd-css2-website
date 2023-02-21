@@ -27,14 +27,14 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | **Week 6** | **Linear regression** | | | |
 | M-02-13-2023 | Linear regression: basics | | | |
 | W-02-15-2023 | Linear regression: heteroscedasticity, residuals | | | |
-| F-02-17-2023 | Multiple regression | Lab 5 due | | |
+| F-02-17-2023 | Linear regression: heteroscedasticity, residuals | Lab 5 due | | |
 | **Week 7** | **Regression, generalized** | | | |
 | M-02-20-2023 | **Holiday (President's Day)** | | | |
-| W-02-22-2023 | Polynomial regression; overfitting; bias-variance trade-off; cross-validation | PS 3 due | | |
-| F-02-24-2023 | Logistic regression | Project proposal due | | |
-| **Week 8** | **Advanced Classification and Evaluation** | | | |
-| M-02-27-2023 | Basic model evaluation: Type 1 vs. Type 2 errors; ROC Curve| | | |
-| W-03-01-2023 | More metrics: AIC, Confusion Matrix| | | |
+| W-02-22-2023 | Multiple regression | PS 3 due | | |
+| F-02-24-2023 | Polynomial regression; overfitting; bias-variance trade-off; cross-validation | Project proposal due | | |
+| **Week 8** | **Classification and Evaluation** | | | |
+| M-02-27-2023 | Logistic regression | | | |
+| W-03-01-2023 | Model evaluation: ROC Curve, AIC, Confusion Matrix| | | |
 | F-03-03-2023 | Advanced methods: SVM | Lab 6 due | | |
 | **Week 9** | **Unsupervised Approaches** | | | |
 | M-03-06-2023 | Clustering with K-means | | | |
