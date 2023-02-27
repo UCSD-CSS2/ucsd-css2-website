@@ -224,6 +224,11 @@ const thebe_selector_output = ".output, .cell_output"
    15-Multiple Regression
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="16-nonlinear-regression.html">
+   16-Non-linear Regression
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -488,8 +493,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_income</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/models/income.csv&quot;</span><span class="p">)</span>
-<span class="n">df_income</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_housing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/housing.csv&quot;</span><span class="p">)</span>
+<span class="n">df_housing</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -512,29 +517,44 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Education</th>
-      <th>Seniority</th>
-      <th>Income</th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>ocean_proximity</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>21.586207</td>
-      <td>113.103448</td>
-      <td>99.917173</td>
+      <td>-122.23</td>
+      <td>37.88</td>
+      <td>41.0</td>
+      <td>880.0</td>
+      <td>129.0</td>
+      <td>322.0</td>
+      <td>126.0</td>
+      <td>8.3252</td>
+      <td>452600.0</td>
+      <td>NEAR BAY</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>18.275862</td>
-      <td>119.310345</td>
-      <td>92.579135</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>12.068966</td>
-      <td>100.689655</td>
-      <td>34.678727</td>
+      <td>-122.22</td>
+      <td>37.86</td>
+      <td>21.0</td>
+      <td>7099.0</td>
+      <td>1106.0</td>
+      <td>2401.0</td>
+      <td>1138.0</td>
+      <td>8.3014</td>
+      <td>358500.0</td>
+      <td>NEAR BAY</td>
     </tr>
   </tbody>
 </table>
@@ -542,235 +562,202 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_edu</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_income</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;Income ~ Education&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">mod_edu</span><span class="o">.</span><span class="n">params</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cars</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/models/mtcars.csv&quot;</span><span class="p">)</span>
+<span class="n">df_cars</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept   -41.916612
-Education     6.387161
-dtype: float64
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>model</th>
+      <th>mpg</th>
+      <th>cyl</th>
+      <th>disp</th>
+      <th>hp</th>
+      <th>drat</th>
+      <th>wt</th>
+      <th>qsec</th>
+      <th>vs</th>
+      <th>am</th>
+      <th>gear</th>
+      <th>carb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mazda RX4</td>
+      <td>21.0</td>
+      <td>6</td>
+      <td>160.0</td>
+      <td>110</td>
+      <td>3.90</td>
+      <td>2.620</td>
+      <td>16.46</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mazda RX4 Wag</td>
+      <td>21.0</td>
+      <td>6</td>
+      <td>160.0</td>
+      <td>110</td>
+      <td>3.90</td>
+      <td>2.875</td>
+      <td>17.02</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Datsun 710</td>
+      <td>22.8</td>
+      <td>4</td>
+      <td>108.0</td>
+      <td>93</td>
+      <td>3.85</td>
+      <td>2.320</td>
+      <td>18.61</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="o">-</span><span class="mf">41.92</span> <span class="o">+</span> <span class="mf">6.39</span> <span class="o">*</span> <span class="n">X</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>85.88
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fbe0c6d5b50&gt;
 </pre></div>
 </div>
+<img alt="../_images/interactive_4_1.png" src="../_images/interactive_4_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_edu</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;am&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([95.95797131, 74.81426521, 35.16981627, 66.88537542, 85.38611826,
-       74.81426521, 85.38611826, 93.31500804, 88.02908152, 21.95499996,
-       45.74166932, 77.45722847, 32.52685301, 64.24241216, 21.95499996,
-       88.02908152, 48.38463259, 64.24241216, 64.24241216, 88.02908152,
-       74.81426521, 51.02759585, 69.52833868, 24.59796322, 95.95797131,
-       29.88388975, 85.38611826, 32.52685301, 35.16981627, 66.88537542])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;am&#39;, ylabel=&#39;mpg&#39;&gt;
 </pre></div>
 </div>
+<img alt="../_images/interactive_5_1.png" src="../_images/interactive_5_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Education&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">]})</span>
-<span class="n">mod_edu</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;am&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     21.955000
-1    117.762418
-2    181.634030
-dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fbe0c718220&gt;
 </pre></div>
 </div>
+<img alt="../_images/interactive_6_1.png" src="../_images/interactive_6_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Education&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">6.39</span> <span class="o">-</span> <span class="mf">41.92</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;mpg ~ wt * am&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mod</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     21.98
-1    117.83
-2    181.73
-Name: Education, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">mod_edu</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">])</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">],</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted values: $\hat</span><span class="si">{Y}</span><span class="s2">$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Real values: $Y$&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Real values: $Y$&#39;)
-</pre></div>
-</div>
-<img alt="../_images/interactive_8_1.png" src="../_images/interactive_8_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Education&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mod_edu</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Residuals&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Residuals&#39;)
-</pre></div>
-</div>
-<img alt="../_images/interactive_9_1.png" src="../_images/interactive_9_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_seniority</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_income</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;Income ~ Seniority&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">mod_seniority</span><span class="o">.</span><span class="n">params</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    39.158326
-Seniority     0.251288
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y_pred = mod_seniority.predict()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Seniority&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mod_seniority</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f840887d6d0&gt;
-</pre></div>
-</div>
-<img alt="../_images/interactive_11_1.png" src="../_images/interactive_11_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### define a helper function!</span>
-<span class="k">def</span> <span class="nf">rss</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## RSS for &quot;Education&quot; model</span>
-<span class="n">rss</span><span class="p">(</span><span class="n">mod_edu</span><span class="o">.</span><span class="n">predict</span><span class="p">(),</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3982.5065854722675
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## RSS for &quot;Education&quot; model</span>
-<span class="n">rss</span><span class="p">(</span><span class="n">mod_seniority</span><span class="o">.</span><span class="n">predict</span><span class="p">(),</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15477.269661883036
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### define a helper function!</span>
-<span class="k">def</span> <span class="nf">mse</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## RSS for &quot;Education&quot; model</span>
-<span class="n">mse</span><span class="p">(</span><span class="n">mod_edu</span><span class="o">.</span><span class="n">predict</span><span class="p">(),</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>132.75021951574226
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## RSS for &quot;Education&quot; model</span>
-<span class="n">mse</span><span class="p">(</span><span class="n">mod_seniority</span><span class="o">.</span><span class="n">predict</span><span class="p">(),</span> <span class="n">df_income</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>515.9089887294346
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mod_edu</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span> <span class="c1">## standard error of the estimate</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11.926121668530007
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mod_seniority</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.510840707672212
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>mpg</td>       <th>  R-squared:         </th> <td>   0.833</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.815</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   46.57</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Sun, 26 Feb 2023</td> <th>  Prob (F-statistic):</th> <td>5.21e-11</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>10:20:39</td>     <th>  Log-Likelihood:    </th> <td> -73.738</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>    32</td>      <th>  AIC:               </th> <td>   155.5</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    28</td>      <th>  BIC:               </th> <td>   161.3</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   31.4161</td> <td>    3.020</td> <td>   10.402</td> <td> 0.000</td> <td>   25.230</td> <td>   37.602</td>
+</tr>
+<tr>
+  <th>wt</th>        <td>   -3.7859</td> <td>    0.786</td> <td>   -4.819</td> <td> 0.000</td> <td>   -5.395</td> <td>   -2.177</td>
+</tr>
+<tr>
+  <th>am</th>        <td>   14.8784</td> <td>    4.264</td> <td>    3.489</td> <td> 0.002</td> <td>    6.144</td> <td>   23.613</td>
+</tr>
+<tr>
+  <th>wt:am</th>     <td>   -5.2984</td> <td>    1.445</td> <td>   -3.667</td> <td> 0.001</td> <td>   -8.258</td> <td>   -2.339</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 3.839</td> <th>  Durbin-Watson:     </th> <td>   1.793</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.147</td> <th>  Jarque-Bera (JB):  </th> <td>   3.088</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.761</td> <th>  Prob(JB):          </th> <td>   0.213</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.963</td> <th>  Cond. No.          </th> <td>    40.1</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
 
     <script type="text/x-thebe-config">

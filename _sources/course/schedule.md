@@ -31,11 +31,11 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | **Week 7** | **Regression, generalized** | | | |
 | M-02-20-2023 | **Holiday (President's Day)** | | | |
 | W-02-22-2023 | Multiple regression | PS 3 due | | |
-| F-02-24-2023 | Polynomial regression; overfitting; bias-variance trade-off; cross-validation | Project proposal due | | |
+| F-02-24-2023 | Non-linear regression | Project proposal due | | |
 | **Week 8** | **Classification and Evaluation** | | | |
-| M-02-27-2023 | Logistic regression | | | |
-| W-03-01-2023 | Model evaluation: ROC Curve, AIC, Confusion Matrix| | | |
-| F-03-03-2023 | Advanced methods: SVM | Lab 6 due | | |
+| M-02-27-2023 | Overfitting; bias-variance trade-off | | | |
+| W-03-01-2023 | Logistic regression; Type 1 vs. Type 2 | | | |
+| F-03-03-2023 | SVM; evaluation using ROC Curve, AIC, Confusion Matrix | Lab 6 due | | |
 | **Week 9** | **Unsupervised Approaches** | | | |
 | M-03-06-2023 | Clustering with K-means | | | |
 | W-03-08-2023 | Principal Component Analysis (PCA) | PS 4 due | | |
