@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overfitting and the bias-variance trade-off" href="17-overfitting.html" />
     <link rel="prev" title="Multiple regression" href="15-multiple-regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -230,6 +231,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    16-Non-linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="17-overfitting.html">
+   16-Overfitting
   </a>
  </li>
 </ul>
@@ -888,12 +894,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/lib/python3.9/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.23.1
-  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -981,7 +981,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb9b018e2b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9328730430&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_11_1.png" src="../_images/16-nonlinear-regression_11_1.png" />
@@ -1005,7 +1005,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb98022df40&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f930810d3d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_13_1.png" src="../_images/16-nonlinear-regression_13_1.png" />
@@ -1029,7 +1029,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb9a5209ee0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f932876c280&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_15_1.png" src="../_images/16-nonlinear-regression_15_1.png" />
@@ -1054,7 +1054,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb9a526fca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f930814be20&gt;
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_17_1.png" src="../_images/16-nonlinear-regression_17_1.png" />
@@ -1078,7 +1078,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb9a5496be0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f933d7d1e20&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_19_1.png" src="../_images/16-nonlinear-regression_19_1.png" />
@@ -1147,7 +1147,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb9a54c3a00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f933d870250&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_27_1.png" src="../_images/16-nonlinear-regression_27_1.png" />
@@ -1168,7 +1168,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fb9b0370d00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f93082140a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_29_1.png" src="../_images/16-nonlinear-regression_29_1.png" />
@@ -1204,7 +1204,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/pn/5zbmv0cj31v6hmyh53njhmdw0000gn/T/ipykernel_1170/2027117275.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/pn/5zbmv0cj31v6hmyh53njhmdw0000gn/T/ipykernel_5499/2027117275.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -1225,7 +1225,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb9a555edc0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9328cef040&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_36_1.png" src="../_images/16-nonlinear-regression_36_1.png" />
@@ -1284,7 +1284,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb99143d8e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f933db5cb50&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_42_1.png" src="../_images/16-nonlinear-regression_42_1.png" />
@@ -1310,7 +1310,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb990fdb8e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f93084a6ac0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_45_1.png" src="../_images/16-nonlinear-regression_45_1.png" />
@@ -1344,7 +1344,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb9a59d64f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9328dbed90&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_48_1.png" src="../_images/16-nonlinear-regression_48_1.png" />
@@ -1371,7 +1371,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb9807255e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f933de8b460&gt;]
 </pre></div>
 </div>
 <img alt="../_images/16-nonlinear-regression_51_1.png" src="../_images/16-nonlinear-regression_51_1.png" />
@@ -1440,6 +1440,13 @@ dtype: float64
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Multiple regression</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="17-overfitting.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overfitting and the bias-variance trade-off</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

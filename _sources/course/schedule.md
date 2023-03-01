@@ -28,17 +28,17 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | M-02-13-2023 | Linear regression: basics | | | |
 | W-02-15-2023 | Linear regression: heteroscedasticity, residuals | | | |
 | F-02-17-2023 | Linear regression: heteroscedasticity, residuals | Lab 5 due | | |
-| **Week 7** | **Regression, generalized** | | | |
+| **Week 7** | **Multiple regression** | | | |
 | M-02-20-2023 | **Holiday (President's Day)** | | | |
 | W-02-22-2023 | Multiple regression | PS 3 due | | |
-| F-02-24-2023 | Non-linear regression | Project proposal due | | |
-| **Week 8** | **Classification and Evaluation** | | | |
-| M-02-27-2023 | Overfitting; bias-variance trade-off | | | |
-| W-03-01-2023 | Logistic regression; Type 1 vs. Type 2 | | | |
-| F-03-03-2023 | SVM; evaluation using ROC Curve, AIC, Confusion Matrix | Lab 6 due | | |
+| F-02-24-2023 | Multiple regression | Project proposal due | | |
+| **Week 8** | **Regression, generalized** | | | |
+| M-02-27-2023 | Non-linear regression | | | |
+| W-03-01-2023 | Overfitting; cross-validation  | | | |
+| F-03-03-2023 | Logistic regression; Type 1 vs. Type 2 | Lab 6 due | | |
 | **Week 9** | **Unsupervised Approaches** | | | |
-| M-03-06-2023 | Clustering with K-means | | | |
-| W-03-08-2023 | Principal Component Analysis (PCA) | PS 4 due | | |
+| M-03-06-2023 | SVM; evaluation using ROC Curve, AIC, Confusion Matrix | | | |
+| W-03-08-2023 | Clustering with K-means | PS 4 due | | |
 | F-03-10-2023 | Principal Component Analysis (PCA) | Lab 7 due | | |
 | **Week 10** | **Why CSS is Hard** | | | |
 | M-03-13-2023 | Bad Data: construct validity, generalizability | | | |
