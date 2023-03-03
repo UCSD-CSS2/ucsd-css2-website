@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -492,148 +494,193 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_housing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/housing.csv&quot;</span><span class="p">)</span>
-<span class="n">df_housing</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_gapminder</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/viz/gapminder_full.csv&quot;</span><span class="p">)</span>
+<span class="n">df_vietnam</span> <span class="o">=</span> <span class="n">df_gapminder</span><span class="p">[</span><span class="n">df_gapminder</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Vietnam&quot;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_vietnam</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;gdp_cap&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;year&#39;, ylabel=&#39;gdp_cap&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/interactive_2_1.png" src="../_images/interactive_2_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_linear</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_vietnam</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;gdp_cap ~ year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_vietnam</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;gdp_cap&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vietnam</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">mod_linear</span><span class="o">.</span><span class="n">predict</span><span class="p">(),</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa8b83480a0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/interactive_3_1.png" src="../_images/interactive_3_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_vietnam</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">mod_linear</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa8ac7344c0&gt;
+</pre></div>
+</div>
+<img alt="../_images/interactive_4_1.png" src="../_images/interactive_4_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_linear</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept   -49382.260375
+year            25.460961
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\Large Y = 25X - 49382\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Large Y = \beta_1X + \beta_0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Large Y = \beta_2X^2 + \beta_1X + \beta_0\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vietnam</span><span class="p">[</span><span class="s1">&#39;year_sq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_vietnam</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/pn/5zbmv0cj31v6hmyh53njhmdw0000gn/T/ipykernel_1931/2799483630.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>housing_median_age</th>
-      <th>total_rooms</th>
-      <th>total_bedrooms</th>
-      <th>population</th>
-      <th>households</th>
-      <th>median_income</th>
-      <th>median_house_value</th>
-      <th>ocean_proximity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-122.23</td>
-      <td>37.88</td>
-      <td>41.0</td>
-      <td>880.0</td>
-      <td>129.0</td>
-      <td>322.0</td>
-      <td>126.0</td>
-      <td>8.3252</td>
-      <td>452600.0</td>
-      <td>NEAR BAY</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-122.22</td>
-      <td>37.86</td>
-      <td>21.0</td>
-      <td>7099.0</td>
-      <td>1106.0</td>
-      <td>2401.0</td>
-      <td>1138.0</td>
-      <td>8.3014</td>
-      <td>358500.0</td>
-      <td>NEAR BAY</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_vietnam[&#39;year_sq&#39;] = df_vietnam[&#39;year&#39;].values ** 2
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_housing</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span>
-                     <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ housing_median_age + median_income&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mod_housing</span><span class="o">.</span><span class="n">rsquared</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mod_housing</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_poly</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_vietnam</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;gdp_cap ~ year + year_sq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mod_poly</span><span class="o">.</span><span class="n">params</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5091195899765227
-0.5090720171306611
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    4.228126e+06
+year        -4.296675e+03
+year_sq      1.091724e+00
+dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_null</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ 1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">mod_null</span><span class="o">.</span><span class="n">rsquared_adj</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_vietnam</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;gdp_cap&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vietnam</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">mod_poly</span><span class="o">.</span><span class="n">predict</span><span class="p">(),</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.220446049250313e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa8b8a05820&gt;]
 </pre></div>
 </div>
+<img alt="../_images/interactive_9_1.png" src="../_images/interactive_9_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_age</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ housing_median_age&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">mod_income</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ median_income&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mod_age</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mod_income</span><span class="o">.</span><span class="n">rsquared_adj</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_poly</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_vietnam</span><span class="p">,</span> 
+                   <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;gdp_cap ~ year + I(year ** 2) + I(year ** 3)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mod_poly</span><span class="o">.</span><span class="n">params</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.011108391530169626
-0.47342197807000574
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept          3.211890
+year            2119.158377
+I(year ** 2)      -2.153293
+I(year ** 3)       0.000547
+dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_both</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span>
-                   <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;median_house_value ~ housing_median_age + median_income&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">mod_both</span><span class="o">.</span><span class="n">rsquared_adj</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_vietnam</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5090720171306611
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(12, 7)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.1</span><span class="p">)</span>
-<span class="n">b0</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">y_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="mf">.05</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y_err</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_vietnam</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;gdp_cap&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_vietnam</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">mod_poly</span><span class="o">.</span><span class="n">predict</span><span class="p">(),</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa89827c850&gt;]
+</pre></div>
+</div>
+<img alt="../_images/interactive_12_1.png" src="../_images/interactive_12_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;y_true&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;y_obs&#39;</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">err</span><span class="p">})</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y_obs&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fdd7878b700&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa88864b550&gt;]
 </pre></div>
 </div>
-<img alt="../_images/interactive_7_1.png" src="../_images/interactive_7_1.png" />
+<img alt="../_images/interactive_13_1.png" src="../_images/interactive_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_p10</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;y_obs ~ X + I(X**2) + I(X**3) + I(X**4) + I(X**5) + I(X**6)  + I(X**7)  + I(X**8)  + I(X**9)  + I(X**10)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;y_obs&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mod_p10</span><span class="o">.</span><span class="n">predict</span><span class="p">(),</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa8b88c3880&gt;]
+</pre></div>
+</div>
+<img alt="../_images/interactive_15_1.png" src="../_images/interactive_15_1.png" />
 </div>
 </div>
 
