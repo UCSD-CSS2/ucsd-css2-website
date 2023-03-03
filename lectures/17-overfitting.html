@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logistic Regression" href="18-logistic-regression.html" />
     <link rel="prev" title="Non-linear regression" href="16-nonlinear-regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -234,7 +235,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   16-Overfitting
+   17-Overfitting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="18-logistic-regression.html">
+   18-Logistic Regression
   </a>
  </li>
 </ul>
@@ -1225,7 +1231,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7feabbf4f700&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7faac88b7700&gt;]
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_9_1.png" src="../_images/17-overfitting_9_1.png" />
@@ -1252,7 +1258,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7feab0307430&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7faad842d610&gt;]
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_12_1.png" src="../_images/17-overfitting_12_1.png" />
@@ -1313,7 +1319,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7feab030f880&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7faaecd12a60&gt;
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_18_1.png" src="../_images/17-overfitting_18_1.png" />
@@ -1334,7 +1340,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7feac9008430&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7faaeccf1520&gt;
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_20_1.png" src="../_images/17-overfitting_20_1.png" />
@@ -1363,7 +1369,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7feabc008c10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7faaed0b9d60&gt;
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_23_1.png" src="../_images/17-overfitting_23_1.png" />
@@ -1438,7 +1444,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7feabc074970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7faaed2bc970&gt;
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_31_1.png" src="../_images/17-overfitting_31_1.png" />
@@ -1457,7 +1463,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7feaa89c2730&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7faaed693730&gt;]
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_33_1.png" src="../_images/17-overfitting_33_1.png" />
@@ -1546,7 +1552,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7feaa8be1a00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7faab82e1a00&gt;]
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_41_1.png" src="../_images/17-overfitting_41_1.png" />
@@ -1613,7 +1619,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7feaa8e1d6d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7faac90ec700&gt;
 </pre></div>
 </div>
 <img alt="../_images/17-overfitting_47_1.png" src="../_images/17-overfitting_47_1.png" />
@@ -2190,6 +2196,13 @@ dtype: float64
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Non-linear regression</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="18-logistic-regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Logistic Regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
