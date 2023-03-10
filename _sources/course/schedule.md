@@ -35,14 +35,14 @@ Note that this schedule is **aspirational** and is therefore **subject to change
 | **Week 8** | **Regression, generalized** | | | |
 | M-02-27-2023 | Non-linear regression | | | |
 | W-03-01-2023 | Overfitting; cross-validation  | | | |
-| F-03-03-2023 | Logistic regression; Type 1 vs. Type 2 | Lab 6 due | | |
-| **Week 9** | **Unsupervised Approaches** | | | |
-| M-03-06-2023 | SVM; evaluation using ROC Curve, AIC, Confusion Matrix | | | |
-| W-03-08-2023 | Clustering with K-means | PS 4 due | | |
-| F-03-10-2023 | Principal Component Analysis (PCA) | Lab 7 due | | |
-| **Week 10** | **Why CSS is Hard** | | | |
-| M-03-13-2023 | Bad Data: construct validity, generalizability | | | |
-| W-03-15-2023 | Baselines and Statistical Paradoxes |  | | |
+| F-03-03-2023 | Overfitting; cross-validation | Lab 6 due | | |
+| **Week 9** | **Classification** | | | |
+| M-03-06-2023 | Logistic regression; Type 1 vs. Type 2 | | | |
+| W-03-08-2023 | Evaluation using ROC Curve, AIC, Confusion Matrix | PS 4 due | | |
+| F-03-10-2023 | SVM; evaluation (continued) | Lab 7 due | | |
+| **Week 10** | **Unsupervised approaches; Why CSS is Hard** | | | |
+| M-03-13-2023 | K-means clustering, PCA | | | |
+| W-03-15-2023 | Bad Data: construct validity, generalizability  |  | | |
 | F-03-17-2023 | Wrap-up, final project work | Lab 8 due | | |
 | **Finals week** | | | | |
 | M-03-20-2023 |  | | | |
