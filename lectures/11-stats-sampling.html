@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Statistics and Sampling &#8212; CSS 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +64,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/11-stats-sampling';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction to statistical models" href="12-statistical-modeling.html" />
     <link rel="prev" title="Describing Data" href="10-stats-basics.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo_UCSD.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CSS 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo_UCSD.png" class="logo__image only-light" alt="CSS 2 - Home"/>
+    <script>document.write(`<img src="../_static/logo_UCSD.png" class="logo__image only-dark" alt="CSS 2 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,725 +170,288 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course Logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/syllabus.html">
-   CSS 2 Syllabus: Fall 2022
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/schedule.html">
-   CSS 2 Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/expectations.html">
-   Course Expectations (and FAQ)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/datahub.html">
-   Using DataHub
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/final.html">
-   Final Project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course/syllabus.html">CSS 2 Syllabus: Winter 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/schedule.html">CSS 2 Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/expectations.html">Course Expectations (and FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/datahub.html">Using DataHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/final.html">Final Project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-intro.html">
-   01-Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-ethics.html">
-   02-Ethics (Fairness)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-ethics-privacy.html">
-   03-Ethics (Privacy)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-review1.html">
-   04-Python review (basics)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-review2.html">
-   05-Python review (data)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-dataviz-pyplot.html">
-   06-Data Visualization (Introduction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-dataviz-seaborn.html">
-   07-Data Visualization (Seaborn)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-dataviz-principles.html">
-   08-Data Visualization (Principles)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-wrangling.html">
-   09-Data Wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-stats-basics.html">
-   10-Descriptive Statistics
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   11-Foundations of Inferential Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12-statistical-modeling.html">
-   12-Introduction to Statistical Modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-regression-intro.html">
-   13-Linear Regression in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="14-regression-predictions.html">
-   14-Prediction Error and More
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="15-multiple-regression.html">
-   15-Multiple Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="16-nonlinear-regression.html">
-   16-Non-linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="17-overfitting.html">
-   17-Overfitting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="18-logistic-regression.html">
-   18-Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="19-evaluation.html">
-   19-Evaluation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="20-unsupervised-clustering.html">
-   20-Unsupervised Clustering
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">01-Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-ethics.html">02-Ethics (Fairness)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-ethics-privacy.html">03-Ethics (Privacy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-review1.html">04-Python review (basics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-review2.html">05-Python review (data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-dataviz-pyplot.html">06-Data Visualization (Introduction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-dataviz-seaborn.html">07-Data Visualization (Seaborn)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-dataviz-principles.html">08-Data Visualization (Principles)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-wrangling.html">09-Data Wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-stats-basics.html">10-Descriptive Statistics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11-Foundations of Inferential Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-statistical-modeling.html">12-Introduction to Statistical Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-regression-intro.html">13-Linear Regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-regression-predictions.html">14-Prediction Error and More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-multiple-regression.html">15-Multiple Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-nonlinear-regression.html">16-Non-linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-overfitting.html">17-Overfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-logistic-regression.html">18-Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-evaluation.html">19-Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-unsupervised-clustering.html">20-Unsupervised Clustering</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/11-stats-sampling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/11-stats-sampling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/11-stats-sampling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/11-stats-sampling.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/lectures/11-stats-sampling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-relevant-libraries">
-   Importing relevant libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#brief-caveat">
-     Brief caveat
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#descriptive-vs-inferential-statistics">
-   Descriptive vs. inferential statistics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#samples-vs-populations">
-     Samples vs. populations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-challenge-of-generalization">
-     The challenge of generalization
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solutions">
-       Solutions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sampling-error-a-further-challenge">
-     Sampling error: a further challenge
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#illustrating-sampling-error">
-       Illustrating sampling error
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solution">
-       Solution
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-sampling-distributions">
-   Introducing
-   <em>
-    sampling distributions
-   </em>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sampling-distributions-in-action">
-     Sampling distributions in action
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-the-sampline-distribution">
-       Creating the sampline distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-n-matters">
-     Why
-     <span class="math notranslate nohighlight">
-      \(n\)
-     </span>
-     matters
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-a-new-sampling-distribution-where-n-40">
-       Creating a new sampling distribution where
-       <span class="math notranslate nohighlight">
-        \(n=40\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#visualizing-side-by-side">
-       Visualizing side by side
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-n-matters-reprise">
-     Why
-     <span class="math notranslate nohighlight">
-      \(n\)
-     </span>
-     matters (reprise)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quantifying-sampling-distribution-variance">
-     Quantifying sampling distribution variance
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-standard-error">
-   Introducing
-   <em>
-    standard error
-   </em>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Check-in
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#standard-error-depends-on-n">
-     Standard error depends on
-     <span class="math notranslate nohighlight">
-      \(n\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#caclulating-se-with-pandas">
-     Caclulating SE with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       pandas
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reporting-standard-error">
-     Reporting standard error
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Statistics and Sampling</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-relevant-libraries">
-   Importing relevant libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#brief-caveat">
-     Brief caveat
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#descriptive-vs-inferential-statistics">
-   Descriptive vs. inferential statistics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#samples-vs-populations">
-     Samples vs. populations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-challenge-of-generalization">
-     The challenge of generalization
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solutions">
-       Solutions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sampling-error-a-further-challenge">
-     Sampling error: a further challenge
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#illustrating-sampling-error">
-       Illustrating sampling error
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solution">
-       Solution
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-sampling-distributions">
-   Introducing
-   <em>
-    sampling distributions
-   </em>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sampling-distributions-in-action">
-     Sampling distributions in action
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-the-sampline-distribution">
-       Creating the sampline distribution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-n-matters">
-     Why
-     <span class="math notranslate nohighlight">
-      \(n\)
-     </span>
-     matters
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-a-new-sampling-distribution-where-n-40">
-       Creating a new sampling distribution where
-       <span class="math notranslate nohighlight">
-        \(n=40\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#visualizing-side-by-side">
-       Visualizing side by side
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-n-matters-reprise">
-     Why
-     <span class="math notranslate nohighlight">
-      \(n\)
-     </span>
-     matters (reprise)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quantifying-sampling-distribution-variance">
-     Quantifying sampling distribution variance
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-standard-error">
-   Introducing
-   <em>
-    standard error
-   </em>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Check-in
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#standard-error-depends-on-n">
-     Standard error depends on
-     <span class="math notranslate nohighlight">
-      \(n\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#caclulating-se-with-pandas">
-     Caclulating SE with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       pandas
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reporting-standard-error">
-     Reporting standard error
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Statistics and Sampling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-relevant-libraries">Importing relevant libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brief-caveat">Brief caveat</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-vs-inferential-statistics">Descriptive vs. inferential statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-vs-populations">Samples vs. populations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge-of-generalization">The challenge of generalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-error-a-further-challenge">Sampling error: a further challenge</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrating-sampling-error">Illustrating sampling error</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-sampling-distributions">Introducing <em>sampling distributions</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-distributions-in-action">Sampling distributions in action</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-sampline-distribution">Creating the sampline distribution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-n-matters">Why <span class="math notranslate nohighlight">\(n\)</span> matters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-sampling-distribution-where-n-40">Creating a new sampling distribution where <span class="math notranslate nohighlight">\(n=40\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-side-by-side">Visualizing side by side</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-n-matters-reprise">Why <span class="math notranslate nohighlight">\(n\)</span> matters (reprise)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-sampling-distribution-variance">Quantifying sampling distribution variance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-standard-error">Introducing <em>standard error</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Check-in</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error-depends-on-n">Standard error depends on <span class="math notranslate nohighlight">\(n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caclulating-se-with-pandas">Caclulating SE with <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-standard-error">Reporting standard error</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="statistics-and-sampling">
-<h1>Statistics and Sampling<a class="headerlink" href="#statistics-and-sampling" title="Permalink to this headline">#</a></h1>
+<h1>Statistics and Sampling<a class="headerlink" href="#statistics-and-sampling" title="Permalink to this heading">#</a></h1>
 <section id="importing-relevant-libraries">
-<h2>Importing relevant libraries<a class="headerlink" href="#importing-relevant-libraries" title="Permalink to this headline">#</a></h2>
+<h2>Importing relevant libraries<a class="headerlink" href="#importing-relevant-libraries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -855,7 +473,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="goals-of-this-lecture">
-<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this headline">#</a></h2>
+<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this heading">#</a></h2>
 <p>This is the final lecture before we turn to <strong>statistical modeling</strong>.</p>
 <p>There are a few goals:</p>
 <ul class="simple">
@@ -868,7 +486,7 @@ title="Print to PDF"
 <li><p><strong>Standard error</strong> and the basics of sampling distributions.</p></li>
 </ul>
 <section id="brief-caveat">
-<h3>Brief caveat<a class="headerlink" href="#brief-caveat" title="Permalink to this headline">#</a></h3>
+<h3>Brief caveat<a class="headerlink" href="#brief-caveat" title="Permalink to this heading">#</a></h3>
 <p>This is <em>not</em> an exhaustive introduction to inferential statistics! We will <em>not</em> be covering the details traditional null hypothesis significance tests, including:</p>
 <ul class="simple">
 <li><p>t-test</p></li>
@@ -884,14 +502,14 @@ title="Print to PDF"
 </section>
 </section>
 <section id="descriptive-vs-inferential-statistics">
-<h2>Descriptive vs. inferential statistics<a class="headerlink" href="#descriptive-vs-inferential-statistics" title="Permalink to this headline">#</a></h2>
+<h2>Descriptive vs. inferential statistics<a class="headerlink" href="#descriptive-vs-inferential-statistics" title="Permalink to this heading">#</a></h2>
 <p>There are at least two shelves in the statistics “toolbox”:</p>
 <ul class="simple">
 <li><p><strong>Descriptive statistics</strong>: describing the data you have (e.g., <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">std</span></code>, etc.).</p></li>
 <li><p><strong>Inferential statistics</strong>: trying to generalize from the data you have to a broader <strong>population</strong>.</p></li>
 </ul>
 <section id="samples-vs-populations">
-<h3>Samples vs. populations<a class="headerlink" href="#samples-vs-populations" title="Permalink to this headline">#</a></h3>
+<h3>Samples vs. populations<a class="headerlink" href="#samples-vs-populations" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>In statistics, a <strong>population</strong> is a set of <em>potential</em> observations that you’re interested in.</p>
 </div></blockquote>
@@ -906,7 +524,7 @@ title="Print to PDF"
 </div></blockquote>
 </section>
 <section id="the-challenge-of-generalization">
-<h3>The challenge of generalization<a class="headerlink" href="#the-challenge-of-generalization" title="Permalink to this headline">#</a></h3>
+<h3>The challenge of generalization<a class="headerlink" href="#the-challenge-of-generalization" title="Permalink to this heading">#</a></h3>
 <p>In order to generalize, samples must be <strong>random</strong> and <strong>representative</strong>.</p>
 <ul class="simple">
 <li><p>Otherwise, we might <strong>over-represent</strong> or <strong>under-represent</strong> certain sub-populations.</p></li>
@@ -916,11 +534,11 @@ title="Print to PDF"
 <li><p>E.g., <a class="reference external" href="https://en.wikipedia.org/wiki/Weird">“WEIRD” subjects</a> in Psychology research.</p></li>
 </ul>
 <section id="check-in">
-<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this heading">#</a></h4>
 <p>What’s an example from earlier in the class of how a non-representative sample can lead to <strong>biased</strong> models?</p>
 </section>
 <section id="solutions">
-<h4>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">#</a></h4>
+<h4>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h4>
 <p>An example we discussed was from the <a class="reference external" href="http://proceedings.mlr.press/v81/buolamwini18a.html?mod=article_inline">Gender Shades paper (Buolamwini &amp; Gebru, 2018)</a>, which showed:</p>
 <blockquote>
 <div><p>We find that these datasets are overwhelmingly composed of lighter-skinned subjects…</p>
@@ -932,13 +550,13 @@ title="Print to PDF"
 </section>
 </section>
 <section id="sampling-error-a-further-challenge">
-<h3>Sampling error: a further challenge<a class="headerlink" href="#sampling-error-a-further-challenge" title="Permalink to this headline">#</a></h3>
+<h3>Sampling error: a further challenge<a class="headerlink" href="#sampling-error-a-further-challenge" title="Permalink to this heading">#</a></h3>
 <p>Even if one’s sample <em>is</em> representative, it’s never <em>identical</em> to the underlying population.</p>
 <blockquote>
 <div><p><strong>Sampling error</strong> means that <em>statistics</em> calculated on a sample (e.g., <code class="docutils literal notranslate"><span class="pre">mean</span></code>) will rarely (if ever) be identical to the underlying <em>population parameter</em>.</p>
 </div></blockquote>
 <section id="illustrating-sampling-error">
-<h4>Illustrating sampling error<a class="headerlink" href="#illustrating-sampling-error" title="Permalink to this headline">#</a></h4>
+<h4>Illustrating sampling error<a class="headerlink" href="#illustrating-sampling-error" title="Permalink to this heading">#</a></h4>
 <p>The <strong>sample mean</strong> (<span class="math notranslate nohighlight">\(\bar{X}\)</span>) will rarely, if ever, be identical to the <strong>population mean</strong> (<span class="math notranslate nohighlight">\(\mu\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -971,7 +589,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id1">
-<h4>Check-in<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>What if we took a <em>bunch</em> of samples from our population, all of the same size, and calculated the mean of each sample?</p>
 <ul class="simple">
 <li><p>What might we <em>call</em> this set of sample statistics?</p></li>
@@ -979,19 +597,19 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
 <p>This is called a <strong>sampling distribution</strong>.</p>
 <p>This <strong>sampling distribution</strong> would be normally distributed around the true population mean!</p>
 </section>
 </section>
 </section>
 <section id="introducing-sampling-distributions">
-<h2>Introducing <em>sampling distributions</em><a class="headerlink" href="#introducing-sampling-distributions" title="Permalink to this headline">#</a></h2>
+<h2>Introducing <em>sampling distributions</em><a class="headerlink" href="#introducing-sampling-distributions" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>A <strong>sampling distribution</strong> is the distribution of sample statistics (e.g., <code class="docutils literal notranslate"><span class="pre">mean</span></code>) taken from <em>all possible</em> samples of size <span class="math notranslate nohighlight">\(n\)</span>.</p>
 </div></blockquote>
 <section id="sampling-distributions-in-action">
-<h3>Sampling distributions in action<a class="headerlink" href="#sampling-distributions-in-action" title="Permalink to this headline">#</a></h3>
+<h3>Sampling distributions in action<a class="headerlink" href="#sampling-distributions-in-action" title="Permalink to this heading">#</a></h3>
 <p>First, we simulate a ground gruth population.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1002,11 +620,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11-stats-sampling_19_0.png" src="../_images/11-stats-sampling_19_0.png" />
+<img alt="../_images/78f628f14f7f37f4cdb194fed8e14014052e54c52dadbbe742023ffbb76fbae0.png" src="../_images/78f628f14f7f37f4cdb194fed8e14014052e54c52dadbbe742023ffbb76fbae0.png" />
 </div>
 </div>
 <section id="creating-the-sampline-distribution">
-<h4>Creating the sampline distribution<a class="headerlink" href="#creating-the-sampline-distribution" title="Permalink to this headline">#</a></h4>
+<h4>Creating the sampline distribution<a class="headerlink" href="#creating-the-sampline-distribution" title="Permalink to this heading">#</a></h4>
 <p>Now, we sample from that population 300 times, with each sample size <span class="math notranslate nohighlight">\(n = 5\)</span>.</p>
 <p>What do we notice about the distribution of those sample means? (Note this is not a “true” sampling distribution in that it’s not every possible sample.)</p>
 <div class="cell docutils container">
@@ -1023,16 +641,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fbe00a81c40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x1338c06d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/11-stats-sampling_21_1.png" src="../_images/11-stats-sampling_21_1.png" />
+<img alt="../_images/d87695389d061bca45b216f48cb16a6891d08f20a493f1a2eab99b023e2ba416.png" src="../_images/d87695389d061bca45b216f48cb16a6891d08f20a493f1a2eab99b023e2ba416.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="why-n-matters">
-<h3>Why <span class="math notranslate nohighlight">\(n\)</span> matters<a class="headerlink" href="#why-n-matters" title="Permalink to this headline">#</a></h3>
+<h3>Why <span class="math notranslate nohighlight">\(n\)</span> matters<a class="headerlink" href="#why-n-matters" title="Permalink to this heading">#</a></h3>
 <p>Now let’s compare several distributions:</p>
 <ul class="simple">
 <li><p>The original population</p></li>
@@ -1040,7 +658,7 @@ title="Print to PDF"
 <li><p>Sampling distribution with <span class="math notranslate nohighlight">\(n = 40\)</span></p></li>
 </ul>
 <section id="creating-a-new-sampling-distribution-where-n-40">
-<h4>Creating a new sampling distribution where <span class="math notranslate nohighlight">\(n=40\)</span><a class="headerlink" href="#creating-a-new-sampling-distribution-where-n-40" title="Permalink to this headline">#</a></h4>
+<h4>Creating a new sampling distribution where <span class="math notranslate nohighlight">\(n=40\)</span><a class="headerlink" href="#creating-a-new-sampling-distribution-where-n-40" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_means_n40</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1053,7 +671,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="visualizing-side-by-side">
-<h4>Visualizing side by side<a class="headerlink" href="#visualizing-side-by-side" title="Permalink to this headline">#</a></h4>
+<h4>Visualizing side by side<a class="headerlink" href="#visualizing-side-by-side" title="Permalink to this heading">#</a></h4>
 <p>What do we notice about the sampling distribution as <span class="math notranslate nohighlight">\(n\)</span> gets larger?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1070,13 +688,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11-stats-sampling_26_0.png" src="../_images/11-stats-sampling_26_0.png" />
+<img alt="../_images/fe64b31a49e5c41bd247839b2331236fcca2af2d190aba0e62ffd2ba5cb63834.png" src="../_images/fe64b31a49e5c41bd247839b2331236fcca2af2d190aba0e62ffd2ba5cb63834.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="why-n-matters-reprise">
-<h3>Why <span class="math notranslate nohighlight">\(n\)</span> matters (reprise)<a class="headerlink" href="#why-n-matters-reprise" title="Permalink to this headline">#</a></h3>
+<h3>Why <span class="math notranslate nohighlight">\(n\)</span> matters (reprise)<a class="headerlink" href="#why-n-matters-reprise" title="Permalink to this heading">#</a></h3>
 <p>As <span class="math notranslate nohighlight">\(n\)</span> increases:</p>
 <ul class="simple">
 <li><p>Sampling distribution looks increasingly <strong>normal</strong></p></li>
@@ -1086,7 +704,7 @@ title="Print to PDF"
 <p>This is even true of <strong>skewed distributions</strong>!</p>
 </section>
 <section id="quantifying-sampling-distribution-variance">
-<h3>Quantifying sampling distribution variance<a class="headerlink" href="#quantifying-sampling-distribution-variance" title="Permalink to this headline">#</a></h3>
+<h3>Quantifying sampling distribution variance<a class="headerlink" href="#quantifying-sampling-distribution-variance" title="Permalink to this heading">#</a></h3>
 <p>A larger <span class="math notranslate nohighlight">\(n\)</span> should increase our confidence that our <strong>sample statistic</strong> is a good approximation of our <strong>population parameter</strong>.</p>
 <ul class="simple">
 <li><p>Larger <span class="math notranslate nohighlight">\(n\)</span> means lower <em>variance</em> of our sampling distribution.</p></li>
@@ -1096,7 +714,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="introducing-standard-error">
-<h2>Introducing <em>standard error</em><a class="headerlink" href="#introducing-standard-error" title="Permalink to this headline">#</a></h2>
+<h2>Introducing <em>standard error</em><a class="headerlink" href="#introducing-standard-error" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p><strong>Standard error</strong> gives us a measure of the variance of our <em>sampling distribution</em>.</p>
 </div></blockquote>
@@ -1104,11 +722,11 @@ title="Print to PDF"
 <p><span class="math notranslate nohighlight">\(\Large SE = \frac{s}{\sqrt{n}}\)</span></p>
 <p>Where <span class="math notranslate nohighlight">\(s\)</span> is the standard deviation of the sample.</p>
 <section id="id2">
-<h3>Check-in<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3>Check-in<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>How is <strong>standard error</strong> different from <strong>standard deviation</strong>?</p>
 </section>
 <section id="standard-error-depends-on-n">
-<h3>Standard error depends on <span class="math notranslate nohighlight">\(n\)</span><a class="headerlink" href="#standard-error-depends-on-n" title="Permalink to this headline">#</a></h3>
+<h3>Standard error depends on <span class="math notranslate nohighlight">\(n\)</span><a class="headerlink" href="#standard-error-depends-on-n" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Standard deviation is invariant to the <em>size</em> of our sample.</p></li>
 <li><p>Standard error gets smaller as our sample size (<span class="math notranslate nohighlight">\(n\)</span>) increases.</p>
@@ -1133,12 +751,12 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Standard Error&#39;)
 </pre></div>
 </div>
-<img alt="../_images/11-stats-sampling_32_1.png" src="../_images/11-stats-sampling_32_1.png" />
+<img alt="../_images/edd47970058efb5d6373047c77486f2ab6cbba3218718edc4e57596cac6d06eb.png" src="../_images/edd47970058efb5d6373047c77486f2ab6cbba3218718edc4e57596cac6d06eb.png" />
 </div>
 </div>
 </section>
 <section id="caclulating-se-with-pandas">
-<h3>Caclulating SE with <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#caclulating-se-with-pandas" title="Permalink to this headline">#</a></h3>
+<h3>Caclulating SE with <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#caclulating-se-with-pandas" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> gives us a function (<code class="docutils literal notranslate"><span class="pre">sem</span></code>) to calculate standard error of the mean (SE) directly on a column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1148,14 +766,14 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08363032857029364
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08363032857029366
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="reporting-standard-error">
-<h3>Reporting standard error<a class="headerlink" href="#reporting-standard-error" title="Permalink to this headline">#</a></h3>
+<h3>Reporting standard error<a class="headerlink" href="#reporting-standard-error" title="Permalink to this heading">#</a></h3>
 <p>A common way to use standard error is to <strong>report</strong> it alongside the sample mean:</p>
 <blockquote>
 <div><p>The mean of our sample was <span class="math notranslate nohighlight">\(25\)</span>, <span class="math notranslate nohighlight">\(\pm 3.5\)</span> (SE).</p>
@@ -1164,7 +782,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>This concludes our brief foray into <strong>inferential statistics</strong>.</p>
 <p>The goal was primarily to introduce a few key concepts:</p>
 <ul class="simple">
@@ -1188,7 +806,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
@@ -1196,50 +814,143 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="10-stats-basics.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Describing Data</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10-stats-basics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Describing Data</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="12-statistical-modeling.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="12-statistical-modeling.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Introduction to statistical models</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-relevant-libraries">Importing relevant libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brief-caveat">Brief caveat</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-vs-inferential-statistics">Descriptive vs. inferential statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-vs-populations">Samples vs. populations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-challenge-of-generalization">The challenge of generalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-error-a-further-challenge">Sampling error: a further challenge</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrating-sampling-error">Illustrating sampling error</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-sampling-distributions">Introducing <em>sampling distributions</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-distributions-in-action">Sampling distributions in action</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-sampline-distribution">Creating the sampline distribution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-n-matters">Why <span class="math notranslate nohighlight">\(n\)</span> matters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-sampling-distribution-where-n-40">Creating a new sampling distribution where <span class="math notranslate nohighlight">\(n=40\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-side-by-side">Visualizing side by side</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-n-matters-reprise">Why <span class="math notranslate nohighlight">\(n\)</span> matters (reprise)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-sampling-distribution-variance">Quantifying sampling distribution variance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-standard-error">Introducing <em>standard error</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Check-in</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error-depends-on-n">Standard error depends on <span class="math notranslate nohighlight">\(n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caclulating-se-with-pandas">Caclulating SE with <code class="docutils literal notranslate"><span class="pre">pandas</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-standard-error">Reporting standard error</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Sean Trott<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Sean Trott
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

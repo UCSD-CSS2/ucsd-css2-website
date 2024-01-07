@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Logistic Regression &#8212; CSS 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +64,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/18-logistic-regression';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Model evaluation" href="19-evaluation.html" />
     <link rel="prev" title="Overfitting and the bias-variance trade-off" href="17-overfitting.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo_UCSD.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CSS 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo_UCSD.png" class="logo__image only-light" alt="CSS 2 - Home"/>
+    <script>document.write(`<img src="../_static/logo_UCSD.png" class="logo__image only-dark" alt="CSS 2 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,1043 +170,319 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course Logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/syllabus.html">
-   CSS 2 Syllabus: Fall 2022
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/schedule.html">
-   CSS 2 Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/expectations.html">
-   Course Expectations (and FAQ)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/datahub.html">
-   Using DataHub
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/final.html">
-   Final Project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course/syllabus.html">CSS 2 Syllabus: Winter 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/schedule.html">CSS 2 Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/expectations.html">Course Expectations (and FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/datahub.html">Using DataHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/final.html">Final Project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-intro.html">
-   01-Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-ethics.html">
-   02-Ethics (Fairness)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-ethics-privacy.html">
-   03-Ethics (Privacy)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-review1.html">
-   04-Python review (basics)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-review2.html">
-   05-Python review (data)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-dataviz-pyplot.html">
-   06-Data Visualization (Introduction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-dataviz-seaborn.html">
-   07-Data Visualization (Seaborn)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-dataviz-principles.html">
-   08-Data Visualization (Principles)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-wrangling.html">
-   09-Data Wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-stats-basics.html">
-   10-Descriptive Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-stats-sampling.html">
-   11-Foundations of Inferential Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12-statistical-modeling.html">
-   12-Introduction to Statistical Modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-regression-intro.html">
-   13-Linear Regression in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="14-regression-predictions.html">
-   14-Prediction Error and More
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="15-multiple-regression.html">
-   15-Multiple Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="16-nonlinear-regression.html">
-   16-Non-linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="17-overfitting.html">
-   17-Overfitting
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   18-Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="19-evaluation.html">
-   19-Evaluation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="20-unsupervised-clustering.html">
-   20-Unsupervised Clustering
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">01-Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-ethics.html">02-Ethics (Fairness)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-ethics-privacy.html">03-Ethics (Privacy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-review1.html">04-Python review (basics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-review2.html">05-Python review (data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-dataviz-pyplot.html">06-Data Visualization (Introduction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-dataviz-seaborn.html">07-Data Visualization (Seaborn)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-dataviz-principles.html">08-Data Visualization (Principles)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-wrangling.html">09-Data Wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-stats-basics.html">10-Descriptive Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-stats-sampling.html">11-Foundations of Inferential Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-statistical-modeling.html">12-Introduction to Statistical Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-regression-intro.html">13-Linear Regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-regression-predictions.html">14-Prediction Error and More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-multiple-regression.html">15-Multiple Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-nonlinear-regression.html">16-Non-linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-overfitting.html">17-Overfitting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18-Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-evaluation.html">19-Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-unsupervised-clustering.html">20-Unsupervised Clustering</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/18-logistic-regression.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/18-logistic-regression.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/18-logistic-regression.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/18-logistic-regression.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/lectures/18-logistic-regression.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#libraries">
-   Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-classification">
-   What is classification?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-classify-is-human">
-     “To classify is human”
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#categories-and-the-problem-of-measurement">
-     Categories and the problem of
-     <em>
-      measurement
-     </em>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-many-categories">
-     How many categories?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#foundations-of-logistic-regression">
-   Foundations of logistic regression
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-dataset-spam">
-     Example dataset:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       spam
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-not-linear-regression">
-     Why not linear regression?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#going-beyond-0-1">
-       Going beyond
-       <span class="math notranslate nohighlight">
-        \([0, 1]\)
-       </span>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#framing-the-problem-probabilistically">
-     Framing the problem probabilistically
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solution">
-       Solution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generalizing-the-linear-model-glms">
-     Generalizing the linear model (GLMs)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#quick-tour-of-glms">
-       Quick tour of GLMs
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Logistic regression
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#introducing-the-odds">
-       Introducing the
-       <em>
-        odds
-       </em>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#introducing-the-log-odds">
-       Introducing the
-       <em>
-        log-odds
-       </em>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-the-sign-of-log-odds">
-       Interpreting the
-       <em>
-        sign
-       </em>
-       of log-odds
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-non-linear-relationship">
-       A
-       <em>
-        non-linear relationship
-       </em>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introducing-the-logistic-function">
-     Introducing the
-     <em>
-      logistic function
-     </em>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mapping-from-log-odds-to-p">
-       Mapping from log-odds to
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-more-general-mapping">
-       A more general mapping
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#where-does-regression-come-into-play">
-     Where does
-     <em>
-      regression
-     </em>
-     come into play?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-odds-x-is-linear">
-       Log-odds ~
-       <span class="math notranslate nohighlight">
-        \(X\)
-       </span>
-       is linear
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id7">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#p-x-is-not-linear">
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-       ~
-       <span class="math notranslate nohighlight">
-        \(X\)
-       </span>
-       is
-       <em>
-        not
-       </em>
-       linear
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistic-regression-in-python">
-   Logistic regression in Python
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fitting-the-model">
-     Fitting the model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpreting-the-model">
-     Interpreting the model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id8">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#deriving-p-using-logistic-function">
-       Deriving
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-       using logistic function
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id9">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#deriving-p-pt-2">
-       Deriving
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-       (pt. 2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-odds-probability">
-       Log-odds != probability
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#logistic-regression-with-categorical-predictors">
-     Logistic regression with categorical predictors
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id10">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-beta-for-categorical-predictors">
-       Interpreting
-       <span class="math notranslate nohighlight">
-        \(\beta\)
-       </span>
-       for categorical predictors
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id11">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id12">
-       Solution
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id13">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id14">
-       Solution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generating-predictions">
-     Generating predictions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Logistic Regression</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#libraries">
-   Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-classification">
-   What is classification?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-classify-is-human">
-     “To classify is human”
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#categories-and-the-problem-of-measurement">
-     Categories and the problem of
-     <em>
-      measurement
-     </em>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-many-categories">
-     How many categories?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#foundations-of-logistic-regression">
-   Foundations of logistic regression
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-dataset-spam">
-     Example dataset:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       spam
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-not-linear-regression">
-     Why not linear regression?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#going-beyond-0-1">
-       Going beyond
-       <span class="math notranslate nohighlight">
-        \([0, 1]\)
-       </span>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#framing-the-problem-probabilistically">
-     Framing the problem probabilistically
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solution">
-       Solution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generalizing-the-linear-model-glms">
-     Generalizing the linear model (GLMs)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#quick-tour-of-glms">
-       Quick tour of GLMs
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Logistic regression
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#introducing-the-odds">
-       Introducing the
-       <em>
-        odds
-       </em>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#introducing-the-log-odds">
-       Introducing the
-       <em>
-        log-odds
-       </em>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-the-sign-of-log-odds">
-       Interpreting the
-       <em>
-        sign
-       </em>
-       of log-odds
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-non-linear-relationship">
-       A
-       <em>
-        non-linear relationship
-       </em>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introducing-the-logistic-function">
-     Introducing the
-     <em>
-      logistic function
-     </em>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mapping-from-log-odds-to-p">
-       Mapping from log-odds to
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-more-general-mapping">
-       A more general mapping
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#where-does-regression-come-into-play">
-     Where does
-     <em>
-      regression
-     </em>
-     come into play?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-odds-x-is-linear">
-       Log-odds ~
-       <span class="math notranslate nohighlight">
-        \(X\)
-       </span>
-       is linear
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id7">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#p-x-is-not-linear">
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-       ~
-       <span class="math notranslate nohighlight">
-        \(X\)
-       </span>
-       is
-       <em>
-        not
-       </em>
-       linear
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistic-regression-in-python">
-   Logistic regression in Python
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fitting-the-model">
-     Fitting the model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpreting-the-model">
-     Interpreting the model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id8">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#deriving-p-using-logistic-function">
-       Deriving
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-       using logistic function
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id9">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#deriving-p-pt-2">
-       Deriving
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-       (pt. 2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-odds-probability">
-       Log-odds != probability
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#logistic-regression-with-categorical-predictors">
-     Logistic regression with categorical predictors
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id10">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-beta-for-categorical-predictors">
-       Interpreting
-       <span class="math notranslate nohighlight">
-        \(\beta\)
-       </span>
-       for categorical predictors
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id11">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id12">
-       Solution
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id13">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id14">
-       Solution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generating-predictions">
-     Generating predictions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Logistic Regression</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-classification">What is classification?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-classify-is-human">“To classify is human”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categories-and-the-problem-of-measurement">Categories and the problem of <em>measurement</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-many-categories">How many categories?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foundations-of-logistic-regression">Foundations of logistic regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dataset-spam">Example dataset: <code class="docutils literal notranslate"><span class="pre">spam</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-linear-regression">Why not linear regression?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#going-beyond-0-1">Going beyond <span class="math notranslate nohighlight">\([0, 1]\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#framing-the-problem-probabilistically">Framing the problem probabilistically</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizing-the-linear-model-glms">Generalizing the linear model (GLMs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-tour-of-glms">Quick tour of GLMs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Logistic regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-odds">Introducing the <em>odds</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-log-odds">Introducing the <em>log-odds</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-sign-of-log-odds">Interpreting the <em>sign</em> of log-odds</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-non-linear-relationship">A <em>non-linear relationship</em></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-logistic-function">Introducing the <em>logistic function</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-from-log-odds-to-p">Mapping from log-odds to <span class="math notranslate nohighlight">\(p\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-more-general-mapping">A more general mapping</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-regression-come-into-play">Where does <em>regression</em> come into play?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#log-odds-x-is-linear">Log-odds ~ <span class="math notranslate nohighlight">\(X\)</span> is linear</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#p-x-is-not-linear"><span class="math notranslate nohighlight">\(p\)</span> ~<span class="math notranslate nohighlight">\(X\)</span> is <em>not</em> linear</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-in-python">Logistic regression in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-model">Fitting the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-model">Interpreting the model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-p-using-logistic-function">Deriving <span class="math notranslate nohighlight">\(p\)</span> using logistic function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-p-pt-2">Deriving <span class="math notranslate nohighlight">\(p\)</span> (pt. 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#log-odds-probability">Log-odds != probability</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-with-categorical-predictors">Logistic regression with categorical predictors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-beta-for-categorical-predictors">Interpreting <span class="math notranslate nohighlight">\(\beta\)</span> for categorical predictors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-predictions">Generating predictions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression">
-<h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h1>
+<h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h1>
 <section id="libraries">
-<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">#</a></h2>
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Imports</span>
@@ -1176,7 +507,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="goals-of-this-lecture">
-<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this headline">#</a></h2>
+<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Introduction to <strong>classification</strong>.</p></li>
 <li><p>Foundations of <strong>logistic regression</strong>.</p>
@@ -1189,7 +520,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="what-is-classification">
-<h2>What is classification?<a class="headerlink" href="#what-is-classification" title="Permalink to this headline">#</a></h2>
+<h2>What is classification?<a class="headerlink" href="#what-is-classification" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>In statistical modeling, <strong>classification</strong> refers the problem of predicting a <em>categorical</em> response variable <span class="math notranslate nohighlight">\(Y\)</span> using some set of features <span class="math notranslate nohighlight">\(X\)</span>.</p>
 </div></blockquote>
@@ -1203,7 +534,7 @@ title="Print to PDF"
 </ul>
 <p>Before we discuss <em>how</em> to do this, it’s important to reflect on what exactly a “category” is.</p>
 <section id="to-classify-is-human">
-<h3>“To classify is human”<a class="headerlink" href="#to-classify-is-human" title="Permalink to this headline">#</a></h3>
+<h3>“To classify is human”<a class="headerlink" href="#to-classify-is-human" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>“<strong>To classify is human</strong>…We sort dirty dishes from clean, white laundry from colorfast, important email
 to be answered from e-junk…. Any part of the home, school, or workplace reveals some such system of classification: medications classed as not for children occupy a higher shelf than safer ones; books for reference are shelved close to where we do the Sunday crossword puzzle; door keys are color-coded and stored according to frequency of use.”<br />
@@ -1215,12 +546,12 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <li><p>E.g., whether the census includes <em>multiple options</em> for <code class="docutils literal notranslate"><span class="pre">ethnicity</span></code>.</p></li>
 </ul>
 <section id="check-in">
-<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this heading">#</a></h4>
 <p>What aspects of your life involve <strong>category structure</strong>? Which ones do you think have the “right” category structure, and why do you think that?</p>
 </section>
 </section>
 <section id="categories-and-the-problem-of-measurement">
-<h3>Categories and the problem of <em>measurement</em><a class="headerlink" href="#categories-and-the-problem-of-measurement" title="Permalink to this headline">#</a></h3>
+<h3>Categories and the problem of <em>measurement</em><a class="headerlink" href="#categories-and-the-problem-of-measurement" title="Permalink to this heading">#</a></h3>
 <p>The issue of <em>which</em> categories are “correct” is an instance of more general questions around <strong>measurement</strong> and <a class="reference external" href="https://en.wikipedia.org/wiki/Construct_validity"><strong>construct validity</strong></a>.</p>
 <p>As we discuss the practical task of <em>classifying</em> data, there are important questions to keep in mind:</p>
 <ul class="simple">
@@ -1232,7 +563,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <p>And remember that <a class="reference external" href="https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation">the map is not the territory</a>.</p>
 </section>
 <section id="how-many-categories">
-<h3>How many categories?<a class="headerlink" href="#how-many-categories" title="Permalink to this headline">#</a></h3>
+<h3>How many categories?<a class="headerlink" href="#how-many-categories" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>One question is <em>how many categories</em> there are.</p></li>
 <li><p><strong>Binary classification</strong> involves sorting inputs <span class="math notranslate nohighlight">\(X\)</span> into one of two labels.</p>
@@ -1249,11 +580,11 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </section>
 </section>
 <section id="foundations-of-logistic-regression">
-<h2>Foundations of logistic regression<a class="headerlink" href="#foundations-of-logistic-regression" title="Permalink to this headline">#</a></h2>
+<h2>Foundations of logistic regression<a class="headerlink" href="#foundations-of-logistic-regression" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_regression">Logistic regression</a> is a widely used approach for modeling <strong>binary, categorical data</strong>.</p>
 <p>To understand logistic regression, we’ll have to dive into the theoretical foundations of the <strong>logistic function</strong>.</p>
 <section id="example-dataset-spam">
-<h3>Example dataset: <code class="docutils literal notranslate"><span class="pre">spam</span></code><a class="headerlink" href="#example-dataset-spam" title="Permalink to this headline">#</a></h3>
+<h3>Example dataset: <code class="docutils literal notranslate"><span class="pre">spam</span></code><a class="headerlink" href="#example-dataset-spam" title="Permalink to this heading">#</a></h3>
 <p>As we learn logistic regression, we’ll start with a dataset about different emails, with information about which ones were considered <code class="docutils literal notranslate"><span class="pre">spam</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1384,7 +715,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </div>
 </section>
 <section id="why-not-linear-regression">
-<h3>Why not linear regression?<a class="headerlink" href="#why-not-linear-regression" title="Permalink to this headline">#</a></h3>
+<h3>Why not linear regression?<a class="headerlink" href="#why-not-linear-regression" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">spam</span></code> variable is coded as <code class="docutils literal notranslate"><span class="pre">0</span></code> (no) or <code class="docutils literal notranslate"><span class="pre">1</span></code> (yes).</p>
 <ul class="simple">
 <li><p>In principle, we <em>could</em> treat this a continuous variable, and model <code class="docutils literal notranslate"><span class="pre">spam</span></code> using linear regression.</p></li>
@@ -1392,7 +723,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </ul>
 <p><strong>Does anyone see any issues with this?</strong></p>
 <section id="going-beyond-0-1">
-<h4>Going beyond <span class="math notranslate nohighlight">\([0, 1]\)</span><a class="headerlink" href="#going-beyond-0-1" title="Permalink to this headline">#</a></h4>
+<h4>Going beyond <span class="math notranslate nohighlight">\([0, 1]\)</span><a class="headerlink" href="#going-beyond-0-1" title="Permalink to this heading">#</a></h4>
 <p>A <em>linear</em> model will generate predictions beyond <span class="math notranslate nohighlight">\([0, 1]\)</span>, even though <strong>probability</strong> should be bounded at <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1401,16 +732,20 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa54a329c70&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/seantrott/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
 </pre></div>
 </div>
-<img alt="../_images/18-logistic-regression_15_1.png" src="../_images/18-logistic-regression_15_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x12e979510&gt;
+</pre></div>
+</div>
+<img alt="../_images/7d611817fc3a1476cd2764a9fb3856937a259b1bcfbe837e2b90d758b3f939cb.png" src="../_images/7d611817fc3a1476cd2764a9fb3856937a259b1bcfbe837e2b90d758b3f939cb.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="framing-the-problem-probabilistically">
-<h3>Framing the problem probabilistically<a class="headerlink" href="#framing-the-problem-probabilistically" title="Permalink to this headline">#</a></h3>
+<h3>Framing the problem probabilistically<a class="headerlink" href="#framing-the-problem-probabilistically" title="Permalink to this heading">#</a></h3>
 <p>We want to <strong>sort</strong> input into different labels, so it’s helpful to think of this <strong>probabilistically</strong>.</p>
 <ul class="simple">
 <li><p>Treat each outcome as <strong>Bernoulli trials</strong>, i.e., “success” (<code class="docutils literal notranslate"><span class="pre">spam</span></code>) and “failure” (<code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">spam</span></code>).</p></li>
@@ -1419,16 +754,16 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <li><p>Our goal is to <strong>model</strong> <span class="math notranslate nohighlight">\(p_i\)</span> <em>conditioned</em> on other variables that might relate to <span class="math notranslate nohighlight">\(p_i\)</span>.</p></li>
 </ul>
 <section id="id1">
-<h4>Check-in<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>On its own, <span class="math notranslate nohighlight">\(p_i\)</span> is just the probability of <code class="docutils literal notranslate"><span class="pre">success</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">spam</span></code>). What does this remind you of from <em>linear regression</em>?</p>
 </section>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
 <p>On its own, the probability of <code class="docutils literal notranslate"><span class="pre">success</span></code> is most analogous to an <code class="docutils literal notranslate"><span class="pre">Intercept</span></code>-only model in linear regression––i.e., the <em>mean</em> of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 </section>
 </section>
 <section id="generalizing-the-linear-model-glms">
-<h3>Generalizing the linear model (GLMs)<a class="headerlink" href="#generalizing-the-linear-model-glms" title="Permalink to this headline">#</a></h3>
+<h3>Generalizing the linear model (GLMs)<a class="headerlink" href="#generalizing-the-linear-model-glms" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p><a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_linear_model"><strong>Generalized linear models</strong> (GLMs)</a> are generalizations of linear regression.</p>
 </div></blockquote>
@@ -1440,9 +775,9 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </ul>
 <p>We can design a function that <em>links</em> the linear model to a probability score, i.e., <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p>
 <section id="quick-tour-of-glms">
-<h4>Quick tour of GLMs<a class="headerlink" href="#quick-tour-of-glms" title="Permalink to this headline">#</a></h4>
+<h4>Quick tour of GLMs<a class="headerlink" href="#quick-tour-of-glms" title="Permalink to this heading">#</a></h4>
 <p>There are many different kinds of <strong>generalized linear models</strong>. Some of the most common are:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Model name</p></th>
 <th class="head"><p>Distribution</p></th>
@@ -1476,7 +811,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </section>
 </section>
 <section id="id2">
-<h3>Logistic regression<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3>Logistic regression<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Logistic regression uses a <strong>logit link function</strong>.</p></li>
 </ul>
@@ -1487,7 +822,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <li><p>Also called the <strong>log odds</strong>.</p></li>
 </ul>
 <section id="introducing-the-odds">
-<h4>Introducing the <em>odds</em><a class="headerlink" href="#introducing-the-odds" title="Permalink to this headline">#</a></h4>
+<h4>Introducing the <em>odds</em><a class="headerlink" href="#introducing-the-odds" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>The <strong>odds</strong> of an event are the ratio of the probability of the event occurring, <span class="math notranslate nohighlight">\(p(y)\)</span>, to the probability of the event not occuring, <span class="math notranslate nohighlight">\(1 - p(y)\)</span>.</p>
 </div></blockquote>
@@ -1508,12 +843,12 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Odds(y) vs. P(y)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/18-logistic-regression_23_1.png" src="../_images/18-logistic-regression_23_1.png" />
+<img alt="../_images/ebe8e91b53c6d9a266b20604ddc461b3e0a7abd0277b51118fda1d0c7a00cf84.png" src="../_images/ebe8e91b53c6d9a266b20604ddc461b3e0a7abd0277b51118fda1d0c7a00cf84.png" />
 </div>
 </div>
 </section>
 <section id="introducing-the-log-odds">
-<h4>Introducing the <em>log-odds</em><a class="headerlink" href="#introducing-the-log-odds" title="Permalink to this headline">#</a></h4>
+<h4>Introducing the <em>log-odds</em><a class="headerlink" href="#introducing-the-log-odds" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>The <strong>log-odds</strong> of an event is the <strong>log</strong> of the odds of that event. This is also called the <strong>logit</strong> function.</p>
 </div></blockquote>
@@ -1533,16 +868,16 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Log-odds(y) vs. P(y)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/18-logistic-regression_25_1.png" src="../_images/18-logistic-regression_25_1.png" />
+<img alt="../_images/c0e4c76388da75838a09fe7a0c14f331acc8cf7ce1e267e2fe4371492781db2c.png" src="../_images/c0e4c76388da75838a09fe7a0c14f331acc8cf7ce1e267e2fe4371492781db2c.png" />
 </div>
 </div>
 </section>
 <section id="id3">
-<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <p>Would the log-odds of <span class="math notranslate nohighlight">\(p(y) = .6\)</span> be <em>positive</em> or <em>negative</em>?</p>
 </section>
 <section id="interpreting-the-sign-of-log-odds">
-<h4>Interpreting the <em>sign</em> of log-odds<a class="headerlink" href="#interpreting-the-sign-of-log-odds" title="Permalink to this headline">#</a></h4>
+<h4>Interpreting the <em>sign</em> of log-odds<a class="headerlink" href="#interpreting-the-sign-of-log-odds" title="Permalink to this heading">#</a></h4>
 <p>The <strong>sign</strong> of log-odds can be interpreted as reflecting whether <span class="math notranslate nohighlight">\(p(y) &gt; .5\)</span> (positive) or <span class="math notranslate nohighlight">\(p(y) &lt; .5\)</span> (negative).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1555,19 +890,19 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa54d7899a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x12e999ed0&gt;
 </pre></div>
 </div>
-<img alt="../_images/18-logistic-regression_28_1.png" src="../_images/18-logistic-regression_28_1.png" />
+<img alt="../_images/f8ddd482f9edea37ca12b4e6e6ae40fec9e8f1cbdf3327f8ccf2862c4459777a.png" src="../_images/f8ddd482f9edea37ca12b4e6e6ae40fec9e8f1cbdf3327f8ccf2862c4459777a.png" />
 </div>
 </div>
 </section>
 <section id="id4">
-<h4>Check-in<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <p>Is <code class="docutils literal notranslate"><span class="pre">log-odds(y)</span></code> <em>linearly related</em> to <code class="docutils literal notranslate"><span class="pre">p(y)</span></code>? Why does this matter?</p>
 </section>
 <section id="a-non-linear-relationship">
-<h4>A <em>non-linear relationship</em><a class="headerlink" href="#a-non-linear-relationship" title="Permalink to this headline">#</a></h4>
+<h4>A <em>non-linear relationship</em><a class="headerlink" href="#a-non-linear-relationship" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The <strong>log-odds</strong> of <span class="math notranslate nohighlight">\(y\)</span> is non-linearly related to the <strong>probability</strong> of <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
 <li><p>This means that we <em>can’t</em> interpret linear changes in <em>log-odds</em> as linear changes in <em>probability</em>.</p>
@@ -1579,7 +914,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </section>
 </section>
 <section id="introducing-the-logistic-function">
-<h3>Introducing the <em>logistic function</em><a class="headerlink" href="#introducing-the-logistic-function" title="Permalink to this headline">#</a></h3>
+<h3>Introducing the <em>logistic function</em><a class="headerlink" href="#introducing-the-logistic-function" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_function"><strong>logistic function</strong></a> is the <em>inverse</em> of the logit function. It converts the <em>log-odds</em> back to <em>probability</em>.</p>
 </div></blockquote>
@@ -1587,7 +922,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <p><span class="math notranslate nohighlight">\(\Large \frac{e^x}{1 + e^x}\)</span></p>
 <p>Where <span class="math notranslate nohighlight">\(x\)</span> is the <strong>log-odds</strong> of an event.</p>
 <section id="id5">
-<h4>Check-in<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
 <p>Would applying the logistic function to a log-odds of <code class="docutils literal notranslate"><span class="pre">1</span></code> yield a <span class="math notranslate nohighlight">\(p &gt;.5\)</span> or <span class="math notranslate nohighlight">\(p &lt; .5\)</span>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1598,7 +933,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </div>
 </section>
 <section id="mapping-from-log-odds-to-p">
-<h4>Mapping from log-odds to <span class="math notranslate nohighlight">\(p\)</span><a class="headerlink" href="#mapping-from-log-odds-to-p" title="Permalink to this headline">#</a></h4>
+<h4>Mapping from log-odds to <span class="math notranslate nohighlight">\(p\)</span><a class="headerlink" href="#mapping-from-log-odds-to-p" title="Permalink to this heading">#</a></h4>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">np.exp(x)</span></code> to compute <span class="math notranslate nohighlight">\(e^x\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1616,7 +951,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </div>
 </section>
 <section id="a-more-general-mapping">
-<h4>A more general mapping<a class="headerlink" href="#a-more-general-mapping" title="Permalink to this headline">#</a></h4>
+<h4>A more general mapping<a class="headerlink" href="#a-more-general-mapping" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.1</span><span class="p">)</span>
@@ -1632,13 +967,13 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Log-odds(Y) vs. P(Y)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/18-logistic-regression_37_1.png" src="../_images/18-logistic-regression_37_1.png" />
+<img alt="../_images/75e49d3adcd98aad3418bc87dd77eb18182289ebde9d0fe1937da19cb4c15da4.png" src="../_images/75e49d3adcd98aad3418bc87dd77eb18182289ebde9d0fe1937da19cb4c15da4.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="where-does-regression-come-into-play">
-<h3>Where does <em>regression</em> come into play?<a class="headerlink" href="#where-does-regression-come-into-play" title="Permalink to this headline">#</a></h3>
+<h3>Where does <em>regression</em> come into play?<a class="headerlink" href="#where-does-regression-come-into-play" title="Permalink to this heading">#</a></h3>
 <p>With logistic regression, we learn <strong>parameters</strong> <span class="math notranslate nohighlight">\(\beta_0, ..., \beta_n\)</span> for the following equation:</p>
 <p><span class="math notranslate nohighlight">\(\Large log(\frac{p}{1 - p}) = \beta_0 + \beta_1X_1 + \epsilon\)</span></p>
 <ul class="simple">
@@ -1646,13 +981,13 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <li><p>Thus, we are learning a <strong>linear relationship</strong> between <span class="math notranslate nohighlight">\(X\)</span> and the <strong>log-odds</strong> of our outcome.</p></li>
 </ul>
 <section id="id6">
-<h4>Check-in<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <p>Based on this formulation:</p>
 <p><span class="math notranslate nohighlight">\(log(\frac{p}{1 - p}) = \beta_0 + \beta_1X_1 + \epsilon\)</span></p>
 <p>How would we interpret <span class="math notranslate nohighlight">\(\beta_1 = 1\)</span> with respect to <strong>log odds</strong>?</p>
 </section>
 <section id="log-odds-x-is-linear">
-<h4>Log-odds ~ <span class="math notranslate nohighlight">\(X\)</span> is linear<a class="headerlink" href="#log-odds-x-is-linear" title="Permalink to this headline">#</a></h4>
+<h4>Log-odds ~ <span class="math notranslate nohighlight">\(X\)</span> is linear<a class="headerlink" href="#log-odds-x-is-linear" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>There is a straightforward linear interpretation between our parameters <span class="math notranslate nohighlight">\(\beta_0, ..., \beta_n\)</span> and the <strong>log-odds</strong> of our outcome.</p></li>
 <li><p>That is, if <span class="math notranslate nohighlight">\(\beta_1=1\)</span>:</p>
@@ -1668,13 +1003,13 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </ul>
 </section>
 <section id="id7">
-<h4>Check-in<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <p>Based on this formulation:</p>
 <p><span class="math notranslate nohighlight">\(log(\frac{p}{1 - p}) = \beta_0 + \beta_1X_1 + \epsilon\)</span></p>
 <p>How would we interpret <span class="math notranslate nohighlight">\(\beta_1 = 1\)</span> with respect to <strong>probability</strong>?</p>
 </section>
 <section id="p-x-is-not-linear">
-<h4><span class="math notranslate nohighlight">\(p\)</span> ~<span class="math notranslate nohighlight">\(X\)</span> is <em>not</em> linear<a class="headerlink" href="#p-x-is-not-linear" title="Permalink to this headline">#</a></h4>
+<h4><span class="math notranslate nohighlight">\(p\)</span> ~<span class="math notranslate nohighlight">\(X\)</span> is <em>not</em> linear<a class="headerlink" href="#p-x-is-not-linear" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>The mapping between <strong>log-odds</strong> and <span class="math notranslate nohighlight">\(p(y)\)</span> is <strong>not linear</strong>.</p>
 </div></blockquote>
@@ -1696,21 +1031,21 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Log-odds(Y) vs. P(Y)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/18-logistic-regression_43_1.png" src="../_images/18-logistic-regression_43_1.png" />
+<img alt="../_images/75e49d3adcd98aad3418bc87dd77eb18182289ebde9d0fe1937da19cb4c15da4.png" src="../_images/75e49d3adcd98aad3418bc87dd77eb18182289ebde9d0fe1937da19cb4c15da4.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="logistic-regression-in-python">
-<h2>Logistic regression in Python<a class="headerlink" href="#logistic-regression-in-python" title="Permalink to this headline">#</a></h2>
+<h2>Logistic regression in Python<a class="headerlink" href="#logistic-regression-in-python" title="Permalink to this heading">#</a></h2>
 <p>To perform logistic regression in Python, we can use the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package, which has the <code class="docutils literal notranslate"><span class="pre">logit</span></code> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_name</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;y ~ x&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Fitting the models is relatively straightforward––the hard(er) part is interpreting them.</p>
 <section id="fitting-the-model">
-<h3>Fitting the model<a class="headerlink" href="#fitting-the-model" title="Permalink to this headline">#</a></h3>
+<h3>Fitting the model<a class="headerlink" href="#fitting-the-model" title="Permalink to this heading">#</a></h3>
 <p>To start, let’s fit a model predicting <code class="docutils literal notranslate"><span class="pre">spam</span></code> from <code class="docutils literal notranslate"><span class="pre">num_char</span></code> (i.e., how long the message is).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1737,10 +1072,10 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
   <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     1</td>  
 </tr>
 <tr>
-  <th>Date:</th>            <td>Mon, 13 Mar 2023</td> <th>  Pseudo R-squ.:     </th>  <td>0.03725</td> 
+  <th>Date:</th>            <td>Sun, 07 Jan 2024</td> <th>  Pseudo R-squ.:     </th>  <td>0.03725</td> 
 </tr>
 <tr>
-  <th>Time:</th>                <td>12:32:14</td>     <th>  Log-Likelihood:    </th> <td> -1173.2</td> 
+  <th>Time:</th>                <td>14:27:29</td>     <th>  Log-Likelihood:    </th> <td> -1173.2</td> 
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -1218.6</td> 
@@ -1763,7 +1098,7 @@ to be answered from e-junk…. Any part of the home, school, or workplace reveal
 </div>
 </section>
 <section id="interpreting-the-model">
-<h3>Interpreting the model<a class="headerlink" href="#interpreting-the-model" title="Permalink to this headline">#</a></h3>
+<h3>Interpreting the model<a class="headerlink" href="#interpreting-the-model" title="Permalink to this heading">#</a></h3>
 <p>In this simple model, we can interpret the coefficients as follows:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Intercept</span></code>: the <em>log-odds</em> of an email being <code class="docutils literal notranslate"><span class="pre">spam</span></code> when <code class="docutils literal notranslate"><span class="pre">num_char</span> <span class="pre">==</span> <span class="pre">0</span></code>.</p></li>
@@ -1785,7 +1120,7 @@ dtype: float64
 </div>
 </div>
 <section id="id8">
-<h4>Check-in<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <p>Based on these coefficients, what is the predicted <strong>probability</strong> of an utterance being spam when <code class="docutils literal notranslate"><span class="pre">num_char</span> <span class="pre">==</span> <span class="pre">0</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1796,7 +1131,7 @@ dtype: float64
 </div>
 </section>
 <section id="deriving-p-using-logistic-function">
-<h4>Deriving <span class="math notranslate nohighlight">\(p\)</span> using logistic function<a class="headerlink" href="#deriving-p-using-logistic-function" title="Permalink to this headline">#</a></h4>
+<h4>Deriving <span class="math notranslate nohighlight">\(p\)</span> using logistic function<a class="headerlink" href="#deriving-p-using-logistic-function" title="Permalink to this heading">#</a></h4>
 <p>To calculate <span class="math notranslate nohighlight">\(p(y)\)</span>, we need to convert log-odds back to probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1814,7 +1149,7 @@ dtype: float64
 </div>
 </section>
 <section id="id9">
-<h4>Check-in<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <p>Based on these coefficients, what is the predicted <strong>probability</strong> of an utterance being spam when <code class="docutils literal notranslate"><span class="pre">num_char</span> <span class="pre">==</span> <span class="pre">100</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1825,7 +1160,7 @@ dtype: float64
 </div>
 </section>
 <section id="deriving-p-pt-2">
-<h4>Deriving <span class="math notranslate nohighlight">\(p\)</span> (pt. 2)<a class="headerlink" href="#deriving-p-pt-2" title="Permalink to this headline">#</a></h4>
+<h4>Deriving <span class="math notranslate nohighlight">\(p\)</span> (pt. 2)<a class="headerlink" href="#deriving-p-pt-2" title="Permalink to this heading">#</a></h4>
 <p>Here, we need to:</p>
 <ul class="simple">
 <li><p>Calculate log-odds by inputting <span class="math notranslate nohighlight">\(X\)</span> into the equation.</p></li>
@@ -1847,7 +1182,7 @@ dtype: float64
 </div>
 </section>
 <section id="log-odds-probability">
-<h4>Log-odds != probability<a class="headerlink" href="#log-odds-probability" title="Permalink to this headline">#</a></h4>
+<h4>Log-odds != probability<a class="headerlink" href="#log-odds-probability" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_spam</span><span class="p">[</span><span class="s1">&#39;num_char&#39;</span><span class="p">]</span>
@@ -1867,13 +1202,13 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;P(spam)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/18-logistic-regression_58_1.png" src="../_images/18-logistic-regression_58_1.png" />
+<img alt="../_images/98c3d33368c12aceeb98a2224a212ee8a10037a4d33a75b07d58e394dd8b4561.png" src="../_images/98c3d33368c12aceeb98a2224a212ee8a10037a4d33a75b07d58e394dd8b4561.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="logistic-regression-with-categorical-predictors">
-<h3>Logistic regression with categorical predictors<a class="headerlink" href="#logistic-regression-with-categorical-predictors" title="Permalink to this headline">#</a></h3>
+<h3>Logistic regression with categorical predictors<a class="headerlink" href="#logistic-regression-with-categorical-predictors" title="Permalink to this heading">#</a></h3>
 <p>Instead of using <code class="docutils literal notranslate"><span class="pre">num_char</span></code> (a continuous predictor), we can use a categorical predictor (like <code class="docutils literal notranslate"><span class="pre">winner</span></code>: whether or not an email has the word “winner”).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1900,10 +1235,10 @@ dtype: float64
   <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     1</td>  
 </tr>
 <tr>
-  <th>Date:</th>            <td>Mon, 13 Mar 2023</td> <th>  Pseudo R-squ.:     </th>  <td>0.01005</td> 
+  <th>Date:</th>            <td>Sun, 07 Jan 2024</td> <th>  Pseudo R-squ.:     </th>  <td>0.01005</td> 
 </tr>
 <tr>
-  <th>Time:</th>                <td>12:32:14</td>     <th>  Log-Likelihood:    </th> <td> -1206.3</td> 
+  <th>Time:</th>                <td>14:27:29</td>     <th>  Log-Likelihood:    </th> <td> -1206.3</td> 
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -1218.6</td> 
@@ -1925,7 +1260,7 @@ dtype: float64
 </table></div></div>
 </div>
 <section id="id10">
-<h4>Check-in<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
 <p>How should we interpret the <strong>parameters</strong> of this model?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1936,7 +1271,7 @@ dtype: float64
 </div>
 </section>
 <section id="interpreting-beta-for-categorical-predictors">
-<h4>Interpreting <span class="math notranslate nohighlight">\(\beta\)</span> for categorical predictors<a class="headerlink" href="#interpreting-beta-for-categorical-predictors" title="Permalink to this headline">#</a></h4>
+<h4>Interpreting <span class="math notranslate nohighlight">\(\beta\)</span> for categorical predictors<a class="headerlink" href="#interpreting-beta-for-categorical-predictors" title="Permalink to this heading">#</a></h4>
 <p>As with <em>linear regression</em>, the <span class="math notranslate nohighlight">\(\beta\)</span> for a categorical predictor means <strong>predicted change in log-odds relative to the <code class="docutils literal notranslate"><span class="pre">Intercept</span></code></strong></p>
 <ul class="simple">
 <li><p>Here, <span class="math notranslate nohighlight">\(\beta_0\)</span> is the <strong>predicted log-odds</strong> when <code class="docutils literal notranslate"><span class="pre">winner</span> <span class="pre">==</span> <span class="pre">no</span></code>.</p></li>
@@ -1958,7 +1293,7 @@ dtype: float64
 </div>
 </section>
 <section id="id11">
-<h4>Check-in<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
 <p>According to the model, what is <span class="math notranslate nohighlight">\(p(spam)\)</span> for emails that don’t have the word <code class="docutils literal notranslate"><span class="pre">winner</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1969,7 +1304,7 @@ dtype: float64
 </div>
 </section>
 <section id="id12">
-<h4>Solution<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lo</span> <span class="o">=</span> <span class="n">mod_winner</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;Intercept&#39;</span><span class="p">]</span>
@@ -1978,14 +1313,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08996629504796422
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0899662950479635
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="id13">
-<h4>Check-in<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
 <p>According to the model, what is <span class="math notranslate nohighlight">\(p(spam)\)</span> for emails that <strong>do</strong> have the word <code class="docutils literal notranslate"><span class="pre">winner</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1996,7 +1331,7 @@ dtype: float64
 </div>
 </section>
 <section id="id14">
-<h4>Solution<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lo</span> <span class="o">=</span> <span class="n">mod_winner</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;Intercept&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">mod_winner</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;winner[T.yes]&#39;</span><span class="p">]</span>
@@ -2005,7 +1340,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.31250000000000006
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.31249999999999994
 </pre></div>
 </div>
 </div>
@@ -2013,7 +1348,7 @@ dtype: float64
 </section>
 </section>
 <section id="generating-predictions">
-<h3>Generating predictions<a class="headerlink" href="#generating-predictions" title="Permalink to this headline">#</a></h3>
+<h3>Generating predictions<a class="headerlink" href="#generating-predictions" title="Permalink to this heading">#</a></h3>
 <p>By default, <code class="docutils literal notranslate"><span class="pre">predict()</span></code> will generate predicted <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2022,16 +1357,16 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa5584909a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x12ee210d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/18-logistic-regression_74_1.png" src="../_images/18-logistic-regression_74_1.png" />
+<img alt="../_images/cf27048ad882a27998bfa75b630fc1d8fc305a36054cfcb1190800d867dbf23c.png" src="../_images/cf27048ad882a27998bfa75b630fc1d8fc305a36054cfcb1190800d867dbf23c.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Many use-cases of statistical modeling involve a <strong>categorical</strong> response variable.</p></li>
 <li><p><strong>Logistic regression</strong> can be used for binary classication tasks.</p>
@@ -2057,7 +1392,7 @@ dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
@@ -2065,50 +1400,174 @@ dtype: float64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="17-overfitting.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Overfitting and the bias-variance trade-off</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="17-overfitting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Overfitting and the bias-variance trade-off</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="19-evaluation.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="19-evaluation.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Model evaluation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-classification">What is classification?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-classify-is-human">“To classify is human”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categories-and-the-problem-of-measurement">Categories and the problem of <em>measurement</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-many-categories">How many categories?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foundations-of-logistic-regression">Foundations of logistic regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-dataset-spam">Example dataset: <code class="docutils literal notranslate"><span class="pre">spam</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-linear-regression">Why not linear regression?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#going-beyond-0-1">Going beyond <span class="math notranslate nohighlight">\([0, 1]\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#framing-the-problem-probabilistically">Framing the problem probabilistically</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizing-the-linear-model-glms">Generalizing the linear model (GLMs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-tour-of-glms">Quick tour of GLMs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Logistic regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-odds">Introducing the <em>odds</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-log-odds">Introducing the <em>log-odds</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-sign-of-log-odds">Interpreting the <em>sign</em> of log-odds</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-non-linear-relationship">A <em>non-linear relationship</em></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-logistic-function">Introducing the <em>logistic function</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-from-log-odds-to-p">Mapping from log-odds to <span class="math notranslate nohighlight">\(p\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-more-general-mapping">A more general mapping</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-regression-come-into-play">Where does <em>regression</em> come into play?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#log-odds-x-is-linear">Log-odds ~ <span class="math notranslate nohighlight">\(X\)</span> is linear</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#p-x-is-not-linear"><span class="math notranslate nohighlight">\(p\)</span> ~<span class="math notranslate nohighlight">\(X\)</span> is <em>not</em> linear</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-in-python">Logistic regression in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-model">Fitting the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-model">Interpreting the model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-p-using-logistic-function">Deriving <span class="math notranslate nohighlight">\(p\)</span> using logistic function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-p-pt-2">Deriving <span class="math notranslate nohighlight">\(p\)</span> (pt. 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#log-odds-probability">Log-odds != probability</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-with-categorical-predictors">Logistic regression with categorical predictors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-beta-for-categorical-predictors">Interpreting <span class="math notranslate nohighlight">\(\beta\)</span> for categorical predictors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-predictions">Generating predictions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Sean Trott<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Sean Trott
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

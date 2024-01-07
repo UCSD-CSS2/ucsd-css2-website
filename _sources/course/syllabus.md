@@ -1,4 +1,4 @@
-# CSS 2 Syllabus: Fall 2022
+# CSS 2 Syllabus: Winter 2024
 
 ## Course Overview
 
@@ -28,22 +28,21 @@ This course is designed to give students a range of conceptual and technical too
 ### Teaching Team:
 
 - [Sean Trott](https://seantrott.github.io/): Assistant Teaching Professor in Cognitive Science and CSS.
-- TAs: Nikolay Kudrin
+- TAs: Joshua Burrows
 
 #### Teaching Team OH
 
 | Who? | When? | Where? |
 | ---- | ----- | ------ |
-| Sean Trott | Monday 11-12 | Zoom (link on Canvas) |
+| Sean Trott | Wednesday 11-12 | CSB 259 |
 
 
 ### When/Where?:
 
-- Lecture: MWF 2-3pm (HSS 1330)
+- Lecture: MWF 9-10am (Podemos 1A18)
 - Coding Lab Sections (optional): 
-   - Monday, 4-6 (ERCA 117)
-   - Wednesday, 4-6 (ERCA 117)
-   - Friday, 10-12 (ERCA 117)
+   - Monday, 3-4 (CSB 005)
+   - Friday, 10-11 (CSB 005)
 
 ## Grading
 

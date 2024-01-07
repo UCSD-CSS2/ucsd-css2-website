@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Model evaluation &#8212; CSS 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +64,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/19-evaluation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Unsupervised clustering" href="20-unsupervised-clustering.html" />
     <link rel="prev" title="Logistic Regression" href="18-logistic-regression.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo_UCSD.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CSS 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo_UCSD.png" class="logo__image only-light" alt="CSS 2 - Home"/>
+    <script>document.write(`<img src="../_static/logo_UCSD.png" class="logo__image only-dark" alt="CSS 2 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,1063 +170,322 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course Logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/syllabus.html">
-   CSS 2 Syllabus: Fall 2022
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/schedule.html">
-   CSS 2 Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/expectations.html">
-   Course Expectations (and FAQ)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/datahub.html">
-   Using DataHub
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/final.html">
-   Final Project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course/syllabus.html">CSS 2 Syllabus: Winter 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/schedule.html">CSS 2 Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/expectations.html">Course Expectations (and FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/datahub.html">Using DataHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/final.html">Final Project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-intro.html">
-   01-Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-ethics.html">
-   02-Ethics (Fairness)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-ethics-privacy.html">
-   03-Ethics (Privacy)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-review1.html">
-   04-Python review (basics)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-review2.html">
-   05-Python review (data)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-dataviz-pyplot.html">
-   06-Data Visualization (Introduction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-dataviz-seaborn.html">
-   07-Data Visualization (Seaborn)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-dataviz-principles.html">
-   08-Data Visualization (Principles)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-wrangling.html">
-   09-Data Wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-stats-basics.html">
-   10-Descriptive Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-stats-sampling.html">
-   11-Foundations of Inferential Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12-statistical-modeling.html">
-   12-Introduction to Statistical Modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-regression-intro.html">
-   13-Linear Regression in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="14-regression-predictions.html">
-   14-Prediction Error and More
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="15-multiple-regression.html">
-   15-Multiple Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="16-nonlinear-regression.html">
-   16-Non-linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="17-overfitting.html">
-   17-Overfitting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="18-logistic-regression.html">
-   18-Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   19-Evaluation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="20-unsupervised-clustering.html">
-   20-Unsupervised Clustering
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">01-Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-ethics.html">02-Ethics (Fairness)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-ethics-privacy.html">03-Ethics (Privacy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-review1.html">04-Python review (basics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-review2.html">05-Python review (data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-dataviz-pyplot.html">06-Data Visualization (Introduction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-dataviz-seaborn.html">07-Data Visualization (Seaborn)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-dataviz-principles.html">08-Data Visualization (Principles)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-wrangling.html">09-Data Wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-stats-basics.html">10-Descriptive Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-stats-sampling.html">11-Foundations of Inferential Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-statistical-modeling.html">12-Introduction to Statistical Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-regression-intro.html">13-Linear Regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-regression-predictions.html">14-Prediction Error and More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-multiple-regression.html">15-Multiple Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-nonlinear-regression.html">16-Non-linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-overfitting.html">17-Overfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-logistic-regression.html">18-Logistic Regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19-Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-unsupervised-clustering.html">20-Unsupervised Clustering</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/19-evaluation.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/19-evaluation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/19-evaluation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/19-evaluation.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/lectures/19-evaluation.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#libraries">
-   Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-evaluate-models">
-   Why evaluate models?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#science-is-about-building-models">
-     Science is about building models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#many-possible-models">
-     Many
-     <em>
-      possible
-     </em>
-     models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparing-models">
-     <em>
-      Comparing
-     </em>
-     models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-evaluating-linear-models">
-     Review: evaluating linear models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bias-variance-trade-off-revisited">
-     Bias-variance trade-off revisited
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#evaluating-classifiers-metrics">
-   Evaluating classifiers: metrics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-the-dataset">
-     Loading the dataset
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accuracy">
-     Accuracy
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#assessing-accuracy">
-       Assessing accuracy
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-accuracy-score">
-       Using
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         accuracy_score
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#but-where-do-the-predictions-come-from">
-       But where do the predictions come from?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#naive-approach-threshold-at-p-5">
-       Naive approach: threshold at
-       <span class="math notranslate nohighlight">
-        \(p = .5\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-importance-of-thresholding">
-       The importance of thresholding
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#thresholding-in-practice-pt-1">
-       Thresholding in practice (pt. 1)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#thresholding-in-practice-pt-2">
-       Thresholding in practice (pt. 2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#thresholding-in-practice-pt-3">
-       Thresholding in practice (pt. 3)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-problem-of-naive-accuracy">
-       The problem of “naive accuracy”
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#type-1-vs-type-2-errors">
-     Type 1 vs. Type 2 Errors
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#review-different-errors-have-different-costs">
-       Review: Different errors have different
-       <em>
-        costs
-       </em>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculating-the-false-positive-rate">
-       Calculating the
-       <em>
-        false positive rate
-       </em>
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#demo-fpr">
-         Demo: FPR
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculating-the-false-negative-rate">
-       Calculating the
-       <em>
-        false negative rate
-       </em>
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#demo-fnr">
-         Demo: FNR
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#coming-up-confusion-matrices">
-       Coming up: confusion matrices
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#precision-vs-recall">
-     Precision vs. Recall
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculating-precision">
-       Calculating precision
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculating-recall">
-       Calculating recall
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#akaike-information-criterion-aic">
-     Akaike Information Criterion (AIC)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-is-likelihood">
-       What is “likelihood”?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#likelihood-vs-rss">
-       Likelihood vs.
-       <span class="math notranslate nohighlight">
-        \(RSS\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#extracting-and-interpreting-aic">
-       Extracting and interpreting AIC
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#aic-in-practice">
-       <span class="math notranslate nohighlight">
-        \(AIC\)
-       </span>
-       in practice
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#evaluating-models-with-visualizations">
-   Evaluating models with
-   <em>
-    visualizations
-   </em>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#confusion-matrix">
-     Confusion matrix
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#confusion-matrix-in-practice">
-       Confusion matrix in practice
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#normalizing-our-output">
-       Normalizing our output
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#visualizing-with-seaborn">
-       Visualizing with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         seaborn
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#roc-curve">
-     ROC Curve
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solution">
-       Solution
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#roc-curve-in-practice">
-       ROC Curve in practice
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-1-fit-a-model">
-       Step 1: Fit a model
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-consider-a-range-of-thresholds">
-       Step 2: Consider a range of thresholds
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-calculate-fpr-and-tpr">
-       Step 3: Calculate FPR and TPR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-4-visualize">
-       Step 4: Visualize
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-roc-curve-is-useful">
-       Why ROC curve is useful
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#roc-curve-in-sklearn">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         roc_curve
-        </span>
-       </code>
-       in
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         sklearn
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Model evaluation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#libraries">
-   Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-evaluate-models">
-   Why evaluate models?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#science-is-about-building-models">
-     Science is about building models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#many-possible-models">
-     Many
-     <em>
-      possible
-     </em>
-     models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparing-models">
-     <em>
-      Comparing
-     </em>
-     models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-evaluating-linear-models">
-     Review: evaluating linear models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bias-variance-trade-off-revisited">
-     Bias-variance trade-off revisited
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#evaluating-classifiers-metrics">
-   Evaluating classifiers: metrics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-the-dataset">
-     Loading the dataset
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accuracy">
-     Accuracy
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#assessing-accuracy">
-       Assessing accuracy
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-accuracy-score">
-       Using
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         accuracy_score
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#but-where-do-the-predictions-come-from">
-       But where do the predictions come from?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#naive-approach-threshold-at-p-5">
-       Naive approach: threshold at
-       <span class="math notranslate nohighlight">
-        \(p = .5\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-importance-of-thresholding">
-       The importance of thresholding
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#thresholding-in-practice-pt-1">
-       Thresholding in practice (pt. 1)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#thresholding-in-practice-pt-2">
-       Thresholding in practice (pt. 2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#thresholding-in-practice-pt-3">
-       Thresholding in practice (pt. 3)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-problem-of-naive-accuracy">
-       The problem of “naive accuracy”
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#type-1-vs-type-2-errors">
-     Type 1 vs. Type 2 Errors
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#review-different-errors-have-different-costs">
-       Review: Different errors have different
-       <em>
-        costs
-       </em>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculating-the-false-positive-rate">
-       Calculating the
-       <em>
-        false positive rate
-       </em>
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#demo-fpr">
-         Demo: FPR
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculating-the-false-negative-rate">
-       Calculating the
-       <em>
-        false negative rate
-       </em>
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#demo-fnr">
-         Demo: FNR
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#coming-up-confusion-matrices">
-       Coming up: confusion matrices
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#precision-vs-recall">
-     Precision vs. Recall
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculating-precision">
-       Calculating precision
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculating-recall">
-       Calculating recall
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#akaike-information-criterion-aic">
-     Akaike Information Criterion (AIC)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#what-is-likelihood">
-       What is “likelihood”?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#likelihood-vs-rss">
-       Likelihood vs.
-       <span class="math notranslate nohighlight">
-        \(RSS\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#extracting-and-interpreting-aic">
-       Extracting and interpreting AIC
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#aic-in-practice">
-       <span class="math notranslate nohighlight">
-        \(AIC\)
-       </span>
-       in practice
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#evaluating-models-with-visualizations">
-   Evaluating models with
-   <em>
-    visualizations
-   </em>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#confusion-matrix">
-     Confusion matrix
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#confusion-matrix-in-practice">
-       Confusion matrix in practice
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#normalizing-our-output">
-       Normalizing our output
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#visualizing-with-seaborn">
-       Visualizing with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         seaborn
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#roc-curve">
-     ROC Curve
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solution">
-       Solution
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#roc-curve-in-practice">
-       ROC Curve in practice
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-1-fit-a-model">
-       Step 1: Fit a model
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-consider-a-range-of-thresholds">
-       Step 2: Consider a range of thresholds
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-calculate-fpr-and-tpr">
-       Step 3: Calculate FPR and TPR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-4-visualize">
-       Step 4: Visualize
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#why-roc-curve-is-useful">
-       Why ROC curve is useful
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#roc-curve-in-sklearn">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         roc_curve
-        </span>
-       </code>
-       in
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         sklearn
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Model evaluation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-evaluate-models">Why evaluate models?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#science-is-about-building-models">Science is about building models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-possible-models">Many <em>possible</em> models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-models"><em>Comparing</em> models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-evaluating-linear-models">Review: evaluating linear models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off-revisited">Bias-variance trade-off revisited</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-classifiers-metrics">Evaluating classifiers: metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-dataset">Loading the dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-accuracy">Assessing accuracy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-accuracy-score">Using <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#but-where-do-the-predictions-come-from">But where do the predictions come from?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-approach-threshold-at-p-5">Naive approach: threshold at <span class="math notranslate nohighlight">\(p = .5\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-thresholding">The importance of thresholding</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-in-practice-pt-1">Thresholding in practice (pt. 1)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-in-practice-pt-2">Thresholding in practice (pt. 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-in-practice-pt-3">Thresholding in practice (pt. 3)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-of-naive-accuracy">The problem of “naive accuracy”</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-1-vs-type-2-errors">Type 1 vs. Type 2 Errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-different-errors-have-different-costs">Review: Different errors have different <em>costs</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-false-positive-rate">Calculating the <em>false positive rate</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-fpr">Demo: FPR</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-false-negative-rate">Calculating the <em>false negative rate</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-fnr">Demo: FNR</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coming-up-confusion-matrices">Coming up: confusion matrices</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-vs-recall">Precision vs. Recall</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-precision">Calculating precision</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-recall">Calculating recall</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akaike-information-criterion-aic">Akaike Information Criterion (AIC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-likelihood">What is “likelihood”?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-vs-rss">Likelihood vs. <span class="math notranslate nohighlight">\(RSS\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-and-interpreting-aic">Extracting and interpreting AIC</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aic-in-practice"><span class="math notranslate nohighlight">\(AIC\)</span> in practice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-models-with-visualizations">Evaluating models with <em>visualizations</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-in-practice">Confusion matrix in practice</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-our-output">Normalizing our output</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-with-seaborn">Visualizing with <code class="docutils literal notranslate"><span class="pre">seaborn</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-curve">ROC Curve</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-curve-in-practice">ROC Curve in practice</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-fit-a-model">Step 1: Fit a model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-consider-a-range-of-thresholds">Step 2: Consider a range of thresholds</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-calculate-fpr-and-tpr">Step 3: Calculate FPR and TPR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-visualize">Step 4: Visualize</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-roc-curve-is-useful">Why ROC curve is useful</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-curve-in-sklearn"><code class="docutils literal notranslate"><span class="pre">roc_curve</span></code> in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="model-evaluation">
-<h1>Model evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">#</a></h1>
+<h1>Model evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h1>
 <section id="libraries">
-<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">#</a></h2>
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Imports</span>
@@ -1196,7 +510,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="goals-of-this-lecture">
-<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this headline">#</a></h2>
+<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Why is evaluating models important? (Today’s focus: <strong>classifiers</strong>.)</p></li>
 <li><p><strong>Metrics</strong>:</p>
@@ -1216,9 +530,9 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="why-evaluate-models">
-<h2>Why evaluate models?<a class="headerlink" href="#why-evaluate-models" title="Permalink to this headline">#</a></h2>
+<h2>Why evaluate models?<a class="headerlink" href="#why-evaluate-models" title="Permalink to this heading">#</a></h2>
 <section id="science-is-about-building-models">
-<h3>Science is about building models<a class="headerlink" href="#science-is-about-building-models" title="Permalink to this headline">#</a></h3>
+<h3>Science is about building models<a class="headerlink" href="#science-is-about-building-models" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>A central goal of science is building <strong>models</strong> of the world. This includes verbal explanations but also and especially <strong>statistical models</strong>.</p>
 </div></blockquote>
@@ -1229,7 +543,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="many-possible-models">
-<h3>Many <em>possible</em> models<a class="headerlink" href="#many-possible-models" title="Permalink to this headline">#</a></h3>
+<h3>Many <em>possible</em> models<a class="headerlink" href="#many-possible-models" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Given any dataset <span class="math notranslate nohighlight">\(d\)</span>, there are many <em>possible</em> models <span class="math notranslate nohighlight">\(m_1, m_2, ..., m_n\)</span> we could build of that dataset.</p>
 </div></blockquote>
@@ -1245,18 +559,18 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="comparing-models">
-<h3><em>Comparing</em> models<a class="headerlink" href="#comparing-models" title="Permalink to this headline">#</a></h3>
+<h3><em>Comparing</em> models<a class="headerlink" href="#comparing-models" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>In order to select the best model, researchers often <strong>compare</strong> multiple models in terms of their predictive power.</p>
 </div></blockquote>
 <p>These model comparison approaches typically incorporate:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>A measure of <strong>accuracy</strong>: how well do <span class="math notranslate nohighlight">\(m_1\)</span> vs. <span class="math notranslate nohighlight">\(m_2\)</span> fit the data, <span class="math notranslate nohighlight">\(d\)</span>?</p></li>
 <li><p>A measure of <strong>complexity</strong>: how complex are <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span>, respectively?</p></li>
 </ol>
 </section>
 <section id="review-evaluating-linear-models">
-<h3>Review: evaluating linear models<a class="headerlink" href="#review-evaluating-linear-models" title="Permalink to this headline">#</a></h3>
+<h3>Review: evaluating linear models<a class="headerlink" href="#review-evaluating-linear-models" title="Permalink to this heading">#</a></h3>
 <p>We’ve already discussed several approaches to evaluating and comparing <strong>linear regression models</strong>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(R^2\)</span>: what proportion of variance in <span class="math notranslate nohighlight">\(Y\)</span> is explained by <span class="math notranslate nohighlight">\(X\)</span>?</p></li>
@@ -1266,7 +580,7 @@ title="Print to PDF"
 <p>In combination with <strong>cross-validation</strong>, these techniques allow us to compare the <strong>accuracy</strong> of models while also penalizing <strong>over-fitting</strong>.</p>
 </section>
 <section id="bias-variance-trade-off-revisited">
-<h3>Bias-variance trade-off revisited<a class="headerlink" href="#bias-variance-trade-off-revisited" title="Permalink to this headline">#</a></h3>
+<h3>Bias-variance trade-off revisited<a class="headerlink" href="#bias-variance-trade-off-revisited" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Red line = test error.</p></li>
 <li><p>Blue line = train error.</p></li>
@@ -1276,14 +590,14 @@ title="Print to PDF"
 </section>
 </section>
 <section id="evaluating-classifiers-metrics">
-<h2>Evaluating classifiers: metrics<a class="headerlink" href="#evaluating-classifiers-metrics" title="Permalink to this headline">#</a></h2>
+<h2>Evaluating classifiers: metrics<a class="headerlink" href="#evaluating-classifiers-metrics" title="Permalink to this heading">#</a></h2>
 <p>Today, we’ll be focusing on evaluating <strong>classification models</strong>.</p>
 <ul class="simple">
 <li><p>Some of these metrics also apply to linear models, like AIC.</p></li>
 <li><p>But others (like <a class="reference external" href="https://en.wikipedia.org/wiki/Precision_and_recall">precision and recall</a>) are limited to <em>categorical</em> data.</p></li>
 </ul>
 <section id="loading-the-dataset">
-<h3>Loading the dataset<a class="headerlink" href="#loading-the-dataset" title="Permalink to this headline">#</a></h3>
+<h3>Loading the dataset<a class="headerlink" href="#loading-the-dataset" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_spam</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/models/classification/email.csv&quot;</span><span class="p">)</span>
@@ -1389,7 +703,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="accuracy">
-<h3>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">#</a></h3>
+<h3>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>The <strong>accuracy</strong> of a model is the number of <strong>correct predictions</strong> divided by the total number of observations.</p>
 </div></blockquote>
@@ -1402,7 +716,7 @@ title="Print to PDF"
 <li><p><span class="math notranslate nohighlight">\(FN\)</span>: False negative.</p></li>
 </ul>
 <section id="assessing-accuracy">
-<h4>Assessing accuracy<a class="headerlink" href="#assessing-accuracy" title="Permalink to this headline">#</a></h4>
+<h4>Assessing accuracy<a class="headerlink" href="#assessing-accuracy" title="Permalink to this heading">#</a></h4>
 <p>A straightforward way to assess accuracy is to simply compare the <strong>true labels</strong>, <span class="math notranslate nohighlight">\(Y\)</span>, to the <strong>predicted labels</strong>, <span class="math notranslate nohighlight">\(\hat{Y}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1434,7 +748,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="using-accuracy-score">
-<h4>Using <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code><a class="headerlink" href="#using-accuracy-score" title="Permalink to this headline">#</a></h4>
+<h4>Using <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code><a class="headerlink" href="#using-accuracy-score" title="Permalink to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code> function in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> will do this for you.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1457,7 +771,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="but-where-do-the-predictions-come-from">
-<h4>But where do the predictions come from?<a class="headerlink" href="#but-where-do-the-predictions-come-from" title="Permalink to this headline">#</a></h4>
+<h4>But where do the predictions come from?<a class="headerlink" href="#but-where-do-the-predictions-come-from" title="Permalink to this heading">#</a></h4>
 <p>Many models, such as logistic regression, produce a <strong>probability</strong> of the outcome, i.e., <span class="math notranslate nohighlight">\(p(spam)\)</span>.</p>
 <p>How would you convert <span class="math notranslate nohighlight">\(p(spam)\)</span> to an actual <strong>prediction</strong>, i.e., <code class="docutils literal notranslate"><span class="pre">spam</span></code> vs. <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">spam</span></code>?</p>
 <ul class="simple">
@@ -1470,7 +784,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="naive-approach-threshold-at-p-5">
-<h4>Naive approach: threshold at <span class="math notranslate nohighlight">\(p = .5\)</span><a class="headerlink" href="#naive-approach-threshold-at-p-5" title="Permalink to this headline">#</a></h4>
+<h4>Naive approach: threshold at <span class="math notranslate nohighlight">\(p = .5\)</span><a class="headerlink" href="#naive-approach-threshold-at-p-5" title="Permalink to this heading">#</a></h4>
 <p>A naive approach is to create a <strong>threshold</strong> at <span class="math notranslate nohighlight">\(p = .5\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1500,11 +814,11 @@ title="Print to PDF"
 </div>
 </section>
 <section id="check-in">
-<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this heading">#</a></h4>
 <p>Can anyone think of any potential issues with this naive threshold of <span class="math notranslate nohighlight">\(p_t = .5\)</span>?</p>
 </section>
 <section id="the-importance-of-thresholding">
-<h4>The importance of thresholding<a class="headerlink" href="#the-importance-of-thresholding" title="Permalink to this headline">#</a></h4>
+<h4>The importance of thresholding<a class="headerlink" href="#the-importance-of-thresholding" title="Permalink to this heading">#</a></h4>
 <p>Depending on the <strong>base rate</strong> of <span class="math notranslate nohighlight">\(Y\)</span> in your dataset, <span class="math notranslate nohighlight">\(p_t = .5\)</span> might generate either:</p>
 <ul class="simple">
 <li><p>Too many false positives.</p></li>
@@ -1512,7 +826,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="thresholding-in-practice-pt-1">
-<h4>Thresholding in practice (pt. 1)<a class="headerlink" href="#thresholding-in-practice-pt-1" title="Permalink to this headline">#</a></h4>
+<h4>Thresholding in practice (pt. 1)<a class="headerlink" href="#thresholding-in-practice-pt-1" title="Permalink to this heading">#</a></h4>
 <p>What do we notice about the <strong>distribution</strong> of predicted probabilities from our model predicting <code class="docutils literal notranslate"><span class="pre">spam</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1532,15 +846,15 @@ title="Print to PDF"
          Iterations 9
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fb80585f490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x1389a1850&gt;
 </pre></div>
 </div>
-<img alt="../_images/19-evaluation_28_2.png" src="../_images/19-evaluation_28_2.png" />
+<img alt="../_images/7b8414e0fc5ef87d6e19f5e5ce4258f7cde4ac5bc81ac7f13c578aa1b8b1ce06.png" src="../_images/7b8414e0fc5ef87d6e19f5e5ce4258f7cde4ac5bc81ac7f13c578aa1b8b1ce06.png" />
 </div>
 </div>
 </section>
 <section id="thresholding-in-practice-pt-2">
-<h4>Thresholding in practice (pt. 2)<a class="headerlink" href="#thresholding-in-practice-pt-2" title="Permalink to this headline">#</a></h4>
+<h4>Thresholding in practice (pt. 2)<a class="headerlink" href="#thresholding-in-practice-pt-2" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>If we use <span class="math notranslate nohighlight">\(p_t = .5\)</span>, then we classify very few instances as <code class="docutils literal notranslate"><span class="pre">spam</span></code>.</p></li>
 <li><p>Though because <code class="docutils literal notranslate"><span class="pre">spam</span></code> is relatively rare, we actuall have decently high accuracy…</p></li>
@@ -1564,7 +878,7 @@ Accuracy: 0.91
 </div>
 </section>
 <section id="thresholding-in-practice-pt-3">
-<h4>Thresholding in practice (pt. 3)<a class="headerlink" href="#thresholding-in-practice-pt-3" title="Permalink to this headline">#</a></h4>
+<h4>Thresholding in practice (pt. 3)<a class="headerlink" href="#thresholding-in-practice-pt-3" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>We can also test out different <strong>thresholds</strong> to see how accuracy scales with <span class="math notranslate nohighlight">\(p_t\)</span>.</p></li>
 <li><p><strong>Note</strong>: keep in mind that it also matters <strong>how</strong> the model is going wrong…</p></li>
@@ -1589,19 +903,19 @@ Accuracy: 0.91
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;t&#39;, ylabel=&#39;accuracy&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;t&#39;, ylabel=&#39;accuracy&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/19-evaluation_33_1.png" src="../_images/19-evaluation_33_1.png" />
+<img alt="../_images/6f9773c7a9951c97c611f684f1960df785bf2832796c13110d56374413072d0b.png" src="../_images/6f9773c7a9951c97c611f684f1960df785bf2832796c13110d56374413072d0b.png" />
 </div>
 </div>
 </section>
 <section id="id1">
-<h4>Check-in<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>Relating to thresholding: are there any issues with just naively using accuracy?</p>
 </section>
 <section id="the-problem-of-naive-accuracy">
-<h4>The problem of “naive accuracy”<a class="headerlink" href="#the-problem-of-naive-accuracy" title="Permalink to this headline">#</a></h4>
+<h4>The problem of “naive accuracy”<a class="headerlink" href="#the-problem-of-naive-accuracy" title="Permalink to this heading">#</a></h4>
 <p>Depending on the <strong>base rate</strong> of <span class="math notranslate nohighlight">\(Y\)</span>, <em>very high accuracy</em> could be achieved by simply always guessing the same thing.</p>
 <ul class="simple">
 <li><p>If fraud is very rare (<span class="math notranslate nohighlight">\(p(Y) = .01\)</span>), then always guessing <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">fraud</span></code> will yield <span class="math notranslate nohighlight">\(99\%\)</span> accuracy.</p></li>
@@ -1611,13 +925,13 @@ Accuracy: 0.91
 </section>
 </section>
 <section id="type-1-vs-type-2-errors">
-<h3>Type 1 vs. Type 2 Errors<a class="headerlink" href="#type-1-vs-type-2-errors" title="Permalink to this headline">#</a></h3>
+<h3>Type 1 vs. Type 2 Errors<a class="headerlink" href="#type-1-vs-type-2-errors" title="Permalink to this heading">#</a></h3>
 <p>Models can be <a class="reference external" href="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors">wrong in <em>different ways</em></a>.</p>
 <ul class="simple">
 <li><p>A <strong>Type 1 Error</strong> is <em>incorrectly rejecting the null hypothesis</em>, i.e., a <strong>false positive</strong>.</p></li>
 <li><p>A <strong>Type 2 Error</strong> is <em>incorrectly failing to reject the null hypothesis</em>, i.e., a <strong>false negative</strong>.</p></li>
 </ul>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>predicted label = <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">spam</span></code></p></th>
@@ -1636,12 +950,12 @@ Accuracy: 0.91
 </tbody>
 </table>
 <section id="review-different-errors-have-different-costs">
-<h4>Review: Different errors have different <em>costs</em><a class="headerlink" href="#review-different-errors-have-different-costs" title="Permalink to this headline">#</a></h4>
+<h4>Review: Different errors have different <em>costs</em><a class="headerlink" href="#review-different-errors-have-different-costs" title="Permalink to this heading">#</a></h4>
 <p><img alt="title" src="../_images/bias_northpointe.png" /></p>
 <p><a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Source: Propublica</a></p>
 </section>
 <section id="calculating-the-false-positive-rate">
-<h4>Calculating the <em>false positive rate</em><a class="headerlink" href="#calculating-the-false-positive-rate" title="Permalink to this headline">#</a></h4>
+<h4>Calculating the <em>false positive rate</em><a class="headerlink" href="#calculating-the-false-positive-rate" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>The <strong>false positive rate</strong> is the proportion of <em>negative classes</em> (e.g., <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">spam</span></code>) incorrectly categorized as a <em>positive class</em> (e.g., <code class="docutils literal notranslate"><span class="pre">spam</span></code>).</p>
 </div></blockquote>
@@ -1652,7 +966,7 @@ Accuracy: 0.91
 <li><p><span class="math notranslate nohighlight">\(N\)</span>: The number of <em>negative</em> classes.</p></li>
 </ul>
 <section id="demo-fpr">
-<h5>Demo: FPR<a class="headerlink" href="#demo-fpr" title="Permalink to this headline">#</a></h5>
+<h5>Demo: FPR<a class="headerlink" href="#demo-fpr" title="Permalink to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Demo: true data</span>
@@ -1689,7 +1003,7 @@ Accuracy: 0.91
 </section>
 </section>
 <section id="calculating-the-false-negative-rate">
-<h4>Calculating the <em>false negative rate</em><a class="headerlink" href="#calculating-the-false-negative-rate" title="Permalink to this headline">#</a></h4>
+<h4>Calculating the <em>false negative rate</em><a class="headerlink" href="#calculating-the-false-negative-rate" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>The <strong>false negative rate</strong> is the proportion of <em>positive classes</em> (e.g., <code class="docutils literal notranslate"><span class="pre">spam</span></code>) incorrectly categorized as a <em>negative class</em> (e.g., <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">spam</span></code>).</p>
 </div></blockquote>
@@ -1700,7 +1014,7 @@ Accuracy: 0.91
 <li><p><span class="math notranslate nohighlight">\(P\)</span>: The number of <em>positive</em> classes.</p></li>
 </ul>
 <section id="demo-fnr">
-<h5>Demo: FNR<a class="headerlink" href="#demo-fnr" title="Permalink to this headline">#</a></h5>
+<h5>Demo: FNR<a class="headerlink" href="#demo-fnr" title="Permalink to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Demo: true data</span>
@@ -1737,9 +1051,9 @@ Accuracy: 0.91
 </section>
 </section>
 <section id="coming-up-confusion-matrices">
-<h4>Coming up: confusion matrices<a class="headerlink" href="#coming-up-confusion-matrices" title="Permalink to this headline">#</a></h4>
+<h4>Coming up: confusion matrices<a class="headerlink" href="#coming-up-confusion-matrices" title="Permalink to this heading">#</a></h4>
 <p>Soon, we’ll discuss how to build a <strong>confusion matrix</strong>, which contains information about the false positive and false negative rates, as below:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>predicted label = <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">spam</span></code></p></th>
@@ -1760,7 +1074,7 @@ Accuracy: 0.91
 </section>
 </section>
 <section id="precision-vs-recall">
-<h3>Precision vs. Recall<a class="headerlink" href="#precision-vs-recall" title="Permalink to this headline">#</a></h3>
+<h3>Precision vs. Recall<a class="headerlink" href="#precision-vs-recall" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p><a class="reference external" href="https://en.wikipedia.org/wiki/Precision_and_recall"><strong>Precision</strong> and <strong>Recall</strong></a> are finer-grained measures of a model’s performance that account for false positives and false negatives.</p>
 </div></blockquote>
@@ -1771,7 +1085,7 @@ Accuracy: 0.91
 <p><img alt="title" src="../_images/recall.png" /></p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Precision_and_recall">Image source: Wikipedia</a></p>
 <section id="calculating-precision">
-<h4>Calculating precision<a class="headerlink" href="#calculating-precision" title="Permalink to this headline">#</a></h4>
+<h4>Calculating precision<a class="headerlink" href="#calculating-precision" title="Permalink to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(Precision = \frac{TP}{P*} = 1 - FPR\)</span></p>
 <p>Where:</p>
 <ul class="simple">
@@ -1801,7 +1115,7 @@ Accuracy: 0.91
 </div>
 </section>
 <section id="calculating-recall">
-<h4>Calculating recall<a class="headerlink" href="#calculating-recall" title="Permalink to this headline">#</a></h4>
+<h4>Calculating recall<a class="headerlink" href="#calculating-recall" title="Permalink to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(Recall = \frac{TP}{P} = 1 - FNR\)</span></p>
 <p>Where:</p>
 <ul class="simple">
@@ -1832,7 +1146,7 @@ Accuracy: 0.91
 </section>
 </section>
 <section id="akaike-information-criterion-aic">
-<h3>Akaike Information Criterion (AIC)<a class="headerlink" href="#akaike-information-criterion-aic" title="Permalink to this headline">#</a></h3>
+<h3>Akaike Information Criterion (AIC)<a class="headerlink" href="#akaike-information-criterion-aic" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p><strong>Akaike Information Criterion (AIC)</strong> is a measure of <em>model fit</em> that factors in both the <strong>accuracy</strong> of the model and the <strong>complexity</strong> of the model.</p>
 </div></blockquote>
@@ -1843,7 +1157,7 @@ Accuracy: 0.91
 <li><p><span class="math notranslate nohighlight">\(\mathcal{L}\)</span>: the <strong>likelihood</strong> of the model.</p></li>
 </ul>
 <section id="what-is-likelihood">
-<h4>What is “likelihood”?<a class="headerlink" href="#what-is-likelihood" title="Permalink to this headline">#</a></h4>
+<h4>What is “likelihood”?<a class="headerlink" href="#what-is-likelihood" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>The <strong>likelihood</strong> of a model is a measure of the <em>probability</em> of the data, given the model.</p>
 </div></blockquote>
@@ -1859,7 +1173,7 @@ Accuracy: 0.91
 <p>What does this remind you of?</p>
 </section>
 <section id="likelihood-vs-rss">
-<h4>Likelihood vs. <span class="math notranslate nohighlight">\(RSS\)</span><a class="headerlink" href="#likelihood-vs-rss" title="Permalink to this headline">#</a></h4>
+<h4>Likelihood vs. <span class="math notranslate nohighlight">\(RSS\)</span><a class="headerlink" href="#likelihood-vs-rss" title="Permalink to this heading">#</a></h4>
 <p>The <strong>residual sum of squares</strong> (<span class="math notranslate nohighlight">\(RSS\)</span>) measures:</p>
 <p><span class="math notranslate nohighlight">\(RSS = \sum_i^N{(y_i - \hat{y}_i)^2}\)</span></p>
 <p><strong>Likelihood</strong> is technically a <em>generalization</em> of this approach:</p>
@@ -1871,7 +1185,7 @@ Accuracy: 0.91
 </ul>
 </section>
 <section id="extracting-and-interpreting-aic">
-<h4>Extracting and interpreting AIC<a class="headerlink" href="#extracting-and-interpreting-aic" title="Permalink to this headline">#</a></h4>
+<h4>Extracting and interpreting AIC<a class="headerlink" href="#extracting-and-interpreting-aic" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The actual <span class="math notranslate nohighlight">\(AIC\)</span> number won’t mean much, as it depends on the variance in the data, <span class="math notranslate nohighlight">\(N\)</span>, and more (similar to <span class="math notranslate nohighlight">\(MSE\)</span>).</p></li>
 <li><p><span class="math notranslate nohighlight">\(AIC\)</span> is primarily useful for comparing different models.</p></li>
@@ -1904,14 +1218,14 @@ Optimization terminated successfully.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2350.4011465188078
-2416.6742247296415
+2416.674224729642
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="aic-in-practice">
-<h4><span class="math notranslate nohighlight">\(AIC\)</span> in practice<a class="headerlink" href="#aic-in-practice" title="Permalink to this headline">#</a></h4>
+<h4><span class="math notranslate nohighlight">\(AIC\)</span> in practice<a class="headerlink" href="#aic-in-practice" title="Permalink to this heading">#</a></h4>
 <p>Typically, <span class="math notranslate nohighlight">\(AIC\)</span> is <strong>rescaled</strong> by subtracting the <span class="math notranslate nohighlight">\(AIC\)</span> of the best model (i.e., the lowest <span class="math notranslate nohighlight">\(AIC\)</span> value) from each of the <span class="math notranslate nohighlight">\(AIC\)</span> values in question.</p>
 <ul class="simple">
 <li><p>Thus, the <em>best</em> model has a rescaled <span class="math notranslate nohighlight">\(AIC\)</span> of <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
@@ -1934,18 +1248,18 @@ Optimization terminated successfully.
 </section>
 </section>
 <section id="evaluating-models-with-visualizations">
-<h2>Evaluating models with <em>visualizations</em><a class="headerlink" href="#evaluating-models-with-visualizations" title="Permalink to this headline">#</a></h2>
+<h2>Evaluating models with <em>visualizations</em><a class="headerlink" href="#evaluating-models-with-visualizations" title="Permalink to this heading">#</a></h2>
 <p>Beyond <strong>metrics</strong>, we can evaluate models by making visualizations about their predictive success. We’ll focus on:</p>
 <ul class="simple">
 <li><p>Confusion matrix.</p></li>
 <li><p>ROC Curve.</p></li>
 </ul>
 <section id="confusion-matrix">
-<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">#</a></h3>
+<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>A <strong>confusion matrix</strong> compares a model’s predictions to actual values of <span class="math notranslate nohighlight">\(Y\)</span>, allowing a viewer to determine which classes were most frequently “confused” (i.e., where the <strong>error rate</strong> was highest).</p>
 </div></blockquote>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>predicted label = <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">spam</span></code></p></th>
@@ -1964,7 +1278,7 @@ Optimization terminated successfully.
 </tbody>
 </table>
 <section id="confusion-matrix-in-practice">
-<h4>Confusion matrix in practice<a class="headerlink" href="#confusion-matrix-in-practice" title="Permalink to this headline">#</a></h4>
+<h4>Confusion matrix in practice<a class="headerlink" href="#confusion-matrix-in-practice" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> has a <code class="docutils literal notranslate"><span class="pre">confusion_matrix</span></code> function, which takes as input the true labels (<code class="docutils literal notranslate"><span class="pre">y_true</span></code>) and the predicted labels (<code class="docutils literal notranslate"><span class="pre">y_pred</span></code>).</p>
 <p>To interpret the output:</p>
 <ul class="simple">
@@ -1984,7 +1298,7 @@ Optimization terminated successfully.
 </ul>
 </section>
 <section id="id2">
-<h4>Check-in<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <p>Based on this confusion matrix, what is the number of:</p>
 <ul class="simple">
 <li><p>True positives?</p></li>
@@ -2015,7 +1329,7 @@ Optimization terminated successfully.
 </div>
 </section>
 <section id="normalizing-our-output">
-<h4>Normalizing our output<a class="headerlink" href="#normalizing-our-output" title="Permalink to this headline">#</a></h4>
+<h4>Normalizing our output<a class="headerlink" href="#normalizing-our-output" title="Permalink to this heading">#</a></h4>
 <p>We can also <strong>normalize</strong> the output using the <code class="docutils literal notranslate"><span class="pre">normalize</span> <span class="pre">=</span> <span class="pre">'true'</span></code> parameter.</p>
 <p>Based on this confusion matrix, what is our <strong>false positive rate</strong>? What about our <strong>false negative rate</strong>?</p>
 <div class="cell docutils container">
@@ -2034,7 +1348,7 @@ Optimization terminated successfully.
 </div>
 </section>
 <section id="visualizing-with-seaborn">
-<h4>Visualizing with <code class="docutils literal notranslate"><span class="pre">seaborn</span></code><a class="headerlink" href="#visualizing-with-seaborn" title="Permalink to this headline">#</a></h4>
+<h4>Visualizing with <code class="docutils literal notranslate"><span class="pre">seaborn</span></code><a class="headerlink" href="#visualizing-with-seaborn" title="Permalink to this heading">#</a></h4>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">seaborn.heatmap</span></code> to visualize the output of a confusion matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2043,16 +1357,16 @@ Optimization terminated successfully.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/19-evaluation_74_1.png" src="../_images/19-evaluation_74_1.png" />
+<img alt="../_images/8eb65e2790b4a9377839a763f74f0c686f269eacda4096fa92118b98eb1119d9.png" src="../_images/8eb65e2790b4a9377839a763f74f0c686f269eacda4096fa92118b98eb1119d9.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="roc-curve">
-<h3>ROC Curve<a class="headerlink" href="#roc-curve" title="Permalink to this headline">#</a></h3>
+<h3>ROC Curve<a class="headerlink" href="#roc-curve" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>A <strong>Receiver Operating Characteristic (ROC) Curve</strong> illustrates the ability of a binary classifier to discriminate between classes as its <strong>threshold</strong> (<span class="math notranslate nohighlight">\(p_t\)</span>) is adjusted.</p>
 </div></blockquote>
@@ -2062,11 +1376,11 @@ Optimization terminated successfully.
 </ul>
 <p><img alt="title" src="../_images/roc.png" /></p>
 <section id="id3">
-<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <p>If <span class="math notranslate nohighlight">\(p_t = 0\)</span> (i.e., everything with <span class="math notranslate nohighlight">\(p_i ≥ 0\)</span> is labeled <code class="docutils literal notranslate"><span class="pre">spam</span></code>), what should our <strong>false positive rate</strong> and <strong>true positive rate</strong> be?</p>
 </section>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
 <p>When <span class="math notranslate nohighlight">\(p_t = 0\)</span> (i.e., everything with <span class="math notranslate nohighlight">\(p_i ≥ 0\)</span> is labeled <code class="docutils literal notranslate"><span class="pre">spam</span></code>):</p>
 <ul class="simple">
 <li><p>Our true positive rate will be <span class="math notranslate nohighlight">\(100\%\)</span>: we never miss an instance of <code class="docutils literal notranslate"><span class="pre">spam</span></code>.</p></li>
@@ -2074,9 +1388,9 @@ Optimization terminated successfully.
 </ul>
 </section>
 <section id="roc-curve-in-practice">
-<h4>ROC Curve in practice<a class="headerlink" href="#roc-curve-in-practice" title="Permalink to this headline">#</a></h4>
+<h4>ROC Curve in practice<a class="headerlink" href="#roc-curve-in-practice" title="Permalink to this heading">#</a></h4>
 <p>Steps involved in building an ROC Curve:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Fit a classifier to your data, and extract predicted probabilities <span class="math notranslate nohighlight">\(p_i\)</span>.</p></li>
 <li><p>Consider a <strong>range</strong> of thresholds of <span class="math notranslate nohighlight">\(p_t\)</span>, from <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p></li>
 <li><p>For each threshold, calculate the <strong>false positive rate (FPR)</strong> and <strong>true positive rate (TPR)</strong>.</p></li>
@@ -2085,7 +1399,7 @@ Optimization terminated successfully.
 </ol>
 </section>
 <section id="step-1-fit-a-model">
-<h4>Step 1: Fit a model<a class="headerlink" href="#step-1-fit-a-model" title="Permalink to this headline">#</a></h4>
+<h4>Step 1: Fit a model<a class="headerlink" href="#step-1-fit-a-model" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_spam</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;spam ~ winner + num_char + re_subj&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -2112,12 +1426,12 @@ Optimization terminated successfully.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Predicted p(spam)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/19-evaluation_81_1.png" src="../_images/19-evaluation_81_1.png" />
+<img alt="../_images/4b905fbbae300d261ff584780c053f279034e8a4c87e38d5e0687aefaf65d4fd.png" src="../_images/4b905fbbae300d261ff584780c053f279034e8a4c87e38d5e0687aefaf65d4fd.png" />
 </div>
 </div>
 </section>
 <section id="step-2-consider-a-range-of-thresholds">
-<h4>Step 2: Consider a range of thresholds<a class="headerlink" href="#step-2-consider-a-range-of-thresholds" title="Permalink to this headline">#</a></h4>
+<h4>Step 2: Consider a range of thresholds<a class="headerlink" href="#step-2-consider-a-range-of-thresholds" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.01</span><span class="p">)</span>
@@ -2128,7 +1442,7 @@ Optimization terminated successfully.
 </div>
 </section>
 <section id="step-3-calculate-fpr-and-tpr">
-<h4>Step 3: Calculate FPR and TPR<a class="headerlink" href="#step-3-calculate-fpr-and-tpr" title="Permalink to this headline">#</a></h4>
+<h4>Step 3: Calculate FPR and TPR<a class="headerlink" href="#step-3-calculate-fpr-and-tpr" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2149,7 +1463,7 @@ Optimization terminated successfully.
 </div>
 </section>
 <section id="step-4-visualize">
-<h4>Step 4: Visualize<a class="headerlink" href="#step-4-visualize" title="Permalink to this headline">#</a></h4>
+<h4>Step 4: Visualize<a class="headerlink" href="#step-4-visualize" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
@@ -2159,15 +1473,15 @@ Optimization terminated successfully.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;fpr&#39;, ylabel=&#39;tpr&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;fpr&#39;, ylabel=&#39;tpr&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/19-evaluation_87_1.png" src="../_images/19-evaluation_87_1.png" />
+<img alt="../_images/0b68e0fe2b7331ed627fbd94263f940897e0c4a2e0e88026a95bf22e60cf0b5f.png" src="../_images/0b68e0fe2b7331ed627fbd94263f940897e0c4a2e0e88026a95bf22e60cf0b5f.png" />
 </div>
 </div>
 </section>
 <section id="why-roc-curve-is-useful">
-<h4>Why ROC curve is useful<a class="headerlink" href="#why-roc-curve-is-useful" title="Permalink to this headline">#</a></h4>
+<h4>Why ROC curve is useful<a class="headerlink" href="#why-roc-curve-is-useful" title="Permalink to this heading">#</a></h4>
 <p>In principle, we can plot the ROC curve for <strong>multiple models</strong>.</p>
 <ul class="simple">
 <li><p>This gives us a clear way to visualize the relative rate of <strong>false positives</strong> and <strong>true positives</strong> for different models.</p></li>
@@ -2175,7 +1489,7 @@ Optimization terminated successfully.
 </ul>
 </section>
 <section id="roc-curve-in-sklearn">
-<h4><code class="docutils literal notranslate"><span class="pre">roc_curve</span></code> in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code><a class="headerlink" href="#roc-curve-in-sklearn" title="Permalink to this headline">#</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">roc_curve</span></code> in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code><a class="headerlink" href="#roc-curve-in-sklearn" title="Permalink to this heading">#</a></h4>
 <p>We can also use the <code class="docutils literal notranslate"><span class="pre">roc_curve</span></code> function in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to build an <strong>ROC Curve</strong> much more easily!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">roc_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
 </pre></div>
@@ -2197,17 +1511,17 @@ Optimization terminated successfully.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/19-evaluation_91_1.png" src="../_images/19-evaluation_91_1.png" />
+<img alt="../_images/22291b4827697f4c90a680027566cdfcd481a6ee880835a05d90b6dd1548e97f.png" src="../_images/22291b4827697f4c90a680027566cdfcd481a6ee880835a05d90b6dd1548e97f.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Once we’ve built a statistical model, we need to <strong>evaluate</strong> it.</p></li>
 <li><p>There are many approaches to evaluating models, but we’ve discussed a few:</p>
@@ -2232,7 +1546,7 @@ Optimization terminated successfully.
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
@@ -2240,50 +1554,177 @@ Optimization terminated successfully.
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="18-logistic-regression.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Logistic Regression</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="18-logistic-regression.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Logistic Regression</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="20-unsupervised-clustering.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="20-unsupervised-clustering.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Unsupervised clustering</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-evaluate-models">Why evaluate models?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#science-is-about-building-models">Science is about building models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-possible-models">Many <em>possible</em> models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-models"><em>Comparing</em> models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-evaluating-linear-models">Review: evaluating linear models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off-revisited">Bias-variance trade-off revisited</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-classifiers-metrics">Evaluating classifiers: metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-dataset">Loading the dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy">Accuracy</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-accuracy">Assessing accuracy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-accuracy-score">Using <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#but-where-do-the-predictions-come-from">But where do the predictions come from?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-approach-threshold-at-p-5">Naive approach: threshold at <span class="math notranslate nohighlight">\(p = .5\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-importance-of-thresholding">The importance of thresholding</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-in-practice-pt-1">Thresholding in practice (pt. 1)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-in-practice-pt-2">Thresholding in practice (pt. 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-in-practice-pt-3">Thresholding in practice (pt. 3)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-of-naive-accuracy">The problem of “naive accuracy”</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-1-vs-type-2-errors">Type 1 vs. Type 2 Errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-different-errors-have-different-costs">Review: Different errors have different <em>costs</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-false-positive-rate">Calculating the <em>false positive rate</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-fpr">Demo: FPR</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-false-negative-rate">Calculating the <em>false negative rate</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-fnr">Demo: FNR</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coming-up-confusion-matrices">Coming up: confusion matrices</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-vs-recall">Precision vs. Recall</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-precision">Calculating precision</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-recall">Calculating recall</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akaike-information-criterion-aic">Akaike Information Criterion (AIC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-likelihood">What is “likelihood”?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-vs-rss">Likelihood vs. <span class="math notranslate nohighlight">\(RSS\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-and-interpreting-aic">Extracting and interpreting AIC</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aic-in-practice"><span class="math notranslate nohighlight">\(AIC\)</span> in practice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-models-with-visualizations">Evaluating models with <em>visualizations</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-in-practice">Confusion matrix in practice</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-our-output">Normalizing our output</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-with-seaborn">Visualizing with <code class="docutils literal notranslate"><span class="pre">seaborn</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-curve">ROC Curve</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-curve-in-practice">ROC Curve in practice</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-fit-a-model">Step 1: Fit a model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-consider-a-range-of-thresholds">Step 2: Consider a range of thresholds</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-calculate-fpr-and-tpr">Step 3: Calculate FPR and TPR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-visualize">Step 4: Visualize</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-roc-curve-is-useful">Why ROC curve is useful</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-curve-in-sklearn"><code class="docutils literal notranslate"><span class="pre">roc_curve</span></code> in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Sean Trott<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Sean Trott
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

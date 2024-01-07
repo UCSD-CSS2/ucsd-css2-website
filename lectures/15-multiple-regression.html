@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Multiple regression &#8212; CSS 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +64,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/15-multiple-regression';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Non-linear regression" href="16-nonlinear-regression.html" />
     <link rel="prev" title="Linear regression: prediction error and more" href="14-regression-predictions.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo_UCSD.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CSS 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo_UCSD.png" class="logo__image only-light" alt="CSS 2 - Home"/>
+    <script>document.write(`<img src="../_static/logo_UCSD.png" class="logo__image only-dark" alt="CSS 2 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,1231 +170,339 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course Logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/syllabus.html">
-   CSS 2 Syllabus: Fall 2022
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/schedule.html">
-   CSS 2 Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/expectations.html">
-   Course Expectations (and FAQ)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/datahub.html">
-   Using DataHub
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/final.html">
-   Final Project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course/syllabus.html">CSS 2 Syllabus: Winter 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/schedule.html">CSS 2 Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/expectations.html">Course Expectations (and FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/datahub.html">Using DataHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/final.html">Final Project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-intro.html">
-   01-Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-ethics.html">
-   02-Ethics (Fairness)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-ethics-privacy.html">
-   03-Ethics (Privacy)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-review1.html">
-   04-Python review (basics)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-review2.html">
-   05-Python review (data)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-dataviz-pyplot.html">
-   06-Data Visualization (Introduction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-dataviz-seaborn.html">
-   07-Data Visualization (Seaborn)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-dataviz-principles.html">
-   08-Data Visualization (Principles)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-wrangling.html">
-   09-Data Wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-stats-basics.html">
-   10-Descriptive Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-stats-sampling.html">
-   11-Foundations of Inferential Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12-statistical-modeling.html">
-   12-Introduction to Statistical Modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-regression-intro.html">
-   13-Linear Regression in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="14-regression-predictions.html">
-   14-Prediction Error and More
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   15-Multiple Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="16-nonlinear-regression.html">
-   16-Non-linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="17-overfitting.html">
-   17-Overfitting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="18-logistic-regression.html">
-   18-Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="19-evaluation.html">
-   19-Evaluation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="20-unsupervised-clustering.html">
-   20-Unsupervised Clustering
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">01-Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-ethics.html">02-Ethics (Fairness)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-ethics-privacy.html">03-Ethics (Privacy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-review1.html">04-Python review (basics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-review2.html">05-Python review (data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-dataviz-pyplot.html">06-Data Visualization (Introduction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-dataviz-seaborn.html">07-Data Visualization (Seaborn)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-dataviz-principles.html">08-Data Visualization (Principles)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-wrangling.html">09-Data Wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-stats-basics.html">10-Descriptive Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-stats-sampling.html">11-Foundations of Inferential Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-statistical-modeling.html">12-Introduction to Statistical Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-regression-intro.html">13-Linear Regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-regression-predictions.html">14-Prediction Error and More</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15-Multiple Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-nonlinear-regression.html">16-Non-linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-overfitting.html">17-Overfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-logistic-regression.html">18-Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-evaluation.html">19-Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-unsupervised-clustering.html">20-Unsupervised Clustering</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/15-multiple-regression.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/15-multiple-regression.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/15-multiple-regression.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/15-multiple-regression.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/lectures/15-multiple-regression.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#libraries">
-   Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-multiple-regression">
-   Why multiple regression?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-curious-case-of-ice-cream-sales-and-shark-attacks">
-     The curious case of ice cream sales and shark attacks
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparing-icecreamsales-to-sharkattacks">
-       Comparing
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         IceCreamSales
-        </span>
-       </code>
-       to
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         SharkAttacks
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#testing-with-univariate-linear-regression">
-       Testing with univariate linear regression
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#temperature-and-sharkattacks-are-also-correlated">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Temperature
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         SharkAttacks
-        </span>
-       </code>
-       are also correlated
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#so-are-temperature-and-icecreamsales">
-       So are
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Temperature
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         IceCreamSales
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adjusting-for-temperature">
-       Adjusting for
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Temperature
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reason-1-adjusting-for-confounds">
-     Reason 1: Adjusting for confounds
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reason-2-better-models">
-     Reason 2: Better models.
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementing-and-interpreting-multiple-regression-models">
-   Implementing and interpreting multiple regression models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#predicting-california-housing-prices">
-     Predicting California housing prices
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-housing-median-age-and-median-income">
-       Using
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         housing_median_age
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         median_income
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpreting-our-parameters">
-     Interpreting our parameters
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#writing-our-model-as-a-linear-equation">
-       Writing our model as a
-       <em>
-        linear equation
-       </em>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-the-intercept">
-       Interpreting the
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Intercept
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-beta-age">
-       Interpreting
-       <span class="math notranslate nohighlight">
-        \(\beta_{age}\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-beta-income">
-       Interpreting
-       <span class="math notranslate nohighlight">
-        \(\beta_{income}\)
-       </span>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#putting-it-all-together">
-     Putting it all together
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluating-our-model">
-     Evaluating our model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solution">
-       Solution
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#visualizing-differences-in-r-2">
-       Visualizing differences in
-       <span class="math notranslate nohighlight">
-        \(R^2\)
-       </span>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#models-with-interactions">
-   Models with “interactions”
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#removing-the-additive-assumption">
-     Removing the additive assumption
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#examples-of-common-interactions">
-     Examples of common interactions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#double-dissociations">
-       Double dissociations
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discovering-interactions-with-data-visualization">
-     Discovering interactions with data visualization
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#first-steps-main-effects-pt-1">
-       First steps: main effects (pt. 1)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#first-steps-main-effects-pt-2">
-       First steps: main effects (pt. 2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       Solution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#testing-for-interactions-with-statsmodels">
-     Testing for interactions with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       statsmodels
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#model-output">
-       Model output
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-parameters">
-       Interpreting parameters
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#which-predictors-matter">
-   Which predictors
-   <em>
-    matter
-   </em>
-   ?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-problem-of-too-many-parameters">
-     The problem of too many parameters
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#building-intuition-comparing-r-2">
-     Building intuition: Comparing
-     <span class="math notranslate nohighlight">
-      \(R^2\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introducing-subset-selection">
-     Introducing subset selection
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#best-subset-selection">
-       Best subset selection
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#an-ideal-but-intractable-solution">
-         An ideal but intractable solution
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#forward-selection">
-       Forward selection
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#sub-optimal-but-computationally-efficient">
-         Sub-optimal, but computationally efficient
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#backward-selection">
-       Backward selection
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id6">
-         Sub-optimal, but computationally efficient
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#identifying-the-best-model">
-     Identifying the “best” model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adjusted-r-2-a-decent-workaround">
-       Adjusted
-       <span class="math notranslate nohighlight">
-        \(R^2\)
-       </span>
-       : a decent workaround
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adjusted-r-2-a-simulation">
-       Adjusted
-       <span class="math notranslate nohighlight">
-        \(R^2\)
-       </span>
-       : a simulation
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#extracting-adjusted-r-2-from-statsmodels">
-       Extracting adjusted
-       <span class="math notranslate nohighlight">
-        \(R^2\)
-       </span>
-       from
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         statsmodels
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stepwise-selection-in-practice">
-     Stepwise selection in practice
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-1-null-model">
-       Step 1: Null model
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-univariate-models">
-       Step 2: univariate models
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-adding-more-parameters">
-       Step 3: Adding more parameters
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-our-results">
-       Interpreting our results
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conclusion">
-     Conclusion
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Multiple regression</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#libraries">
-   Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-multiple-regression">
-   Why multiple regression?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-curious-case-of-ice-cream-sales-and-shark-attacks">
-     The curious case of ice cream sales and shark attacks
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparing-icecreamsales-to-sharkattacks">
-       Comparing
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         IceCreamSales
-        </span>
-       </code>
-       to
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         SharkAttacks
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#testing-with-univariate-linear-regression">
-       Testing with univariate linear regression
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#temperature-and-sharkattacks-are-also-correlated">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Temperature
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         SharkAttacks
-        </span>
-       </code>
-       are also correlated
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#so-are-temperature-and-icecreamsales">
-       So are
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Temperature
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         IceCreamSales
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adjusting-for-temperature">
-       Adjusting for
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Temperature
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reason-1-adjusting-for-confounds">
-     Reason 1: Adjusting for confounds
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reason-2-better-models">
-     Reason 2: Better models.
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementing-and-interpreting-multiple-regression-models">
-   Implementing and interpreting multiple regression models
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#predicting-california-housing-prices">
-     Predicting California housing prices
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-housing-median-age-and-median-income">
-       Using
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         housing_median_age
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         median_income
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpreting-our-parameters">
-     Interpreting our parameters
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#writing-our-model-as-a-linear-equation">
-       Writing our model as a
-       <em>
-        linear equation
-       </em>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-the-intercept">
-       Interpreting the
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Intercept
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-beta-age">
-       Interpreting
-       <span class="math notranslate nohighlight">
-        \(\beta_{age}\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-beta-income">
-       Interpreting
-       <span class="math notranslate nohighlight">
-        \(\beta_{income}\)
-       </span>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#putting-it-all-together">
-     Putting it all together
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluating-our-model">
-     Evaluating our model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#solution">
-       Solution
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#visualizing-differences-in-r-2">
-       Visualizing differences in
-       <span class="math notranslate nohighlight">
-        \(R^2\)
-       </span>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#models-with-interactions">
-   Models with “interactions”
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#removing-the-additive-assumption">
-     Removing the additive assumption
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#examples-of-common-interactions">
-     Examples of common interactions
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#double-dissociations">
-       Double dissociations
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discovering-interactions-with-data-visualization">
-     Discovering interactions with data visualization
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#first-steps-main-effects-pt-1">
-       First steps: main effects (pt. 1)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#first-steps-main-effects-pt-2">
-       First steps: main effects (pt. 2)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       Solution
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#testing-for-interactions-with-statsmodels">
-     Testing for interactions with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       statsmodels
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#model-output">
-       Model output
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-parameters">
-       Interpreting parameters
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#which-predictors-matter">
-   Which predictors
-   <em>
-    matter
-   </em>
-   ?
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-problem-of-too-many-parameters">
-     The problem of too many parameters
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#building-intuition-comparing-r-2">
-     Building intuition: Comparing
-     <span class="math notranslate nohighlight">
-      \(R^2\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introducing-subset-selection">
-     Introducing subset selection
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#best-subset-selection">
-       Best subset selection
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#an-ideal-but-intractable-solution">
-         An ideal but intractable solution
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#forward-selection">
-       Forward selection
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#sub-optimal-but-computationally-efficient">
-         Sub-optimal, but computationally efficient
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#backward-selection">
-       Backward selection
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#id6">
-         Sub-optimal, but computationally efficient
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#identifying-the-best-model">
-     Identifying the “best” model
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adjusted-r-2-a-decent-workaround">
-       Adjusted
-       <span class="math notranslate nohighlight">
-        \(R^2\)
-       </span>
-       : a decent workaround
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#adjusted-r-2-a-simulation">
-       Adjusted
-       <span class="math notranslate nohighlight">
-        \(R^2\)
-       </span>
-       : a simulation
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#extracting-adjusted-r-2-from-statsmodels">
-       Extracting adjusted
-       <span class="math notranslate nohighlight">
-        \(R^2\)
-       </span>
-       from
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         statsmodels
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stepwise-selection-in-practice">
-     Stepwise selection in practice
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-1-null-model">
-       Step 1: Null model
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-univariate-models">
-       Step 2: univariate models
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-adding-more-parameters">
-       Step 3: Adding more parameters
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#interpreting-our-results">
-       Interpreting our results
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conclusion">
-     Conclusion
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multiple regression</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-multiple-regression">Why multiple regression?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curious-case-of-ice-cream-sales-and-shark-attacks">The curious case of ice cream sales and shark attacks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-icecreamsales-to-sharkattacks">Comparing <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code> to <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-univariate-linear-regression">Testing with univariate linear regression</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-and-sharkattacks-are-also-correlated"><code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code> are also correlated</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#so-are-temperature-and-icecreamsales">So are <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-temperature">Adjusting for <code class="docutils literal notranslate"><span class="pre">Temperature</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reason-1-adjusting-for-confounds">Reason 1: Adjusting for confounds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reason-2-better-models">Reason 2: Better models.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-and-interpreting-multiple-regression-models">Implementing and interpreting multiple regression models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-california-housing-prices">Predicting California housing prices</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-housing-median-age-and-median-income">Using <code class="docutils literal notranslate"><span class="pre">housing_median_age</span></code> and <code class="docutils literal notranslate"><span class="pre">median_income</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-our-parameters">Interpreting our parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-our-model-as-a-linear-equation">Writing our model as a <em>linear equation</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-intercept">Interpreting the <code class="docutils literal notranslate"><span class="pre">Intercept</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-beta-age">Interpreting <span class="math notranslate nohighlight">\(\beta_{age}\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-beta-income">Interpreting <span class="math notranslate nohighlight">\(\beta_{income}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-all-together">Putting it all together</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-our-model">Evaluating our model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-differences-in-r-2">Visualizing differences in <span class="math notranslate nohighlight">\(R^2\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models-with-interactions">Models with “interactions”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-the-additive-assumption">Removing the additive assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-common-interactions">Examples of common interactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#double-dissociations">Double dissociations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-interactions-with-data-visualization">Discovering interactions with data visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps-main-effects-pt-1">First steps: main effects (pt. 1)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps-main-effects-pt-2">First steps: main effects (pt. 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-for-interactions-with-statsmodels">Testing for interactions with <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-output">Model output</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-parameters">Interpreting parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-predictors-matter">Which predictors <em>matter</em>?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-of-too-many-parameters">The problem of too many parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-intuition-comparing-r-2">Building intuition: Comparing <span class="math notranslate nohighlight">\(R^2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-subset-selection">Introducing subset selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-subset-selection">Best subset selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#an-ideal-but-intractable-solution">An ideal but intractable solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-selection">Forward selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-optimal-but-computationally-efficient">Sub-optimal, but computationally efficient</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-selection">Backward selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Sub-optimal, but computationally efficient</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-best-model">Identifying the “best” model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-r-2-a-decent-workaround">Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>: a decent workaround</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-r-2-a-simulation">Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>: a simulation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-adjusted-r-2-from-statsmodels">Extracting adjusted <span class="math notranslate nohighlight">\(R^2\)</span> from <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stepwise-selection-in-practice">Stepwise selection in practice</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-null-model">Step 1: Null model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-univariate-models">Step 2: univariate models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-adding-more-parameters">Step 3: Adding more parameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-our-results">Interpreting our results</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="multiple-regression">
-<h1>Multiple regression<a class="headerlink" href="#multiple-regression" title="Permalink to this headline">#</a></h1>
+<h1>Multiple regression<a class="headerlink" href="#multiple-regression" title="Permalink to this heading">#</a></h1>
 <section id="libraries">
-<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">#</a></h2>
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Imports</span>
@@ -1364,7 +527,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="goals-of-this-lecture">
-<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this headline">#</a></h2>
+<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Regression with <strong>multiple predictors</strong>: why?</p></li>
 <li><p>Implementing and interpreting models with multiple predictors.</p></li>
@@ -1373,13 +536,13 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="why-multiple-regression">
-<h2>Why multiple regression?<a class="headerlink" href="#why-multiple-regression" title="Permalink to this headline">#</a></h2>
+<h2>Why multiple regression?<a class="headerlink" href="#why-multiple-regression" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p><strong>Multiple regression</strong> means building a regression model (e.g., linear regression) with <em>more than one predictor</em>.</p>
 </div></blockquote>
 <p>Why might we want to do this?</p>
 <section id="the-curious-case-of-ice-cream-sales-and-shark-attacks">
-<h3>The curious case of ice cream sales and shark attacks<a class="headerlink" href="#the-curious-case-of-ice-cream-sales-and-shark-attacks" title="Permalink to this headline">#</a></h3>
+<h3>The curious case of ice cream sales and shark attacks<a class="headerlink" href="#the-curious-case-of-ice-cream-sales-and-shark-attacks" title="Permalink to this heading">#</a></h3>
 <p>Many <a class="reference external" href="https://uclspp.github.io/PUBLG100/">datasets</a> find a <em>correlation</em> between the number of ice cream sales in a given month and the number of shark attacks in that month.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1428,7 +591,7 @@ title="Print to PDF"
 </div></div></div>
 </div>
 <section id="comparing-icecreamsales-to-sharkattacks">
-<h4>Comparing <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code> to <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code><a class="headerlink" href="#comparing-icecreamsales-to-sharkattacks" title="Permalink to this headline">#</a></h4>
+<h4>Comparing <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code> to <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code><a class="headerlink" href="#comparing-icecreamsales-to-sharkattacks" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_sharks</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;IceCreamSales&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;SharkAttacks&quot;</span><span class="p">)</span>
@@ -1436,15 +599,19 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa8882d1910&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/seantrott/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_9_1.png" src="../_images/15-multiple-regression_9_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x13ecc0b50&gt;
+</pre></div>
+</div>
+<img alt="../_images/7bc48973d8830c14dc795c80925b21229f3e84331a84566ca5264b4e7f3d48c7.png" src="../_images/7bc48973d8830c14dc795c80925b21229f3e84331a84566ca5264b4e7f3d48c7.png" />
 </div>
 </div>
 </section>
 <section id="testing-with-univariate-linear-regression">
-<h4>Testing with univariate linear regression<a class="headerlink" href="#testing-with-univariate-linear-regression" title="Permalink to this headline">#</a></h4>
+<h4>Testing with univariate linear regression<a class="headerlink" href="#testing-with-univariate-linear-regression" title="Permalink to this heading">#</a></h4>
 <p>In a univariate linear model, <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code> is significantly predictive of <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code> (<span class="math notranslate nohighlight">\(p &lt; .001\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1477,11 +644,11 @@ dtype: float64
 </div>
 </section>
 <section id="check-in">
-<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this heading">#</a></h4>
 <p>What other variable might be <em>correlated</em> with both <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code> and <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code>?</p>
 </section>
 <section id="temperature-and-sharkattacks-are-also-correlated">
-<h4><code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code> are also correlated<a class="headerlink" href="#temperature-and-sharkattacks-are-also-correlated" title="Permalink to this headline">#</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code> are also correlated<a class="headerlink" href="#temperature-and-sharkattacks-are-also-correlated" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_sharks</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;SharkAttacks&quot;</span><span class="p">)</span>
@@ -1489,15 +656,19 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa888d0da60&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/seantrott/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_15_1.png" src="../_images/15-multiple-regression_15_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x13f8eed50&gt;
+</pre></div>
+</div>
+<img alt="../_images/bf773e55bd76622c00db05f33fbd6ab33a8bcd2ac60cbabbe08d0f0b56de8151.png" src="../_images/bf773e55bd76622c00db05f33fbd6ab33a8bcd2ac60cbabbe08d0f0b56de8151.png" />
 </div>
 </div>
 </section>
 <section id="so-are-temperature-and-icecreamsales">
-<h4>So are <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code><a class="headerlink" href="#so-are-temperature-and-icecreamsales" title="Permalink to this headline">#</a></h4>
+<h4>So are <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code><a class="headerlink" href="#so-are-temperature-and-icecreamsales" title="Permalink to this heading">#</a></h4>
 <p>(Though there also appears to be distinct <strong>clustering</strong>, possibly by <code class="docutils literal notranslate"><span class="pre">Month</span></code>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1506,15 +677,15 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Temperature&#39;, ylabel=&#39;IceCreamSales&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Temperature&#39;, ylabel=&#39;IceCreamSales&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_17_1.png" src="../_images/15-multiple-regression_17_1.png" />
+<img alt="../_images/b0f83354e0c07201ac925586bda62647e884836dd9fd69e3206603abe81074ac.png" src="../_images/b0f83354e0c07201ac925586bda62647e884836dd9fd69e3206603abe81074ac.png" />
 </div>
 </div>
 </section>
 <section id="adjusting-for-temperature">
-<h4>Adjusting for <code class="docutils literal notranslate"><span class="pre">Temperature</span></code><a class="headerlink" href="#adjusting-for-temperature" title="Permalink to this headline">#</a></h4>
+<h4>Adjusting for <code class="docutils literal notranslate"><span class="pre">Temperature</span></code><a class="headerlink" href="#adjusting-for-temperature" title="Permalink to this heading">#</a></h4>
 <p>It’s plausible to imagine that higher <strong>temperatures</strong> have a <strong>causal impact</strong> on:</p>
 <ul class="simple">
 <li><p>People going to the beach (raising the likelihood of <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code>).</p></li>
@@ -1555,14 +726,14 @@ dtype: float64
 </section>
 </section>
 <section id="reason-1-adjusting-for-confounds">
-<h3>Reason 1: Adjusting for confounds<a class="headerlink" href="#reason-1-adjusting-for-confounds" title="Permalink to this headline">#</a></h3>
+<h3>Reason 1: Adjusting for confounds<a class="headerlink" href="#reason-1-adjusting-for-confounds" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>One reason to add <em>multiple variables</em> to a linear model is to <strong>adjust for confounding variables</strong>.</p>
 </div></blockquote>
 <p>This allows you to identify the <strong>independent effect</strong> of two or more <span class="math notranslate nohighlight">\(X\)</span> variables on <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 </section>
 <section id="reason-2-better-models">
-<h3>Reason 2: Better models.<a class="headerlink" href="#reason-2-better-models" title="Permalink to this headline">#</a></h3>
+<h3>Reason 2: Better models.<a class="headerlink" href="#reason-2-better-models" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>Typically, adding more parameters (<span class="math notranslate nohighlight">\(p\)</span>) <strong>improves model fit</strong>.</p>
 </div></blockquote>
@@ -1570,9 +741,9 @@ dtype: float64
 </section>
 </section>
 <section id="implementing-and-interpreting-multiple-regression-models">
-<h2>Implementing and interpreting multiple regression models<a class="headerlink" href="#implementing-and-interpreting-multiple-regression-models" title="Permalink to this headline">#</a></h2>
+<h2>Implementing and interpreting multiple regression models<a class="headerlink" href="#implementing-and-interpreting-multiple-regression-models" title="Permalink to this heading">#</a></h2>
 <section id="predicting-california-housing-prices">
-<h3>Predicting California housing prices<a class="headerlink" href="#predicting-california-housing-prices" title="Permalink to this headline">#</a></h3>
+<h3>Predicting California housing prices<a class="headerlink" href="#predicting-california-housing-prices" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Presumably, many different factors determine the price of house.</p></li>
 <li><p>Rather than considering each in isolation, we can consider them together.</p></li>
@@ -1648,7 +819,7 @@ dtype: float64
 </div></div></div>
 </div>
 <section id="using-housing-median-age-and-median-income">
-<h4>Using <code class="docutils literal notranslate"><span class="pre">housing_median_age</span></code> and <code class="docutils literal notranslate"><span class="pre">median_income</span></code><a class="headerlink" href="#using-housing-median-age-and-median-income" title="Permalink to this headline">#</a></h4>
+<h4>Using <code class="docutils literal notranslate"><span class="pre">housing_median_age</span></code> and <code class="docutils literal notranslate"><span class="pre">median_income</span></code><a class="headerlink" href="#using-housing-median-age-and-median-income" title="Permalink to this heading">#</a></h4>
 <p>To start, let’s use both the <em>median age of houses</em> as well as the <em>median income</em> in a neighborhood.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1661,7 +832,7 @@ dtype: float64
 </section>
 </section>
 <section id="interpreting-our-parameters">
-<h3>Interpreting our parameters<a class="headerlink" href="#interpreting-our-parameters" title="Permalink to this headline">#</a></h3>
+<h3>Interpreting our parameters<a class="headerlink" href="#interpreting-our-parameters" title="Permalink to this heading">#</a></h3>
 <p>With multiple regression, each coefficient <span class="math notranslate nohighlight">\(\beta_j\)</span> reflects:</p>
 <ul class="simple">
 <li><p><strong>Amount of change</strong> in <span class="math notranslate nohighlight">\(Y\)</span> associated with changes in <span class="math notranslate nohighlight">\(X_j\)</span>…</p></li>
@@ -1684,18 +855,18 @@ dtype: float64
 </div>
 </div>
 <section id="id1">
-<h4>Check-in<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>How would you write this as a <em>linear equation</em>?</p>
 </section>
 <section id="writing-our-model-as-a-linear-equation">
-<h4>Writing our model as a <em>linear equation</em><a class="headerlink" href="#writing-our-model-as-a-linear-equation" title="Permalink to this headline">#</a></h4>
+<h4>Writing our model as a <em>linear equation</em><a class="headerlink" href="#writing-our-model-as-a-linear-equation" title="Permalink to this heading">#</a></h4>
 <p>With two predictors, our model looks like this:</p>
 <p><span class="math notranslate nohighlight">\(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2\)</span></p>
 <p>So in this case, it’d look like:</p>
 <p><span class="math notranslate nohighlight">\(Y = -10189 + 1744 * X_{age} + 43169 * X_{income}\)</span></p>
 </section>
 <section id="interpreting-the-intercept">
-<h4>Interpreting the <code class="docutils literal notranslate"><span class="pre">Intercept</span></code><a class="headerlink" href="#interpreting-the-intercept" title="Permalink to this headline">#</a></h4>
+<h4>Interpreting the <code class="docutils literal notranslate"><span class="pre">Intercept</span></code><a class="headerlink" href="#interpreting-the-intercept" title="Permalink to this heading">#</a></h4>
 <p>With this equation, the <code class="docutils literal notranslate"><span class="pre">Intercept</span></code> is the predicted price of houses that are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
@@ -1705,18 +876,18 @@ dtype: float64
 <p>Which ends up being a <strong>negative value</strong> (weirdly).</p>
 </section>
 <section id="interpreting-beta-age">
-<h4>Interpreting <span class="math notranslate nohighlight">\(\beta_{age}\)</span><a class="headerlink" href="#interpreting-beta-age" title="Permalink to this headline">#</a></h4>
+<h4>Interpreting <span class="math notranslate nohighlight">\(\beta_{age}\)</span><a class="headerlink" href="#interpreting-beta-age" title="Permalink to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(\beta_{age}\)</span> refers to the <strong>predicted increase</strong> in a house’s price, for each 1-unit increase in <code class="docutils literal notranslate"><span class="pre">age</span></code>…while holding <code class="docutils literal notranslate"><span class="pre">income</span></code> constant!</p>
 <p><span class="math notranslate nohighlight">\(Y = -10189 + 1744 * X_{age} + 43169 * X_{income}\)</span></p>
 </section>
 <section id="interpreting-beta-income">
-<h4>Interpreting <span class="math notranslate nohighlight">\(\beta_{income}\)</span><a class="headerlink" href="#interpreting-beta-income" title="Permalink to this headline">#</a></h4>
+<h4>Interpreting <span class="math notranslate nohighlight">\(\beta_{income}\)</span><a class="headerlink" href="#interpreting-beta-income" title="Permalink to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(\beta_{income}\)</span> refers to the <strong>predicted increase</strong> in a house’s price, for each 1-unit increase in <code class="docutils literal notranslate"><span class="pre">income</span></code>…while holding <code class="docutils literal notranslate"><span class="pre">age</span></code> constant!</p>
 <p><span class="math notranslate nohighlight">\(Y = -10189 + 1744 * X_{age} + 43169 * X_{income}\)</span></p>
 </section>
 </section>
 <section id="putting-it-all-together">
-<h3>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">#</a></h3>
+<h3>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Any <em>given observation</em>, of course, has both an <code class="docutils literal notranslate"><span class="pre">age</span></code> and an <code class="docutils literal notranslate"><span class="pre">income</span></code>.</p></li>
 <li><p>Thus, the model reflects <span class="math notranslate nohighlight">\(\hat{Y}\)</span> for a <em>particular</em> <code class="docutils literal notranslate"><span class="pre">age</span></code> and a particular <code class="docutils literal notranslate"><span class="pre">income</span></code>.</p></li>
@@ -1762,7 +933,7 @@ dtype: float64
 </div>
 </section>
 <section id="evaluating-our-model">
-<h3>Evaluating our model<a class="headerlink" href="#evaluating-our-model" title="Permalink to this headline">#</a></h3>
+<h3>Evaluating our model<a class="headerlink" href="#evaluating-our-model" title="Permalink to this heading">#</a></h3>
 <p>Typically, models with more parameters (<span class="math notranslate nohighlight">\(p\)</span>) have better <strong>fit</strong>, e.g., higher <span class="math notranslate nohighlight">\(R^2\)</span> and lower <span class="math notranslate nohighlight">\(S_{Y|X}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1772,7 +943,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5091195899765227
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5091195899765238
 </pre></div>
 </div>
 </div>
@@ -1785,13 +956,13 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80853.38432785706
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80853.38432785697
 </pre></div>
 </div>
 </div>
 </div>
 <section id="id2">
-<h4>Check-in<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <p>Build two <em>univariate</em> regression models, predicting <code class="docutils literal notranslate"><span class="pre">median_house_value</span></code> from each of the two predictors considered below (i.e., a model for <code class="docutils literal notranslate"><span class="pre">age</span></code> and a model for <code class="docutils literal notranslate"><span class="pre">income</span></code>). What is the <span class="math notranslate nohighlight">\(R^2\)</span> of each of these models?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1802,7 +973,7 @@ dtype: float64
 </div>
 </section>
 <section id="solution">
-<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod_age</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_housing</span><span class="p">,</span>
@@ -1821,15 +992,15 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.011156305266710742
-0.47344749180719903
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.011156305266713185
+0.4734474918071987
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="visualizing-differences-in-r-2">
-<h4>Visualizing differences in <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#visualizing-differences-in-r-2" title="Permalink to this headline">#</a></h4>
+<h4>Visualizing differences in <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#visualizing-differences-in-r-2" title="Permalink to this heading">#</a></h4>
 <p><strong>Building intuition</strong>: Based on this visualization, which variable of the two do you think seems more important? (Coming up later this lecture!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1840,19 +1011,19 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;R^2&#39;, ylabel=&#39;Predictors&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;R^2&#39;, ylabel=&#39;Predictors&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_48_1.png" src="../_images/15-multiple-regression_48_1.png" />
+<img alt="../_images/126839ddec69a36c2ef879d750ee45dbd312ddf9437fbfae109e308d38d52304.png" src="../_images/126839ddec69a36c2ef879d750ee45dbd312ddf9437fbfae109e308d38d52304.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="models-with-interactions">
-<h2>Models with “interactions”<a class="headerlink" href="#models-with-interactions" title="Permalink to this headline">#</a></h2>
+<h2>Models with “interactions”<a class="headerlink" href="#models-with-interactions" title="Permalink to this heading">#</a></h2>
 <section id="removing-the-additive-assumption">
-<h3>Removing the additive assumption<a class="headerlink" href="#removing-the-additive-assumption" title="Permalink to this headline">#</a></h3>
+<h3>Removing the additive assumption<a class="headerlink" href="#removing-the-additive-assumption" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>An <strong>“interaction effect”</strong> occurs when the effect of one variable (<span class="math notranslate nohighlight">\(X_1\)</span>) depends on the value of another variable (<span class="math notranslate nohighlight">\(X_2\)</span>).</p>
 </div></blockquote>
@@ -1870,7 +1041,7 @@ dtype: float64
 </ul>
 </section>
 <section id="examples-of-common-interactions">
-<h3>Examples of common interactions<a class="headerlink" href="#examples-of-common-interactions" title="Permalink to this headline">#</a></h3>
+<h3>Examples of common interactions<a class="headerlink" href="#examples-of-common-interactions" title="Permalink to this heading">#</a></h3>
 <p>Interaction effects are often easiest to observe and understand between two <strong>categorical variables</strong>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Treatment</span> <span class="pre">x</span> <span class="pre">Gender</span></code>: <code class="docutils literal notranslate"><span class="pre">Treatment</span></code> works in <code class="docutils literal notranslate"><span class="pre">males</span></code> but not <code class="docutils literal notranslate"><span class="pre">females</span></code>.</p></li>
@@ -1882,7 +1053,7 @@ dtype: float64
 </li>
 </ul>
 <section id="double-dissociations">
-<h4>Double dissociations<a class="headerlink" href="#double-dissociations" title="Permalink to this headline">#</a></h4>
+<h4>Double dissociations<a class="headerlink" href="#double-dissociations" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>In neuroscience, a <a class="reference external" href="https://dictionary.apa.org/double-dissociation"><strong>double dissociation</strong></a> is a demonstration that two brain areas (or biological systems) have <em>independent</em> or <em>localizable</em> effects.</p>
 </div></blockquote>
@@ -1897,16 +1068,16 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Region&#39;, ylabel=&#39;Performance&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Region&#39;, ylabel=&#39;Performance&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_53_1.png" src="../_images/15-multiple-regression_53_1.png" />
+<img alt="../_images/29fe80e350a58e0c07f068423dca03188c35014399864f8a9c6dab978d1db0a6.png" src="../_images/29fe80e350a58e0c07f068423dca03188c35014399864f8a9c6dab978d1db0a6.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="discovering-interactions-with-data-visualization">
-<h3>Discovering interactions with data visualization<a class="headerlink" href="#discovering-interactions-with-data-visualization" title="Permalink to this headline">#</a></h3>
+<h3>Discovering interactions with data visualization<a class="headerlink" href="#discovering-interactions-with-data-visualization" title="Permalink to this heading">#</a></h3>
 <p>As a first illustration of an interaction between <strong>categorical</strong> and <strong>continuous</strong> variable, let’s consider the <code class="docutils literal notranslate"><span class="pre">mtcars</span></code> dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1999,7 +1170,7 @@ dtype: float64
 </div></div></div>
 </div>
 <section id="first-steps-main-effects-pt-1">
-<h4>First steps: main effects (pt. 1)<a class="headerlink" href="#first-steps-main-effects-pt-1" title="Permalink to this headline">#</a></h4>
+<h4>First steps: main effects (pt. 1)<a class="headerlink" href="#first-steps-main-effects-pt-1" title="Permalink to this heading">#</a></h4>
 <p>This dataset contains at least two <em>main effects</em>: a correlation between <code class="docutils literal notranslate"><span class="pre">wt</span></code> and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>, and a correlation between <code class="docutils literal notranslate"><span class="pre">am</span></code> (automatic = 0, manual = 1) and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2008,15 +1179,15 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;wt&#39;, ylabel=&#39;mpg&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;wt&#39;, ylabel=&#39;mpg&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_57_1.png" src="../_images/15-multiple-regression_57_1.png" />
+<img alt="../_images/fb668f67f8f0516076ddc3deda6cf2238731fddf9d6535bbd16799e93c9173e8.png" src="../_images/fb668f67f8f0516076ddc3deda6cf2238731fddf9d6535bbd16799e93c9173e8.png" />
 </div>
 </div>
 </section>
 <section id="first-steps-main-effects-pt-2">
-<h4>First steps: main effects (pt. 2)<a class="headerlink" href="#first-steps-main-effects-pt-2" title="Permalink to this headline">#</a></h4>
+<h4>First steps: main effects (pt. 2)<a class="headerlink" href="#first-steps-main-effects-pt-2" title="Permalink to this heading">#</a></h4>
 <p>This dataset contains at least two <em>main effects</em>: a correlation between <code class="docutils literal notranslate"><span class="pre">wt</span></code> and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>, and a correlation between <code class="docutils literal notranslate"><span class="pre">am</span></code> (automatic = 0, manual = 1) and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2025,15 +1196,15 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;am&#39;, ylabel=&#39;mpg&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;am&#39;, ylabel=&#39;mpg&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_59_1.png" src="../_images/15-multiple-regression_59_1.png" />
+<img alt="../_images/0ec3160ea8c0e6163fc8ad5fda6e3d4dd480a65757610df4677e9604ecf76a63.png" src="../_images/0ec3160ea8c0e6163fc8ad5fda6e3d4dd480a65757610df4677e9604ecf76a63.png" />
 </div>
 </div>
 </section>
 <section id="id3">
-<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <p>How could we use <strong>data visualization</strong> to ask whether <code class="docutils literal notranslate"><span class="pre">wt</span></code> and <code class="docutils literal notranslate"><span class="pre">am</span></code> have an <strong>interaction effect</strong> on <code class="docutils literal notranslate"><span class="pre">mpg</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2044,7 +1215,7 @@ dtype: float64
 </div>
 </section>
 <section id="id4">
-<h4>Solution<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<h4>Solution<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_cars</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;am&quot;</span><span class="p">)</span>
@@ -2052,22 +1223,26 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa89d46cdf0&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/seantrott/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_63_1.png" src="../_images/15-multiple-regression_63_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x13fb2f790&gt;
+</pre></div>
+</div>
+<img alt="../_images/db027dab874c41cee9274c0d83d7cdd76be9002ab92d2a8fcd90ef32de713929.png" src="../_images/db027dab874c41cee9274c0d83d7cdd76be9002ab92d2a8fcd90ef32de713929.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="testing-for-interactions-with-statsmodels">
-<h3>Testing for interactions with <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code><a class="headerlink" href="#testing-for-interactions-with-statsmodels" title="Permalink to this headline">#</a></h3>
+<h3>Testing for interactions with <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code><a class="headerlink" href="#testing-for-interactions-with-statsmodels" title="Permalink to this heading">#</a></h3>
 <p>In <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>, an <strong>interaction term</strong> can be added between two variables using the <code class="docutils literal notranslate"><span class="pre">*</span></code> syntax (rather than <code class="docutils literal notranslate"><span class="pre">+</span></code>):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;Y ~ X1 * X2`</span>
 </pre></div>
 </div>
 <section id="id5">
-<h4>Check-in<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
 <p>Build a linear model predicting <code class="docutils literal notranslate"><span class="pre">mpg</span></code>, with an interaction between <code class="docutils literal notranslate"><span class="pre">am</span></code> and <code class="docutils literal notranslate"><span class="pre">wt</span></code>. What can we conclude about the result?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2078,7 +1253,7 @@ dtype: float64
 </div>
 </section>
 <section id="model-output">
-<h4>Model output<a class="headerlink" href="#model-output" title="Permalink to this headline">#</a></h4>
+<h4>Model output<a class="headerlink" href="#model-output" title="Permalink to this heading">#</a></h4>
 <p>The <span class="math notranslate nohighlight">\(p\)</span>-value for <code class="docutils literal notranslate"><span class="pre">wt:am</span></code> is significant, suggesting a significant interaction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2100,10 +1275,10 @@ dtype: float64
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   46.57</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Mon, 13 Mar 2023</td> <th>  Prob (F-statistic):</th> <td>5.21e-11</td>
+  <th>Date:</th>             <td>Sun, 07 Jan 2024</td> <th>  Prob (F-statistic):</th> <td>5.21e-11</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>12:31:52</td>     <th>  Log-Likelihood:    </th> <td> -73.738</td>
+  <th>Time:</th>                 <td>14:27:14</td>     <th>  Log-Likelihood:    </th> <td> -73.738</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    32</td>      <th>  AIC:               </th> <td>   155.5</td>
@@ -2152,7 +1327,7 @@ dtype: float64
 </div>
 </section>
 <section id="interpreting-parameters">
-<h4>Interpreting parameters<a class="headerlink" href="#interpreting-parameters" title="Permalink to this headline">#</a></h4>
+<h4>Interpreting parameters<a class="headerlink" href="#interpreting-parameters" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">wt</span></code>: negative slope, i.e., heavier cars have lower <code class="docutils literal notranslate"><span class="pre">mpg</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">am</span></code>: positive slope, i.e., manual cars have higher <code class="docutils literal notranslate"><span class="pre">mpg</span></code>.</p></li>
@@ -2179,9 +1354,9 @@ dtype: float64
 </section>
 </section>
 <section id="which-predictors-matter">
-<h2>Which predictors <em>matter</em>?<a class="headerlink" href="#which-predictors-matter" title="Permalink to this headline">#</a></h2>
+<h2>Which predictors <em>matter</em>?<a class="headerlink" href="#which-predictors-matter" title="Permalink to this heading">#</a></h2>
 <section id="the-problem-of-too-many-parameters">
-<h3>The problem of too many parameters<a class="headerlink" href="#the-problem-of-too-many-parameters" title="Permalink to this headline">#</a></h3>
+<h3>The problem of too many parameters<a class="headerlink" href="#the-problem-of-too-many-parameters" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Adding more parameters will always at least <em>slightly</em> improve the model.</p></li>
 <li><p>But too many parameters can also lead to <strong>overfitting</strong> (coming up!).</p></li>
@@ -2191,7 +1366,7 @@ dtype: float64
 <p>There are <strong>many approaches</strong> to identifying which parameters matter the most.</p>
 </section>
 <section id="building-intuition-comparing-r-2">
-<h3>Building intuition: Comparing <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#building-intuition-comparing-r-2" title="Permalink to this headline">#</a></h3>
+<h3>Building intuition: Comparing <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#building-intuition-comparing-r-2" title="Permalink to this heading">#</a></h3>
 <p>A visual comparison of <span class="math notranslate nohighlight">\(R^2\)</span> for models with different predictors helps build intuition.</p>
 <p>What is the <strong>relative improvement</strong> in the “full” model (<code class="docutils literal notranslate"><span class="pre">Age</span> <span class="pre">+</span> <span class="pre">Income</span></code>) compared to each of the “simpler” models (<code class="docutils literal notranslate"><span class="pre">Age</span></code> vs. <code class="docutils literal notranslate"><span class="pre">Income</span></code>)?</p>
 <div class="cell docutils container">
@@ -2201,15 +1376,15 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;R^2&#39;, ylabel=&#39;Predictors&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;R^2&#39;, ylabel=&#39;Predictors&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_74_1.png" src="../_images/15-multiple-regression_74_1.png" />
+<img alt="../_images/126839ddec69a36c2ef879d750ee45dbd312ddf9437fbfae109e308d38d52304.png" src="../_images/126839ddec69a36c2ef879d750ee45dbd312ddf9437fbfae109e308d38d52304.png" />
 </div>
 </div>
 </section>
 <section id="introducing-subset-selection">
-<h3>Introducing subset selection<a class="headerlink" href="#introducing-subset-selection" title="Permalink to this headline">#</a></h3>
+<h3>Introducing subset selection<a class="headerlink" href="#introducing-subset-selection" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p><strong>Subset selection</strong> refers to identifying the subset of <span class="math notranslate nohighlight">\(p\)</span> predictors that are most related to the response, i.e., result in the “best” model.</p>
 </div></blockquote>
@@ -2223,7 +1398,7 @@ dtype: float64
 </li>
 </ul>
 <section id="best-subset-selection">
-<h4>Best subset selection<a class="headerlink" href="#best-subset-selection" title="Permalink to this headline">#</a></h4>
+<h4>Best subset selection<a class="headerlink" href="#best-subset-selection" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>In <strong>Best subset selection</strong>, you fit a separate model for each combination of <span class="math notranslate nohighlight">\(p\)</span> predictors.</p>
 </div></blockquote>
@@ -2234,7 +1409,7 @@ dtype: float64
 </ul>
 <p>Why might this be challenging to do in practice?</p>
 <section id="an-ideal-but-intractable-solution">
-<h5>An ideal but intractable solution<a class="headerlink" href="#an-ideal-but-intractable-solution" title="Permalink to this headline">#</a></h5>
+<h5>An ideal but intractable solution<a class="headerlink" href="#an-ideal-but-intractable-solution" title="Permalink to this heading">#</a></h5>
 <blockquote>
 <div><p>As <span class="math notranslate nohighlight">\(p\)</span> increases, the number of possible models <em>also</em> increases. There are approximately <span class="math notranslate nohighlight">\(2^p\)</span> models considering <span class="math notranslate nohighlight">\(p\)</span> predictors.</p>
 </div></blockquote>
@@ -2252,17 +1427,17 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Number of possible models&#39;)
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_78_1.png" src="../_images/15-multiple-regression_78_1.png" />
+<img alt="../_images/7a4789f93a7f97c97eb9fe209fbac8b1114b672a48b269b7b51aceaa5acfa022.png" src="../_images/7a4789f93a7f97c97eb9fe209fbac8b1114b672a48b269b7b51aceaa5acfa022.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="forward-selection">
-<h4>Forward selection<a class="headerlink" href="#forward-selection" title="Permalink to this headline">#</a></h4>
+<h4>Forward selection<a class="headerlink" href="#forward-selection" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>In <strong>forward stepwise selection</strong>, we add predictors to the model one at the time; at each time-step, we add the predictor that <em>best improves the model</em>.</p>
 </div></blockquote>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Start with the “null” model (no predictors), i.e., <span class="math notranslate nohighlight">\(M_{k=0}\)</span>.</p></li>
 <li><p>Build a model for each of your <span class="math notranslate nohighlight">\(p\)</span> predictors. Which one is best?</p></li>
 <li><p>Build a model with the single best predictor from (2), i.e., <span class="math notranslate nohighlight">\(M_{k=1}\)</span>.</p></li>
@@ -2270,7 +1445,7 @@ dtype: float64
 </ol>
 <p>Using this procedure, the <strong>order</strong> in which predictors are added reflects how much they improve the model.</p>
 <section id="sub-optimal-but-computationally-efficient">
-<h5>Sub-optimal, but computationally efficient<a class="headerlink" href="#sub-optimal-but-computationally-efficient" title="Permalink to this headline">#</a></h5>
+<h5>Sub-optimal, but computationally efficient<a class="headerlink" href="#sub-optimal-but-computationally-efficient" title="Permalink to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Forward selection is much more <strong>efficient</strong> than best subset selection.</p></li>
 <li><p>However, the “Best” model is not guaranteed.</p>
@@ -2282,11 +1457,11 @@ dtype: float64
 </section>
 </section>
 <section id="backward-selection">
-<h4>Backward selection<a class="headerlink" href="#backward-selection" title="Permalink to this headline">#</a></h4>
+<h4>Backward selection<a class="headerlink" href="#backward-selection" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>In <strong>backward stepwise selection</strong>, we begin with all the predictors, then take out predictors in an order that <em>least hurts</em> our model fit.</p>
 </div></blockquote>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Start with the “full” model (all predictors), i.e., <span class="math notranslate nohighlight">\(M_{k=p}\)</span>.</p></li>
 <li><p>Build a model taking out each of your <span class="math notranslate nohighlight">\(p\)</span> predictors. Which one is best?</p></li>
 <li><p>Build a new model removing the predictor from (2) that <em>least</em> hurt the model.</p></li>
@@ -2294,7 +1469,7 @@ dtype: float64
 </ol>
 <p>Using this procedure, the <strong>order</strong> in which predictors are removed corresponds to how little they help the model.</p>
 <section id="id6">
-<h5>Sub-optimal, but computationally efficient<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h5>
+<h5>Sub-optimal, but computationally efficient<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Backward selection is much more <strong>efficient</strong> than best subset selection.</p></li>
 <li><p>However, the “Best” model is not guaranteed.</p>
@@ -2307,7 +1482,7 @@ dtype: float64
 </section>
 </section>
 <section id="identifying-the-best-model">
-<h3>Identifying the “best” model<a class="headerlink" href="#identifying-the-best-model" title="Permalink to this headline">#</a></h3>
+<h3>Identifying the “best” model<a class="headerlink" href="#identifying-the-best-model" title="Permalink to this heading">#</a></h3>
 <p>To perform <strong>subset selection</strong>, we need some approach to evaluating which model is “best”.</p>
 <ul class="simple">
 <li><p><strong>Problem</strong>: Measures like <span class="math notranslate nohighlight">\(R^2\)</span>, <span class="math notranslate nohighlight">\(RSS\)</span>, etc., all <em>improve</em> as you add more parameters.</p></li>
@@ -2315,7 +1490,7 @@ dtype: float64
 </ul>
 <p>How might you go about this?</p>
 <section id="adjusted-r-2-a-decent-workaround">
-<h4>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>: a decent workaround<a class="headerlink" href="#adjusted-r-2-a-decent-workaround" title="Permalink to this headline">#</a></h4>
+<h4>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>: a decent workaround<a class="headerlink" href="#adjusted-r-2-a-decent-workaround" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>In practice, there are <em>many</em> approaches to correcting for a larger <span class="math notranslate nohighlight">\(p\)</span> (coming up soon!).</p></li>
 <li><p>For now, we’ll focus on <strong>adjusted <span class="math notranslate nohighlight">\(R^2\)</span></strong>.</p></li>
@@ -2328,7 +1503,7 @@ dtype: float64
 </ul>
 </section>
 <section id="adjusted-r-2-a-simulation">
-<h4>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>: a simulation<a class="headerlink" href="#adjusted-r-2-a-simulation" title="Permalink to this headline">#</a></h4>
+<h4>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>: a simulation<a class="headerlink" href="#adjusted-r-2-a-simulation" title="Permalink to this heading">#</a></h4>
 <p>Let’s consider a range of different models with the <em>same</em> <span class="math notranslate nohighlight">\(R^2\)</span>, but different values for <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p><strong>What do you notice about this plot?</strong></p>
 <div class="cell docutils container">
@@ -2357,12 +1532,12 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$R^2$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/15-multiple-regression_87_1.png" src="../_images/15-multiple-regression_87_1.png" />
+<img alt="../_images/b4c394f8f976d5f44a803a4e5cbe81fa4925ee14e878fb050f1d76e0c1ecf0d0.png" src="../_images/b4c394f8f976d5f44a803a4e5cbe81fa4925ee14e878fb050f1d76e0c1ecf0d0.png" />
 </div>
 </div>
 </section>
 <section id="extracting-adjusted-r-2-from-statsmodels">
-<h4>Extracting adjusted <span class="math notranslate nohighlight">\(R^2\)</span> from <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code><a class="headerlink" href="#extracting-adjusted-r-2-from-statsmodels" title="Permalink to this headline">#</a></h4>
+<h4>Extracting adjusted <span class="math notranslate nohighlight">\(R^2\)</span> from <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code><a class="headerlink" href="#extracting-adjusted-r-2-from-statsmodels" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>We can access this value using <code class="docutils literal notranslate"><span class="pre">model.rsquared_adj</span></code>.</p></li>
 <li><p>Note that it <em>can</em> be negative in some cases!</p></li>
@@ -2377,8 +1552,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5091195899765227
-0.5090720171306611
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5091195899765238
+0.5090720171306622
 </pre></div>
 </div>
 </div>
@@ -2386,10 +1561,10 @@ dtype: float64
 </section>
 </section>
 <section id="stepwise-selection-in-practice">
-<h3>Stepwise selection in practice<a class="headerlink" href="#stepwise-selection-in-practice" title="Permalink to this headline">#</a></h3>
+<h3>Stepwise selection in practice<a class="headerlink" href="#stepwise-selection-in-practice" title="Permalink to this heading">#</a></h3>
 <p>Let’s consider the case of <strong>forward stepwise selection</strong>, focusing on just these two variables predicting <code class="docutils literal notranslate"><span class="pre">median_house_value</span></code>.</p>
 <section id="step-1-null-model">
-<h4>Step 1: Null model<a class="headerlink" href="#step-1-null-model" title="Permalink to this headline">#</a></h4>
+<h4>Step 1: Null model<a class="headerlink" href="#step-1-null-model" title="Permalink to this heading">#</a></h4>
 <p>The <strong>null model</strong> can be fit by simply adding <code class="docutils literal notranslate"><span class="pre">1</span></code> as a predictor, i.e., an <code class="docutils literal notranslate"><span class="pre">Intercept</span></code>-only model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2399,14 +1574,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.220446049250313e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.9960036108132044e-15
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="step-2-univariate-models">
-<h4>Step 2: univariate models<a class="headerlink" href="#step-2-univariate-models" title="Permalink to this headline">#</a></h4>
+<h4>Step 2: univariate models<a class="headerlink" href="#step-2-univariate-models" title="Permalink to this heading">#</a></h4>
 <p>Now, we fit a model for each of our <span class="math notranslate nohighlight">\(p\)</span> predictors (<code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">income</span></code>).</p>
 <p><strong>Which parameter yields the biggest improvement in model fit?</strong></p>
 <div class="cell docutils container">
@@ -2425,15 +1600,15 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.011108391530169626
-0.47342197807000574
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.011108391530172068
+0.4734219780700054
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="step-3-adding-more-parameters">
-<h4>Step 3: Adding more parameters<a class="headerlink" href="#step-3-adding-more-parameters" title="Permalink to this headline">#</a></h4>
+<h4>Step 3: Adding more parameters<a class="headerlink" href="#step-3-adding-more-parameters" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>In step 2, we decided that <code class="docutils literal notranslate"><span class="pre">median_income</span></code> was the best parameter for the <em>univariate</em> model.</p></li>
 <li><p>Now we add <code class="docutils literal notranslate"><span class="pre">housing_median_age</span></code>.</p></li>
@@ -2447,14 +1622,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5090720171306611
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5090720171306622
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="interpreting-our-results">
-<h4>Interpreting our results<a class="headerlink" href="#interpreting-our-results" title="Permalink to this headline">#</a></h4>
+<h4>Interpreting our results<a class="headerlink" href="#interpreting-our-results" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The model with <em>both</em> predictors explains about <span class="math notranslate nohighlight">\(51\%\)</span> of the variance.</p></li>
 <li><p>The model with <code class="docutils literal notranslate"><span class="pre">age</span></code> explains about <span class="math notranslate nohighlight">\(1\%\)</span> of the variance.</p></li>
@@ -2480,7 +1655,7 @@ Income: 0.47.
 </section>
 </section>
 <section id="conclusion">
-<h3>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h3>
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Multiple regression</strong> allows us to:</p>
 <ul>
@@ -2511,7 +1686,7 @@ Income: 0.47.
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
@@ -2519,50 +1694,194 @@ Income: 0.47.
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="14-regression-predictions.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Linear regression: prediction error and more</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="14-regression-predictions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Linear regression: prediction error and more</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="16-nonlinear-regression.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="16-nonlinear-regression.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Non-linear regression</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-multiple-regression">Why multiple regression?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curious-case-of-ice-cream-sales-and-shark-attacks">The curious case of ice cream sales and shark attacks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-icecreamsales-to-sharkattacks">Comparing <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code> to <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-univariate-linear-regression">Testing with univariate linear regression</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-and-sharkattacks-are-also-correlated"><code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">SharkAttacks</span></code> are also correlated</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#so-are-temperature-and-icecreamsales">So are <code class="docutils literal notranslate"><span class="pre">Temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">IceCreamSales</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-temperature">Adjusting for <code class="docutils literal notranslate"><span class="pre">Temperature</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reason-1-adjusting-for-confounds">Reason 1: Adjusting for confounds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reason-2-better-models">Reason 2: Better models.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-and-interpreting-multiple-regression-models">Implementing and interpreting multiple regression models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-california-housing-prices">Predicting California housing prices</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-housing-median-age-and-median-income">Using <code class="docutils literal notranslate"><span class="pre">housing_median_age</span></code> and <code class="docutils literal notranslate"><span class="pre">median_income</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-our-parameters">Interpreting our parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-our-model-as-a-linear-equation">Writing our model as a <em>linear equation</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-intercept">Interpreting the <code class="docutils literal notranslate"><span class="pre">Intercept</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-beta-age">Interpreting <span class="math notranslate nohighlight">\(\beta_{age}\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-beta-income">Interpreting <span class="math notranslate nohighlight">\(\beta_{income}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-all-together">Putting it all together</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-our-model">Evaluating our model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-differences-in-r-2">Visualizing differences in <span class="math notranslate nohighlight">\(R^2\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models-with-interactions">Models with “interactions”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-the-additive-assumption">Removing the additive assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-common-interactions">Examples of common interactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#double-dissociations">Double dissociations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-interactions-with-data-visualization">Discovering interactions with data visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps-main-effects-pt-1">First steps: main effects (pt. 1)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps-main-effects-pt-2">First steps: main effects (pt. 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-for-interactions-with-statsmodels">Testing for interactions with <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-output">Model output</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-parameters">Interpreting parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-predictors-matter">Which predictors <em>matter</em>?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-of-too-many-parameters">The problem of too many parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-intuition-comparing-r-2">Building intuition: Comparing <span class="math notranslate nohighlight">\(R^2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-subset-selection">Introducing subset selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#best-subset-selection">Best subset selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#an-ideal-but-intractable-solution">An ideal but intractable solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-selection">Forward selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-optimal-but-computationally-efficient">Sub-optimal, but computationally efficient</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-selection">Backward selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Sub-optimal, but computationally efficient</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-the-best-model">Identifying the “best” model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-r-2-a-decent-workaround">Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>: a decent workaround</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-r-2-a-simulation">Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>: a simulation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-adjusted-r-2-from-statsmodels">Extracting adjusted <span class="math notranslate nohighlight">\(R^2\)</span> from <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stepwise-selection-in-practice">Stepwise selection in practice</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-null-model">Step 1: Null model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-univariate-models">Step 2: univariate models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-adding-more-parameters">Step 3: Adding more parameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-our-results">Interpreting our results</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Sean Trott<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Sean Trott
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

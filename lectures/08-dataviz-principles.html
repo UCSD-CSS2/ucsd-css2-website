@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Data visualization, pt. 3 (principles) &#8212; CSS 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +64,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/08-dataviz-principles';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data wrangling" href="09-wrangling.html" />
     <link rel="prev" title="Data visualization, pt. 2 (seaborn)" href="07-dataviz-seaborn.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo_UCSD.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CSS 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo_UCSD.png" class="logo__image only-light" alt="CSS 2 - Home"/>
+    <script>document.write(`<img src="../_static/logo_UCSD.png" class="logo__image only-dark" alt="CSS 2 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,767 +170,299 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course Logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/syllabus.html">
-   CSS 2 Syllabus: Fall 2022
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/schedule.html">
-   CSS 2 Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/expectations.html">
-   Course Expectations (and FAQ)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/datahub.html">
-   Using DataHub
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/final.html">
-   Final Project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course/syllabus.html">CSS 2 Syllabus: Winter 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/schedule.html">CSS 2 Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/expectations.html">Course Expectations (and FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/datahub.html">Using DataHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/final.html">Final Project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-intro.html">
-   01-Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-ethics.html">
-   02-Ethics (Fairness)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-ethics-privacy.html">
-   03-Ethics (Privacy)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-review1.html">
-   04-Python review (basics)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-review2.html">
-   05-Python review (data)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-dataviz-pyplot.html">
-   06-Data Visualization (Introduction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-dataviz-seaborn.html">
-   07-Data Visualization (Seaborn)
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   08-Data Visualization (Principles)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-wrangling.html">
-   09-Data Wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-stats-basics.html">
-   10-Descriptive Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-stats-sampling.html">
-   11-Foundations of Inferential Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12-statistical-modeling.html">
-   12-Introduction to Statistical Modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-regression-intro.html">
-   13-Linear Regression in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="14-regression-predictions.html">
-   14-Prediction Error and More
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="15-multiple-regression.html">
-   15-Multiple Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="16-nonlinear-regression.html">
-   16-Non-linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="17-overfitting.html">
-   17-Overfitting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="18-logistic-regression.html">
-   18-Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="19-evaluation.html">
-   19-Evaluation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="20-unsupervised-clustering.html">
-   20-Unsupervised Clustering
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">01-Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-ethics.html">02-Ethics (Fairness)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-ethics-privacy.html">03-Ethics (Privacy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-review1.html">04-Python review (basics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-review2.html">05-Python review (data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-dataviz-pyplot.html">06-Data Visualization (Introduction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-dataviz-seaborn.html">07-Data Visualization (Seaborn)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">08-Data Visualization (Principles)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-wrangling.html">09-Data Wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-stats-basics.html">10-Descriptive Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-stats-sampling.html">11-Foundations of Inferential Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-statistical-modeling.html">12-Introduction to Statistical Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-regression-intro.html">13-Linear Regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-regression-predictions.html">14-Prediction Error and More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-multiple-regression.html">15-Multiple Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-nonlinear-regression.html">16-Non-linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-overfitting.html">17-Overfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-logistic-regression.html">18-Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-evaluation.html">19-Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-unsupervised-clustering.html">20-Unsupervised Clustering</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/08-dataviz-principles.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/08-dataviz-principles.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/08-dataviz-principles.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/08-dataviz-principles.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/lectures/08-dataviz-principles.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-relevant-libraries">
-   Import relevant libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#taxonomy-of-plot-types">
-   Taxonomy of plot types
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rough-guide-what-plot-to-use-when">
-     Rough guide: what plot to use, when?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-about-2-variables">
-     What about
-     <span class="math notranslate nohighlight">
-      \(&gt;2\)
-     </span>
-     variables?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principles-and-what-to-avoid">
-   Principles, and
-   <em>
-    what to avoid
-   </em>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-makes-for-a-good-visualization">
-     What makes for a good visualization?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#different-kinds-of-bad">
-     Different kinds of bad?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bad-taste">
-     Bad taste
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#an-overly-complex-graph">
-       An overly complex graph
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#principle-1-maximize-data-to-ink-ratio">
-       Principle 1: Maximize data-to-ink ratio
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bad-data">
-     Bad data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#principle-2-be-true-to-the-data">
-       Principle 2: Be true to the data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bad-perception">
-     Bad perception
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bar-plots-and-the-principle-of-proportional-ink">
-       Bar plots and the principle of proportional ink
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#truncated-y-axis-exaggerates-differences">
-         Truncated y-axis exaggerates differences
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#bars-should-be-of-equal-width">
-         Bars should be of equal width
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-not-to-start-at-zero">
-       When
-       <em>
-        not
-       </em>
-       to start at zero?
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#when-relative-change-is-what-matters-pt-1">
-         When relative change is what matters (pt. 1)
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#when-relative-change-is-what-matters-pt-2">
-         When relative change is what matters (pt. 2)
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summing-up-principles-and-practice">
-     Summing up: principles and practice
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#additional-considerations">
-   Additional considerations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#should-i-show-the-raw-data">
-     Should I show the “raw data”?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#showing-both-the-summary-and-raw-data">
-       Showing
-       <em>
-        both
-       </em>
-       the summary and raw data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#should-i-exclude-outliers">
-     Should I exclude outliers?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#be-transparent-about-exclusion">
-       Be transparent about exclusion
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#should-i-transform-my-data">
-     Should I transform my data?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#right-skewed-data-can-be-confusing">
-       Right-skewed data can be confusing
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-transforms-make-it-look-more-normal">
-       Log-transforms make it look more normal
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#but-what-s-correct">
-       But what’s “correct”?
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data visualization, pt. 3 (principles)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-relevant-libraries">
-   Import relevant libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#taxonomy-of-plot-types">
-   Taxonomy of plot types
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rough-guide-what-plot-to-use-when">
-     Rough guide: what plot to use, when?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-about-2-variables">
-     What about
-     <span class="math notranslate nohighlight">
-      \(&gt;2\)
-     </span>
-     variables?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principles-and-what-to-avoid">
-   Principles, and
-   <em>
-    what to avoid
-   </em>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-makes-for-a-good-visualization">
-     What makes for a good visualization?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#different-kinds-of-bad">
-     Different kinds of bad?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bad-taste">
-     Bad taste
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#an-overly-complex-graph">
-       An overly complex graph
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#principle-1-maximize-data-to-ink-ratio">
-       Principle 1: Maximize data-to-ink ratio
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bad-data">
-     Bad data
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#principle-2-be-true-to-the-data">
-       Principle 2: Be true to the data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bad-perception">
-     Bad perception
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bar-plots-and-the-principle-of-proportional-ink">
-       Bar plots and the principle of proportional ink
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#truncated-y-axis-exaggerates-differences">
-         Truncated y-axis exaggerates differences
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#bars-should-be-of-equal-width">
-         Bars should be of equal width
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-not-to-start-at-zero">
-       When
-       <em>
-        not
-       </em>
-       to start at zero?
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#when-relative-change-is-what-matters-pt-1">
-         When relative change is what matters (pt. 1)
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#when-relative-change-is-what-matters-pt-2">
-         When relative change is what matters (pt. 2)
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summing-up-principles-and-practice">
-     Summing up: principles and practice
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#additional-considerations">
-   Additional considerations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#should-i-show-the-raw-data">
-     Should I show the “raw data”?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#showing-both-the-summary-and-raw-data">
-       Showing
-       <em>
-        both
-       </em>
-       the summary and raw data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#should-i-exclude-outliers">
-     Should I exclude outliers?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#be-transparent-about-exclusion">
-       Be transparent about exclusion
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#should-i-transform-my-data">
-     Should I transform my data?
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#right-skewed-data-can-be-confusing">
-       Right-skewed data can be confusing
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-transforms-make-it-look-more-normal">
-       Log-transforms make it look more normal
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#but-what-s-correct">
-       But what’s “correct”?
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data visualization, pt. 3 (principles)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-relevant-libraries">Import relevant libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taxonomy-of-plot-types">Taxonomy of plot types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rough-guide-what-plot-to-use-when">Rough guide: what plot to use, when?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-2-variables">What about <span class="math notranslate nohighlight">\(&gt;2\)</span> variables?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles-and-what-to-avoid">Principles, and <em>what to avoid</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-makes-for-a-good-visualization">What makes for a good visualization?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-kinds-of-bad">Different kinds of bad?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bad-taste">Bad taste</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-overly-complex-graph">An overly complex graph</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-1-maximize-data-to-ink-ratio">Principle 1: Maximize data-to-ink ratio</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bad-data">Bad data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-2-be-true-to-the-data">Principle 2: Be true to the data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bad-perception">Bad perception</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots-and-the-principle-of-proportional-ink">Bar plots and the principle of proportional ink</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#truncated-y-axis-exaggerates-differences">Truncated y-axis exaggerates differences</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bars-should-be-of-equal-width">Bars should be of equal width</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-not-to-start-at-zero">When <em>not</em> to start at zero?</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#when-relative-change-is-what-matters-pt-1">When relative change is what matters (pt. 1)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#when-relative-change-is-what-matters-pt-2">When relative change is what matters (pt. 2)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summing-up-principles-and-practice">Summing up: principles and practice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-considerations">Additional considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-show-the-raw-data">Should I show the “raw data”?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#showing-both-the-summary-and-raw-data">Showing <em>both</em> the summary and raw data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-exclude-outliers">Should I exclude outliers?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#be-transparent-about-exclusion">Be transparent about exclusion</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-transform-my-data">Should I transform my data?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#right-skewed-data-can-be-confusing">Right-skewed data can be confusing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#log-transforms-make-it-look-more-normal">Log-transforms make it look more normal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#but-what-s-correct">But what’s “correct”?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="data-visualization-pt-3-principles">
-<h1>Data visualization, pt. 3 (principles)<a class="headerlink" href="#data-visualization-pt-3-principles" title="Permalink to this headline">#</a></h1>
+<h1>Data visualization, pt. 3 (principles)<a class="headerlink" href="#data-visualization-pt-3-principles" title="Permalink to this heading">#</a></h1>
 <section id="goals-of-this-lecture">
-<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this headline">#</a></h2>
+<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this heading">#</a></h2>
 <p>We’ve already covered the basics of <strong>creating</strong> data visualizations using <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>.</p>
 <p>In this lecture, we’ll discuss some <strong>principles</strong> of data visualization.</p>
 <ul class="simple">
@@ -889,7 +476,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="import-relevant-libraries">
-<h2>Import relevant libraries<a class="headerlink" href="#import-relevant-libraries" title="Permalink to this headline">#</a></h2>
+<h2>Import relevant libraries<a class="headerlink" href="#import-relevant-libraries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1">### importing seaborn</span>
@@ -909,10 +496,10 @@ title="Print to PDF"
 </div>
 </section>
 <section id="taxonomy-of-plot-types">
-<h2>Taxonomy of plot types<a class="headerlink" href="#taxonomy-of-plot-types" title="Permalink to this headline">#</a></h2>
+<h2>Taxonomy of plot types<a class="headerlink" href="#taxonomy-of-plot-types" title="Permalink to this heading">#</a></h2>
 <section id="rough-guide-what-plot-to-use-when">
-<h3>Rough guide: what plot to use, when?<a class="headerlink" href="#rough-guide-what-plot-to-use-when" title="Permalink to this headline">#</a></h3>
-<table class="colwidths-auto table">
+<h3>Rough guide: what plot to use, when?<a class="headerlink" href="#rough-guide-what-plot-to-use-when" title="Permalink to this heading">#</a></h3>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>How many variables?</p></th>
 <th class="head"><p>What kind of variable(s)?</p></th>
@@ -945,7 +532,7 @@ title="Print to PDF"
 </table>
 </section>
 <section id="what-about-2-variables">
-<h3>What about <span class="math notranslate nohighlight">\(&gt;2\)</span> variables?<a class="headerlink" href="#what-about-2-variables" title="Permalink to this headline">#</a></h3>
+<h3>What about <span class="math notranslate nohighlight">\(&gt;2\)</span> variables?<a class="headerlink" href="#what-about-2-variables" title="Permalink to this heading">#</a></h3>
 <p>It depends on the <strong>type</strong> of variables.</p>
 <p>Rough guide:</p>
 <ul class="simple">
@@ -956,14 +543,14 @@ title="Print to PDF"
 </section>
 </section>
 <section id="principles-and-what-to-avoid">
-<h2>Principles, and <em>what to avoid</em><a class="headerlink" href="#principles-and-what-to-avoid" title="Permalink to this headline">#</a></h2>
+<h2>Principles, and <em>what to avoid</em><a class="headerlink" href="#principles-and-what-to-avoid" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In this section, we’ll propose and discuss possible <em>principles</em> behind building better visualizations.</p></li>
 <li><p>Many of these principles are <em>context-dependent</em>, and not without disagreement.</p></li>
 </ul>
 <p>This section is closely modeled on <a class="reference external" href="https://socviz.co/lookatdata.html#why-look-at-data">Chapter 1 of Kieran Healy’s Data Visualization</a>.</p>
 <section id="what-makes-for-a-good-visualization">
-<h3>What makes for a good visualization?<a class="headerlink" href="#what-makes-for-a-good-visualization" title="Permalink to this headline">#</a></h3>
+<h3>What makes for a good visualization?<a class="headerlink" href="#what-makes-for-a-good-visualization" title="Permalink to this heading">#</a></h3>
 <p>In <a class="reference external" href="https://www.edwardtufte.com/tufte/books_vdqi">The visual display of quantitative information</a>, Edward Tufte argues:</p>
 <blockquote>
 <div><p>Graphical excellence is the well-designed presentation of interesting data—a matter of substance, of statistics, and of design … [It] <strong>consists of complex ideas communicated with clarity, precision, and efficiency.</strong> … [It] is that which gives to the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space … [It] is nearly always multivariate … And graphical excellence requires telling the truth about the data. (Tufte, 1983, p. 51).</p>
@@ -971,16 +558,16 @@ title="Print to PDF"
 <p>This is true, but also very general––can we be more specific?</p>
 </section>
 <section id="different-kinds-of-bad">
-<h3>Different kinds of bad?<a class="headerlink" href="#different-kinds-of-bad" title="Permalink to this headline">#</a></h3>
+<h3>Different kinds of bad?<a class="headerlink" href="#different-kinds-of-bad" title="Permalink to this heading">#</a></h3>
 <p>The sociologist <a class="reference external" href="https://kieranhealy.org/">Kieran Healy</a> points out that graphs can be “bad” in different ways.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><em>Aesthetic</em>: graph design is aesthetically unappealing.</p></li>
 <li><p><em>Substantive</em>: either the data or its presentation (or both) have fundamental problems.</p></li>
 <li><p><em>Perceptual</em>: the graph is misleading because of how people perceive and process what they’re looking at.</p></li>
 </ol>
 </section>
 <section id="bad-taste">
-<h3>Bad taste<a class="headerlink" href="#bad-taste" title="Permalink to this headline">#</a></h3>
+<h3>Bad taste<a class="headerlink" href="#bad-taste" title="Permalink to this heading">#</a></h3>
 <p>Many graphs have aesthetic features that are <em>overly complex</em> given what they’re trying to convey.</p>
 <ul class="simple">
 <li><p><strong>3D bar plots</strong> despite no need for three dimensions.</p></li>
@@ -988,11 +575,11 @@ title="Print to PDF"
 </ul>
 <p>These features can needlesly “complexify” a graph, <strong>making it harder to interpret</strong>.</p>
 <section id="an-overly-complex-graph">
-<h4>An overly complex graph<a class="headerlink" href="#an-overly-complex-graph" title="Permalink to this headline">#</a></h4>
+<h4>An overly complex graph<a class="headerlink" href="#an-overly-complex-graph" title="Permalink to this heading">#</a></h4>
 <p><img alt="title" src="../_images/ch-01-chartjunk-life-expectancy.png" /></p>
 </section>
 <section id="principle-1-maximize-data-to-ink-ratio">
-<h4>Principle 1: Maximize data-to-ink ratio<a class="headerlink" href="#principle-1-maximize-data-to-ink-ratio" title="Permalink to this headline">#</a></h4>
+<h4>Principle 1: Maximize data-to-ink ratio<a class="headerlink" href="#principle-1-maximize-data-to-ink-ratio" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>One suggestion is to <strong>maximize the data-to-ink ratio</strong>.</p></li>
 <li><p>Don’t add aesthetic features unless they <em>convey information</em>.</p></li>
@@ -1001,7 +588,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="bad-data">
-<h3>Bad data<a class="headerlink" href="#bad-data" title="Permalink to this headline">#</a></h3>
+<h3>Bad data<a class="headerlink" href="#bad-data" title="Permalink to this heading">#</a></h3>
 <p>No amount of elegant aesthetics can make up for bad data!</p>
 <p>Healy uses the <a class="reference external" href="https://socviz.co/lookatdata.html#why-look-at-data">example of a graph from the New York Times</a>. This graph is <strong>misleading</strong>:</p>
 <ul class="simple">
@@ -1009,19 +596,19 @@ title="Print to PDF"
 <li><p>About the <code class="docutils literal notranslate"><span class="pre">y</span></code>-axis: implies yes/no question, when it’s subsetting responses to a 10-point scale.</p></li>
 </ul>
 <section id="principle-2-be-true-to-the-data">
-<h4>Principle 2: Be true to the data<a class="headerlink" href="#principle-2-be-true-to-the-data" title="Permalink to this headline">#</a></h4>
+<h4>Principle 2: Be true to the data<a class="headerlink" href="#principle-2-be-true-to-the-data" title="Permalink to this heading">#</a></h4>
 <p>Your visualization should represent <em>what the data measures</em>.</p>
 <p>(This one’s not really context-dependent! Always be true to the data.)</p>
 </section>
 </section>
 <section id="bad-perception">
-<h3>Bad perception<a class="headerlink" href="#bad-perception" title="Permalink to this headline">#</a></h3>
+<h3>Bad perception<a class="headerlink" href="#bad-perception" title="Permalink to this heading">#</a></h3>
 <p>Finally, graphs can be <strong>misleading</strong> because their aesthetics imply something <em>incorrect</em> about the data.</p>
 <blockquote>
 <div><p>Visualizations encode numbers in lines, shapes, and colors. That means that our interpretation of these encodings is partly conditional on how we perceive geometric shapes and relationships generally.  (Healy, <a class="reference external" href="https://socviz.co/lookatdata.html#why-look-at-data">Data Visualization</a>).</p>
 </div></blockquote>
 <section id="bar-plots-and-the-principle-of-proportional-ink">
-<h4>Bar plots and the principle of proportional ink<a class="headerlink" href="#bar-plots-and-the-principle-of-proportional-ink" title="Permalink to this headline">#</a></h4>
+<h4>Bar plots and the principle of proportional ink<a class="headerlink" href="#bar-plots-and-the-principle-of-proportional-ink" title="Permalink to this heading">#</a></h4>
 <p>A key <em>aesthetic feature</em> of bar plots is the <strong>amount of ink</strong> devoted to a bar.</p>
 <ul class="simple">
 <li><p>As viewers, our eyes measure the <strong>relative difference</strong> in how much space is devoted to each bar.</p></li>
@@ -1029,18 +616,18 @@ title="Print to PDF"
 </ul>
 <p>This principle can be <strong>violated</strong> in several ways.</p>
 <section id="truncated-y-axis-exaggerates-differences">
-<h5>Truncated y-axis exaggerates differences<a class="headerlink" href="#truncated-y-axis-exaggerates-differences" title="Permalink to this headline">#</a></h5>
+<h5>Truncated y-axis exaggerates differences<a class="headerlink" href="#truncated-y-axis-exaggerates-differences" title="Permalink to this heading">#</a></h5>
 <p><img alt="title" src="../_images/GTAI_average_hours.png" /></p>
 <p><a class="reference external" href="https://www.callingbullshit.org/tools/tools_misleading_axes.html">Source: Calling Bullshit</a></p>
 </section>
 <section id="bars-should-be-of-equal-width">
-<h5>Bars should be of equal width<a class="headerlink" href="#bars-should-be-of-equal-width" title="Permalink to this headline">#</a></h5>
+<h5>Bars should be of equal width<a class="headerlink" href="#bars-should-be-of-equal-width" title="Permalink to this heading">#</a></h5>
 <p><img alt="title" src="../_images/proportional_ink.png" /></p>
 <p><a class="reference external" href="https://www.wiley.com/en-us/Statistics,+11th+Edition-p-9781119254515">Source: Witte and Witte</a>.</p>
 </section>
 </section>
 <section id="when-not-to-start-at-zero">
-<h4>When <em>not</em> to start at zero?<a class="headerlink" href="#when-not-to-start-at-zero" title="Permalink to this headline">#</a></h4>
+<h4>When <em>not</em> to start at zero?<a class="headerlink" href="#when-not-to-start-at-zero" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Bar plots should start at zero.</p></li>
 <li><p>But in many cases, starting at zero can actually be misleading.</p>
@@ -1051,7 +638,7 @@ title="Print to PDF"
 </li>
 </ul>
 <section id="when-relative-change-is-what-matters-pt-1">
-<h5>When relative change is what matters (pt. 1)<a class="headerlink" href="#when-relative-change-is-what-matters-pt-1" title="Permalink to this headline">#</a></h5>
+<h5>When relative change is what matters (pt. 1)<a class="headerlink" href="#when-relative-change-is-what-matters-pt-1" title="Permalink to this heading">#</a></h5>
 <p>This graph shows changes in <code class="docutils literal notranslate"><span class="pre">temperature</span></code> (Celsius) over <code class="docutils literal notranslate"><span class="pre">Year</span></code>, and starts at 0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1065,12 +652,12 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 14.905095)
 </pre></div>
 </div>
-<img alt="../_images/08-dataviz-principles_22_1.png" src="../_images/08-dataviz-principles_22_1.png" />
+<img alt="../_images/9e27d11410f9594cb6a6b1d37a53fc3cb9bd2ec566fbbaa8ee1b56b72e1af578.png" src="../_images/9e27d11410f9594cb6a6b1d37a53fc3cb9bd2ec566fbbaa8ee1b56b72e1af578.png" />
 </div>
 </div>
 </section>
 <section id="when-relative-change-is-what-matters-pt-2">
-<h5>When relative change is what matters (pt. 2)<a class="headerlink" href="#when-relative-change-is-what-matters-pt-2" title="Permalink to this headline">#</a></h5>
+<h5>When relative change is what matters (pt. 2)<a class="headerlink" href="#when-relative-change-is-what-matters-pt-2" title="Permalink to this heading">#</a></h5>
 <p>This graph shows changes in <code class="docutils literal notranslate"><span class="pre">temperature</span></code> (Celsius) over <code class="docutils literal notranslate"><span class="pre">Year</span></code>, but doesn’t start at 0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1079,19 +666,19 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Year&#39;, ylabel=&#39;Temp_original&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Year&#39;, ylabel=&#39;Temp_original&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/08-dataviz-principles_24_1.png" src="../_images/08-dataviz-principles_24_1.png" />
+<img alt="../_images/5bdf3d94e078c8272b28a9939a130e006b519603b3d47d6a2e311c0eb45d8473.png" src="../_images/5bdf3d94e078c8272b28a9939a130e006b519603b3d47d6a2e311c0eb45d8473.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="summing-up-principles-and-practice">
-<h3>Summing up: principles and practice<a class="headerlink" href="#summing-up-principles-and-practice" title="Permalink to this headline">#</a></h3>
+<h3>Summing up: principles and practice<a class="headerlink" href="#summing-up-principles-and-practice" title="Permalink to this heading">#</a></h3>
 <p>We’ve discussed several principles (and corresponding <em>practices to avoid</em>):</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><strong>Principle 1</strong>: Maximize data-ink ratio.</p></li>
 <li><p><strong>Principle 2</strong>: Be true to the data.</p></li>
 <li><p><strong>Principle 3</strong>: Be true to what the <em>visual logic</em> of your graph implies.</p></li>
@@ -1099,7 +686,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="additional-considerations">
-<h2>Additional considerations<a class="headerlink" href="#additional-considerations" title="Permalink to this headline">#</a></h2>
+<h2>Additional considerations<a class="headerlink" href="#additional-considerations" title="Permalink to this heading">#</a></h2>
 <p>Data visualization could make up an entire course (or <a class="reference external" href="https://socviz.co/lookatdata.html#why-look-at-data">textbook</a>).</p>
 <p>But there are several other common issues to discuss:</p>
 <ul class="simple">
@@ -1108,7 +695,7 @@ title="Print to PDF"
 <li><p>Should I <em>transform</em> my data (e.g., to a log-scale)?</p></li>
 </ul>
 <section id="should-i-show-the-raw-data">
-<h3>Should I show the “raw data”?<a class="headerlink" href="#should-i-show-the-raw-data" title="Permalink to this headline">#</a></h3>
+<h3>Should I show the “raw data”?<a class="headerlink" href="#should-i-show-the-raw-data" title="Permalink to this heading">#</a></h3>
 <p>All measures of <strong>central tendency</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>) are a <em>simplification</em> of our data.</p>
 <ul class="simple">
 <li><p>Thus, showing only the mean “hides” much of your data.</p></li>
@@ -1116,7 +703,7 @@ title="Print to PDF"
 </ul>
 <p>Personally, I try to show the <em>raw data</em> where possible––along with the mean.</p>
 <section id="showing-both-the-summary-and-raw-data">
-<h4>Showing <em>both</em> the summary and raw data<a class="headerlink" href="#showing-both-the-summary-and-raw-data" title="Permalink to this headline">#</a></h4>
+<h4>Showing <em>both</em> the summary and raw data<a class="headerlink" href="#showing-both-the-summary-and-raw-data" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pokemon</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/pokemon.csv&quot;</span><span class="p">)</span>
@@ -1126,16 +713,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Legendary&#39;, ylabel=&#39;Attack&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Legendary&#39;, ylabel=&#39;Attack&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/08-dataviz-principles_29_1.png" src="../_images/08-dataviz-principles_29_1.png" />
+<img alt="../_images/9e6e3d226b77d8314cfff56083a96ce149248a750c6d4bc3bc7c873cfcc148bd.png" src="../_images/9e6e3d226b77d8314cfff56083a96ce149248a750c6d4bc3bc7c873cfcc148bd.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="should-i-exclude-outliers">
-<h3>Should I exclude outliers?<a class="headerlink" href="#should-i-exclude-outliers" title="Permalink to this headline">#</a></h3>
+<h3>Should I exclude outliers?<a class="headerlink" href="#should-i-exclude-outliers" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p><strong>Outliers</strong> are data points that differ significantly from other points in a distribution.</p>
 </div></blockquote>
@@ -1146,7 +733,7 @@ title="Print to PDF"
 </ul>
 <p><strong>Should you remove them?</strong></p>
 <section id="be-transparent-about-exclusion">
-<h4>Be transparent about exclusion<a class="headerlink" href="#be-transparent-about-exclusion" title="Permalink to this headline">#</a></h4>
+<h4>Be transparent about exclusion<a class="headerlink" href="#be-transparent-about-exclusion" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>This one is very context-dependent.</p></li>
 <li><p>Personally, I <em>usually don’t</em> exclude outliers.</p></li>
@@ -1160,14 +747,14 @@ title="Print to PDF"
 </section>
 </section>
 <section id="should-i-transform-my-data">
-<h3>Should I transform my data?<a class="headerlink" href="#should-i-transform-my-data" title="Permalink to this headline">#</a></h3>
+<h3>Should I transform my data?<a class="headerlink" href="#should-i-transform-my-data" title="Permalink to this heading">#</a></h3>
 <p>Sometimes, the “raw” data is heavily skewed.</p>
 <ul class="simple">
 <li><p>A <strong>log transform</strong> can turn <em>right-skewed</em> data look more <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">“normal”</a>.</p></li>
 <li><p>When is this a good or bad idea?</p></li>
 </ul>
 <section id="right-skewed-data-can-be-confusing">
-<h4>Right-skewed data can be confusing<a class="headerlink" href="#right-skewed-data-can-be-confusing" title="Permalink to this headline">#</a></h4>
+<h4>Right-skewed data can be confusing<a class="headerlink" href="#right-skewed-data-can-be-confusing" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_gapminder</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/viz/gapminder_full.csv&quot;</span><span class="p">)</span>
@@ -1176,15 +763,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;population&#39;, ylabel=&#39;Count&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;population&#39;, ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/08-dataviz-principles_34_1.png" src="../_images/08-dataviz-principles_34_1.png" />
+<img alt="../_images/951a4ba2fde7475fc3c8b04d8feb5abf4561b181f155c8510bee81e0482b5605.png" src="../_images/951a4ba2fde7475fc3c8b04d8feb5abf4561b181f155c8510bee81e0482b5605.png" />
 </div>
 </div>
 </section>
 <section id="log-transforms-make-it-look-more-normal">
-<h4>Log-transforms make it look more normal<a class="headerlink" href="#log-transforms-make-it-look-more-normal" title="Permalink to this headline">#</a></h4>
+<h4>Log-transforms make it look more normal<a class="headerlink" href="#log-transforms-make-it-look-more-normal" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_gapminder</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;population&#39;</span><span class="p">,</span> <span class="n">log_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1192,15 +779,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;population&#39;, ylabel=&#39;Count&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;population&#39;, ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/08-dataviz-principles_36_1.png" src="../_images/08-dataviz-principles_36_1.png" />
+<img alt="../_images/67b594b2343a10168e9b4328bdf7a412091fa3dc912fec4dfa03164e66940342.png" src="../_images/67b594b2343a10168e9b4328bdf7a412091fa3dc912fec4dfa03164e66940342.png" />
 </div>
 </div>
 </section>
 <section id="but-what-s-correct">
-<h4>But what’s “correct”?<a class="headerlink" href="#but-what-s-correct" title="Permalink to this headline">#</a></h4>
+<h4>But what’s “correct”?<a class="headerlink" href="#but-what-s-correct" title="Permalink to this heading">#</a></h4>
 <p>Considerations to keep in mind:</p>
 <ul class="simple">
 <li><p>Is there reason to think that this variable <strong>scales logarithmically</strong>?</p></li>
@@ -1216,7 +803,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>Data visualization is <em>central</em> to <a class="reference external" href="https://en.wikipedia.org/wiki/Computational_social_science">Computational Social Science</a>. This week has focused on the <em>how</em> (<code class="docutils literal notranslate"><span class="pre">seaborn</span></code> and <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>) as well as <em>principles</em> to keep in mind.</p>
 <p>For further reference, see:</p>
 <ul class="simple">
@@ -1240,7 +827,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
@@ -1248,50 +835,154 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="07-dataviz-seaborn.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data visualization, pt. 2 (<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>)</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="07-dataviz-seaborn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data visualization, pt. 2 (<code class="docutils literal notranslate"><span class="pre">seaborn</span></code>)</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="09-wrangling.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="09-wrangling.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Data wrangling</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-relevant-libraries">Import relevant libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taxonomy-of-plot-types">Taxonomy of plot types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rough-guide-what-plot-to-use-when">Rough guide: what plot to use, when?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-2-variables">What about <span class="math notranslate nohighlight">\(&gt;2\)</span> variables?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles-and-what-to-avoid">Principles, and <em>what to avoid</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-makes-for-a-good-visualization">What makes for a good visualization?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-kinds-of-bad">Different kinds of bad?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bad-taste">Bad taste</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-overly-complex-graph">An overly complex graph</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-1-maximize-data-to-ink-ratio">Principle 1: Maximize data-to-ink ratio</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bad-data">Bad data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-2-be-true-to-the-data">Principle 2: Be true to the data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bad-perception">Bad perception</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots-and-the-principle-of-proportional-ink">Bar plots and the principle of proportional ink</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#truncated-y-axis-exaggerates-differences">Truncated y-axis exaggerates differences</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bars-should-be-of-equal-width">Bars should be of equal width</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-not-to-start-at-zero">When <em>not</em> to start at zero?</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#when-relative-change-is-what-matters-pt-1">When relative change is what matters (pt. 1)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#when-relative-change-is-what-matters-pt-2">When relative change is what matters (pt. 2)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summing-up-principles-and-practice">Summing up: principles and practice</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-considerations">Additional considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-show-the-raw-data">Should I show the “raw data”?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#showing-both-the-summary-and-raw-data">Showing <em>both</em> the summary and raw data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-exclude-outliers">Should I exclude outliers?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#be-transparent-about-exclusion">Be transparent about exclusion</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-transform-my-data">Should I transform my data?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#right-skewed-data-can-be-confusing">Right-skewed data can be confusing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#log-transforms-make-it-look-more-normal">Log-transforms make it look more normal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#but-what-s-correct">But what’s “correct”?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Sean Trott<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Sean Trott
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

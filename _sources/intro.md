@@ -1,6 +1,6 @@
 # Welcome to CSS 2!
 
-CSS 2 | Sean Trott | Winter 2023 | UCSD
+CSS 2 | Sean Trott | Winter 2024 | UCSD
 
 ## Course Overview
 
@@ -22,7 +22,7 @@ There are no midterms or final exams; see the [syllabus](course/syllabus.md) for
 
 ## Current Iteration
 
-The current iteration of CSS 2 is **Winter 2023**. The instructor is [Sean Trott](https://seantrott.github.io/).
+The current iteration of CSS 2 is **Winter 2024**. The instructor is [Sean Trott](https://seantrott.github.io/).
 
 
 ## Topics

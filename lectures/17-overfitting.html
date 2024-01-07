@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Overfitting and the bias-variance trade-off &#8212; CSS 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +64,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/17-overfitting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Logistic Regression" href="18-logistic-regression.html" />
     <link rel="prev" title="Non-linear regression" href="16-nonlinear-regression.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo_UCSD.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CSS 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo_UCSD.png" class="logo__image only-light" alt="CSS 2 - Home"/>
+    <script>document.write(`<img src="../_static/logo_UCSD.png" class="logo__image only-dark" alt="CSS 2 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,1043 +170,320 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course Logistics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Logistics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/syllabus.html">
-   CSS 2 Syllabus: Fall 2022
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/schedule.html">
-   CSS 2 Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/expectations.html">
-   Course Expectations (and FAQ)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/datahub.html">
-   Using DataHub
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course/final.html">
-   Final Project
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course/syllabus.html">CSS 2 Syllabus: Winter 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/schedule.html">CSS 2 Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/expectations.html">Course Expectations (and FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/datahub.html">Using DataHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/final.html">Final Project</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Lectures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-intro.html">
-   01-Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-ethics.html">
-   02-Ethics (Fairness)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-ethics-privacy.html">
-   03-Ethics (Privacy)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-review1.html">
-   04-Python review (basics)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-review2.html">
-   05-Python review (data)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-dataviz-pyplot.html">
-   06-Data Visualization (Introduction)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-dataviz-seaborn.html">
-   07-Data Visualization (Seaborn)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-dataviz-principles.html">
-   08-Data Visualization (Principles)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-wrangling.html">
-   09-Data Wrangling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-stats-basics.html">
-   10-Descriptive Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-stats-sampling.html">
-   11-Foundations of Inferential Statistics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12-statistical-modeling.html">
-   12-Introduction to Statistical Modeling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-regression-intro.html">
-   13-Linear Regression in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="14-regression-predictions.html">
-   14-Prediction Error and More
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="15-multiple-regression.html">
-   15-Multiple Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="16-nonlinear-regression.html">
-   16-Non-linear Regression
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   17-Overfitting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="18-logistic-regression.html">
-   18-Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="19-evaluation.html">
-   19-Evaluation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="20-unsupervised-clustering.html">
-   20-Unsupervised Clustering
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">01-Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-ethics.html">02-Ethics (Fairness)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-ethics-privacy.html">03-Ethics (Privacy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-review1.html">04-Python review (basics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-review2.html">05-Python review (data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-dataviz-pyplot.html">06-Data Visualization (Introduction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-dataviz-seaborn.html">07-Data Visualization (Seaborn)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-dataviz-principles.html">08-Data Visualization (Principles)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-wrangling.html">09-Data Wrangling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-stats-basics.html">10-Descriptive Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-stats-sampling.html">11-Foundations of Inferential Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-statistical-modeling.html">12-Introduction to Statistical Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-regression-intro.html">13-Linear Regression in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-regression-predictions.html">14-Prediction Error and More</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-multiple-regression.html">15-Multiple Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-nonlinear-regression.html">16-Non-linear Regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17-Overfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-logistic-regression.html">18-Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-evaluation.html">19-Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-unsupervised-clustering.html">20-Unsupervised Clustering</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/17-overfitting.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/17-overfitting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/17-overfitting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/17-overfitting.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/lectures/17-overfitting.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#libraries">
-   Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-question-of-complexity">
-   A question of complexity
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-problem-of-overfitting">
-     The problem of overfitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#making-the-connection-samples-vs-populations">
-     Making the connection: samples vs. populations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-overfitting-in-action">
-     Review: overfitting in action
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#fitting-a-complex-polynomial">
-       Fitting a complex polynomial
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-bias-variance-trade-off">
-     The
-     <em>
-      bias-variance trade-off
-     </em>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bias-variance-and-the-bed-of-procrustes">
-   Bias, variance, and the bed of Procrustes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#procrustean-models-the-problem-of-high-bias">
-     Procrustean models: the problem of high bias
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#linear-regression-has-high-bias">
-       Linear regression has high bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#an-intercept-only-model-also-has-high-bias">
-       An
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Intercept
-        </span>
-       </code>
-       -only model also has high bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#polynomial-regression-is-low-er-bias">
-       Polynomial regression is low(er) bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Polynomial regression is low(er) bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#neural-networks-are-usually-even-lower-bias">
-       Neural networks are (usually) even lower bias
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variance-the-other-side-of-flexibility">
-     Variance: the other side of flexibility
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#revisiting-samples-vs-populations">
-       Revisiting samples vs. populations
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#making-variance-concrete">
-       Making variance
-       <em>
-        concrete
-       </em>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bias-variance-trade-off">
-     Bias-variance trade-off
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-1-define-our-true-function">
-       Step 1: Define our “true” function
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-create-a-training-sample">
-       Step 2: Create a “training” sample
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-fit-different-polynomials">
-       Step 3: Fit different polynomials
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-4-look-at-results">
-       Step 4: Look at results
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-5-test-on-another-sample">
-       Step 5: Test on another “sample”
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-6-repeat-train-test-with-different-p">
-       Step 6: Repeat train/test with different
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-7-look-at-results">
-       Step 7: Look at results
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-7-comparing-train-test-error">
-       Step 7: Comparing train/test error
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trade-off-illustrated">
-     Trade-off illustrated
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cross-validation">
-   Cross-validation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#an-analogy-cross-validation-in-the-classroom">
-     An analogy: cross-validation in the classroom
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-train-test-split">
-     Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       train_test_split
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#train-test-split-in-action">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         train_test_split
-        </span>
-       </code>
-       in action
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Check-in
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#solution">
-         Solution
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparing-our-train-test-sets">
-       Comparing our train/test sets
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-1-training">
-       Step 1: training
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-testing">
-       Step 2: testing
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-compare-mse-for-train-vs-test-portion">
-       Step 3: Compare
-       <span class="math notranslate nohighlight">
-        \(MSE\)
-       </span>
-       for train vs. test portion
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-4-validating-across-multiple-splits">
-       Step 4: Validating across multiple splits
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-5-comparing-mse-for-train-test-sets">
-       Step 5: Comparing
-       <span class="math notranslate nohighlight">
-        \(MSE\)
-       </span>
-       for train/test sets
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#leave-one-out-cross-validation">
-     Leave-one-out cross-validation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#loocv-in-python">
-       LOOCV in Python
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-loocv">
-       Using LOOCV
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#evaluating-results">
-       Evaluating results
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#k-fold-cross-validation">
-     K-Fold Cross-validation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-k-n">
-       When
-       <span class="math notranslate nohighlight">
-        \(k = n\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-kfold-in-python">
-       Using
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         KFold
-        </span>
-       </code>
-       in Python
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-kfold-on-a-dataset">
-       Using
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         KFold
-        </span>
-       </code>
-       on a dataset
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       Evaluating results
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Overfitting and the bias-variance trade-off</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#libraries">
-   Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-lecture">
-   Goals of this lecture
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-question-of-complexity">
-   A question of complexity
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-problem-of-overfitting">
-     The problem of overfitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#making-the-connection-samples-vs-populations">
-     Making the connection: samples vs. populations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#review-overfitting-in-action">
-     Review: overfitting in action
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#fitting-a-complex-polynomial">
-       Fitting a complex polynomial
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-bias-variance-trade-off">
-     The
-     <em>
-      bias-variance trade-off
-     </em>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bias-variance-and-the-bed-of-procrustes">
-   Bias, variance, and the bed of Procrustes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#procrustean-models-the-problem-of-high-bias">
-     Procrustean models: the problem of high bias
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-in">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#linear-regression-has-high-bias">
-       Linear regression has high bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#an-intercept-only-model-also-has-high-bias">
-       An
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         Intercept
-        </span>
-       </code>
-       -only model also has high bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#polynomial-regression-is-low-er-bias">
-       Polynomial regression is low(er) bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Polynomial regression is low(er) bias
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#neural-networks-are-usually-even-lower-bias">
-       Neural networks are (usually) even lower bias
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variance-the-other-side-of-flexibility">
-     Variance: the other side of flexibility
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#revisiting-samples-vs-populations">
-       Revisiting samples vs. populations
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#making-variance-concrete">
-       Making variance
-       <em>
-        concrete
-       </em>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bias-variance-trade-off">
-     Bias-variance trade-off
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-1-define-our-true-function">
-       Step 1: Define our “true” function
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-create-a-training-sample">
-       Step 2: Create a “training” sample
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-fit-different-polynomials">
-       Step 3: Fit different polynomials
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-4-look-at-results">
-       Step 4: Look at results
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-5-test-on-another-sample">
-       Step 5: Test on another “sample”
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-6-repeat-train-test-with-different-p">
-       Step 6: Repeat train/test with different
-       <span class="math notranslate nohighlight">
-        \(p\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-7-look-at-results">
-       Step 7: Look at results
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-7-comparing-train-test-error">
-       Step 7: Comparing train/test error
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trade-off-illustrated">
-     Trade-off illustrated
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cross-validation">
-   Cross-validation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#an-analogy-cross-validation-in-the-classroom">
-     An analogy: cross-validation in the classroom
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-train-test-split">
-     Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       train_test_split
-      </span>
-     </code>
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#train-test-split-in-action">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         train_test_split
-        </span>
-       </code>
-       in action
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Check-in
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#solution">
-         Solution
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparing-our-train-test-sets">
-       Comparing our train/test sets
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-1-training">
-       Step 1: training
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-2-testing">
-       Step 2: testing
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-3-compare-mse-for-train-vs-test-portion">
-       Step 3: Compare
-       <span class="math notranslate nohighlight">
-        \(MSE\)
-       </span>
-       for train vs. test portion
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-4-validating-across-multiple-splits">
-       Step 4: Validating across multiple splits
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#step-5-comparing-mse-for-train-test-sets">
-       Step 5: Comparing
-       <span class="math notranslate nohighlight">
-        \(MSE\)
-       </span>
-       for train/test sets
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#leave-one-out-cross-validation">
-     Leave-one-out cross-validation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#loocv-in-python">
-       LOOCV in Python
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-loocv">
-       Using LOOCV
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#evaluating-results">
-       Evaluating results
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#k-fold-cross-validation">
-     K-Fold Cross-validation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Check-in
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#when-k-n">
-       When
-       <span class="math notranslate nohighlight">
-        \(k = n\)
-       </span>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-kfold-in-python">
-       Using
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         KFold
-        </span>
-       </code>
-       in Python
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#using-kfold-on-a-dataset">
-       Using
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         KFold
-        </span>
-       </code>
-       on a dataset
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       Evaluating results
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Overfitting and the bias-variance trade-off</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-question-of-complexity">A question of complexity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-of-overfitting">The problem of overfitting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-connection-samples-vs-populations">Making the connection: samples vs. populations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-overfitting-in-action">Review: overfitting in action</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-complex-polynomial">Fitting a complex polynomial</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bias-variance-trade-off">The <em>bias-variance trade-off</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-and-the-bed-of-procrustes">Bias, variance, and the bed of Procrustes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procrustean-models-the-problem-of-high-bias">Procrustean models: the problem of high bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-has-high-bias">Linear regression has high bias</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-intercept-only-model-also-has-high-bias">An <code class="docutils literal notranslate"><span class="pre">Intercept</span></code>-only model also has high bias</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression-is-low-er-bias">Polynomial regression is low(er) bias</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Polynomial regression is low(er) bias</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-are-usually-even-lower-bias">Neural networks are (usually) even lower bias</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-the-other-side-of-flexibility">Variance: the other side of flexibility</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-samples-vs-populations">Revisiting samples vs. populations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#making-variance-concrete">Making variance <em>concrete</em></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off">Bias-variance trade-off</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-our-true-function">Step 1: Define our “true” function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-a-training-sample">Step 2: Create a “training” sample</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-fit-different-polynomials">Step 3: Fit different polynomials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-look-at-results">Step 4: Look at results</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-test-on-another-sample">Step 5: Test on another “sample”</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-repeat-train-test-with-different-p">Step 6: Repeat train/test with different <span class="math notranslate nohighlight">\(p\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-look-at-results">Step 7: Look at results</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-comparing-train-test-error">Step 7: Comparing train/test error</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trade-off-illustrated">Trade-off illustrated</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross-validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-analogy-cross-validation-in-the-classroom">An analogy: cross-validation in the classroom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-train-test-split">Using <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split-in-action"><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> in action</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Check-in</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-our-train-test-sets">Comparing our train/test sets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-training">Step 1: training</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-testing">Step 2: testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-compare-mse-for-train-vs-test-portion">Step 3: Compare <span class="math notranslate nohighlight">\(MSE\)</span> for train vs. test portion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-validating-across-multiple-splits">Step 4: Validating across multiple splits</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-comparing-mse-for-train-test-sets">Step 5: Comparing <span class="math notranslate nohighlight">\(MSE\)</span> for train/test sets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leave-one-out-cross-validation">Leave-one-out cross-validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loocv-in-python">LOOCV in Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-loocv">Using LOOCV</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-results">Evaluating results</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-fold-cross-validation">K-Fold Cross-validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-k-n">When <span class="math notranslate nohighlight">\(k = n\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-kfold-in-python">Using <code class="docutils literal notranslate"><span class="pre">KFold</span></code> in Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-kfold-on-a-dataset">Using <code class="docutils literal notranslate"><span class="pre">KFold</span></code> on a dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Evaluating results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="overfitting-and-the-bias-variance-trade-off">
-<h1>Overfitting and the bias-variance trade-off<a class="headerlink" href="#overfitting-and-the-bias-variance-trade-off" title="Permalink to this headline">#</a></h1>
+<h1>Overfitting and the bias-variance trade-off<a class="headerlink" href="#overfitting-and-the-bias-variance-trade-off" title="Permalink to this heading">#</a></h1>
 <section id="libraries">
-<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">#</a></h2>
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Imports</span>
@@ -1176,7 +508,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="goals-of-this-lecture">
-<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this headline">#</a></h2>
+<h2>Goals of this lecture<a class="headerlink" href="#goals-of-this-lecture" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Model complexity and <strong>overfitting</strong>.</p></li>
 <li><p>Introducing the <strong>bias-variance trade-off</strong>.</p>
@@ -1188,7 +520,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="a-question-of-complexity">
-<h2>A question of complexity<a class="headerlink" href="#a-question-of-complexity" title="Permalink to this headline">#</a></h2>
+<h2>A question of complexity<a class="headerlink" href="#a-question-of-complexity" title="Permalink to this heading">#</a></h2>
 <p>Statistical models range considerably in their <strong>complexity</strong>.</p>
 <ul class="simple">
 <li><p>A <em>linear model</em> with one predictor is very simple.</p></li>
@@ -1196,7 +528,7 @@ title="Print to PDF"
 </ul>
 <p>The <em>complexity</em> of a model affects how well it can fit a particular dataset––but also how likely it is to <strong>overfit</strong>.</p>
 <section id="the-problem-of-overfitting">
-<h3>The problem of overfitting<a class="headerlink" href="#the-problem-of-overfitting" title="Permalink to this headline">#</a></h3>
+<h3>The problem of overfitting<a class="headerlink" href="#the-problem-of-overfitting" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p><a class="reference external" href="https://en.wikipedia.org/wiki/Overfitting"><strong>Overfitting</strong></a> refers to building a model that fits <em>too closely</em> to a given dataset, and which will likely fail to <strong>generalize</strong> or <strong>predict</strong> unseen data.</p>
 </div></blockquote>
@@ -1215,7 +547,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="making-the-connection-samples-vs-populations">
-<h3>Making the connection: samples vs. populations<a class="headerlink" href="#making-the-connection-samples-vs-populations" title="Permalink to this headline">#</a></h3>
+<h3>Making the connection: samples vs. populations<a class="headerlink" href="#making-the-connection-samples-vs-populations" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Any given dataset <span class="math notranslate nohighlight">\(d_i\)</span> is a <strong>sample</strong> of some larger <strong>population</strong>.</p>
 <ul>
@@ -1228,7 +560,7 @@ title="Print to PDF"
 <p>Ideally, our model should <strong>fit</strong> <span class="math notranslate nohighlight">\(d_i\)</span> as well as it can, but not so closely that it fails to generalize to other datasets, e.g., <span class="math notranslate nohighlight">\(d_j\)</span>.</p>
 </section>
 <section id="review-overfitting-in-action">
-<h3>Review: overfitting in action<a class="headerlink" href="#review-overfitting-in-action" title="Permalink to this headline">#</a></h3>
+<h3>Review: overfitting in action<a class="headerlink" href="#review-overfitting-in-action" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span>
@@ -1241,14 +573,14 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9fc49fe700&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14a4248d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_9_1.png" src="../_images/17-overfitting_9_1.png" />
+<img alt="../_images/569fd68631b5ac0ec646814c295463b254ee776526c22f16997f250642ae9066.png" src="../_images/569fd68631b5ac0ec646814c295463b254ee776526c22f16997f250642ae9066.png" />
 </div>
 </div>
 <section id="fitting-a-complex-polynomial">
-<h4>Fitting a complex polynomial<a class="headerlink" href="#fitting-a-complex-polynomial" title="Permalink to this headline">#</a></h4>
+<h4>Fitting a complex polynomial<a class="headerlink" href="#fitting-a-complex-polynomial" title="Permalink to this heading">#</a></h4>
 <p>Now, let’s fit a very <strong>complex</strong> polynomial to these data––even though we know the “true” relationship is linear (albeit noisy).</p>
 <p><strong>Note</strong>: Try regenerating the <em>error</em> <span class="math notranslate nohighlight">\(\epsilon\)</span> and see how much the fit function changes!</p>
 <div class="cell docutils container">
@@ -1268,16 +600,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9fb01f7fa0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14a475490&gt;]
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_12_1.png" src="../_images/17-overfitting_12_1.png" />
+<img alt="../_images/910f66560efca3b571ace1dd527e117db713e5ac7878e0e41b11158f0915321e.png" src="../_images/910f66560efca3b571ace1dd527e117db713e5ac7878e0e41b11158f0915321e.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="the-bias-variance-trade-off">
-<h3>The <em>bias-variance trade-off</em><a class="headerlink" href="#the-bias-variance-trade-off" title="Permalink to this headline">#</a></h3>
+<h3>The <em>bias-variance trade-off</em><a class="headerlink" href="#the-bias-variance-trade-off" title="Permalink to this heading">#</a></h3>
 <p>In general, statistical models display a <strong>trade-off</strong> between their:</p>
 <ul class="simple">
 <li><p><strong>Bias</strong>: high “bias” means a model is not very flexible.</p>
@@ -1294,7 +626,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="bias-variance-and-the-bed-of-procrustes">
-<h2>Bias, variance, and the bed of Procrustes<a class="headerlink" href="#bias-variance-and-the-bed-of-procrustes" title="Permalink to this headline">#</a></h2>
+<h2>Bias, variance, and the bed of Procrustes<a class="headerlink" href="#bias-variance-and-the-bed-of-procrustes" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>Imagine you’re a weary traveler walking from Athens to Eleusis. Along the way, you encounter a smith named <a class="reference external" href="https://en.wikipedia.org/wiki/Procrustes">Procrustes</a>, who invites you to stay the night in his home––he has a spare bed.</p>
 </div></blockquote>
@@ -1303,7 +635,7 @@ title="Print to PDF"
 </div></blockquote>
 <p><a class="reference external" href="https://seantrott.github.io/procrustean_models/#Introduction">See also: tutorial in R</a>.</p>
 <section id="procrustean-models-the-problem-of-high-bias">
-<h3>Procrustean models: the problem of high bias<a class="headerlink" href="#procrustean-models-the-problem-of-high-bias" title="Permalink to this headline">#</a></h3>
+<h3>Procrustean models: the problem of high bias<a class="headerlink" href="#procrustean-models-the-problem-of-high-bias" title="Permalink to this heading">#</a></h3>
 <p>The term <strong>“Procrustean”</strong> refers to adopting a “one-size-fits-all” mentality.</p>
 <p>This is a good description of the problem of <strong>model bias</strong>:</p>
 <blockquote>
@@ -1311,11 +643,11 @@ title="Print to PDF"
 </div></blockquote>
 <p><a class="reference external" href="https://www.statlearning.com/">Definition from <em>Introduction to Statistical Learning</em></a>.</p>
 <section id="check-in">
-<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#check-in" title="Permalink to this heading">#</a></h4>
 <p>What would be an example of a model with <strong>high bias</strong>?</p>
 </section>
 <section id="linear-regression-has-high-bias">
-<h4>Linear regression has high bias<a class="headerlink" href="#linear-regression-has-high-bias" title="Permalink to this headline">#</a></h4>
+<h4>Linear regression has high bias<a class="headerlink" href="#linear-regression-has-high-bias" title="Permalink to this heading">#</a></h4>
 <p>A classic example of a <strong>high bias</strong> model is linear regression.</p>
 <ul class="simple">
 <li><p>By “biased”, we mean that linear regression has a <em>strong assumption</em> about the shape of the function <span class="math notranslate nohighlight">\(f\)</span> it is trying to model.</p></li>
@@ -1329,15 +661,19 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9fa0780c10&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/seantrott/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_18_1.png" src="../_images/17-overfitting_18_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x14a543290&gt;
+</pre></div>
+</div>
+<img alt="../_images/581c85775e4593c4bb4d3bf965623bd64cb12af44cd34cc9c3b0e71b7186421f.png" src="../_images/581c85775e4593c4bb4d3bf965623bd64cb12af44cd34cc9c3b0e71b7186421f.png" />
 </div>
 </div>
 </section>
 <section id="an-intercept-only-model-also-has-high-bias">
-<h4>An <code class="docutils literal notranslate"><span class="pre">Intercept</span></code>-only model also has high bias<a class="headerlink" href="#an-intercept-only-model-also-has-high-bias" title="Permalink to this headline">#</a></h4>
+<h4>An <code class="docutils literal notranslate"><span class="pre">Intercept</span></code>-only model also has high bias<a class="headerlink" href="#an-intercept-only-model-also-has-high-bias" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>An <code class="docutils literal notranslate"><span class="pre">Intercept</span></code>-only model is one that predicts <span class="math notranslate nohighlight">\(Y\)</span> using simply the mean of <span class="math notranslate nohighlight">\(Y\)</span>, i.e., <span class="math notranslate nohighlight">\(\bar{Y}\)</span>.</p>
 </div></blockquote>
@@ -1350,22 +686,22 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f9fa08eb370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x14b16d690&gt;
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_20_1.png" src="../_images/17-overfitting_20_1.png" />
+<img alt="../_images/9172d50f6410104342902b087163959d7bd054c1e0a6d99479702a6c0adc800e.png" src="../_images/9172d50f6410104342902b087163959d7bd054c1e0a6d99479702a6c0adc800e.png" />
 </div>
 </div>
 </section>
 <section id="polynomial-regression-is-low-er-bias">
-<h4>Polynomial regression is low(er) bias<a class="headerlink" href="#polynomial-regression-is-low-er-bias" title="Permalink to this headline">#</a></h4>
+<h4>Polynomial regression is low(er) bias<a class="headerlink" href="#polynomial-regression-is-low-er-bias" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>A polynomial equation can fit a <em>larger</em> number of functions. That is, polynomial regression is more <strong>flexible</strong>.</p>
 </div></blockquote>
 <p>This means that polynomial regression is lower bias than ordinary linear regression.</p>
 </section>
 <section id="id1">
-<h4>Polynomial regression is low(er) bias<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Polynomial regression is low(er) bias<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>A polynomial equation can fit a <em>larger</em> number of functions. That is, polynomial regression is more <strong>flexible</strong>.</p>
 </div></blockquote>
@@ -1379,15 +715,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f9fa09de610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x14b24d050&gt;
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_23_1.png" src="../_images/17-overfitting_23_1.png" />
+<img alt="../_images/37b4251367ab4131d2153e878383dcdf89e99a3bc36522dd81753f6176b24e9d.png" src="../_images/37b4251367ab4131d2153e878383dcdf89e99a3bc36522dd81753f6176b24e9d.png" />
 </div>
 </div>
 </section>
 <section id="neural-networks-are-usually-even-lower-bias">
-<h4>Neural networks are (usually) even lower bias<a class="headerlink" href="#neural-networks-are-usually-even-lower-bias" title="Permalink to this headline">#</a></h4>
+<h4>Neural networks are (usually) even lower bias<a class="headerlink" href="#neural-networks-are-usually-even-lower-bias" title="Permalink to this heading">#</a></h4>
 <blockquote>
 <div><p>An <a class="reference external" href="https://en.wikipedia.org/wiki/Artificial_neural_network">artificial neural network</a> (like <a class="reference external" href="https://en.wikipedia.org/wiki/ChatGPT">ChatGPT</a>) with sufficient parameters can in principle learn <em>any</em> differentiable function.</p>
 </div></blockquote>
@@ -1395,14 +731,14 @@ title="Print to PDF"
 </section>
 </section>
 <section id="variance-the-other-side-of-flexibility">
-<h3>Variance: the other side of flexibility<a class="headerlink" href="#variance-the-other-side-of-flexibility" title="Permalink to this headline">#</a></h3>
+<h3>Variance: the other side of flexibility<a class="headerlink" href="#variance-the-other-side-of-flexibility" title="Permalink to this heading">#</a></h3>
 <p>A flexible model can fit more functions, but it might also exhibit more <em>variance</em>:</p>
 <blockquote>
 <div><p>“Variance” refers to the amount by which <span class="math notranslate nohighlight">\(f\)</span> would change if we estimated it using a different training data set. Since the training data are used to fit the statistical learning method, different training data sets will result in a different <span class="math notranslate nohighlight">\(f\)</span>. But ideally the estimate for <span class="math notranslate nohighlight">\(f\)</span> should not vary too much between training sets…In general, more flexible statistical methods have higher variance.</p>
 </div></blockquote>
 <p><a class="reference external" href="https://www.statlearning.com/">Definition from <em>Introduction to Statistical Learning</em></a>.</p>
 <section id="revisiting-samples-vs-populations">
-<h4>Revisiting samples vs. populations<a class="headerlink" href="#revisiting-samples-vs-populations" title="Permalink to this headline">#</a></h4>
+<h4>Revisiting samples vs. populations<a class="headerlink" href="#revisiting-samples-vs-populations" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Any given dataset <span class="math notranslate nohighlight">\(d_i\)</span> is a <strong>sample</strong> of some larger <strong>population</strong>.</p>
 <ul>
@@ -1415,7 +751,7 @@ title="Print to PDF"
 <p>Ideally, our model should <strong>fit</strong> <span class="math notranslate nohighlight">\(d_i\)</span> as well as it can, but not so closely that it fails to generalize to other datasets, e.g., <span class="math notranslate nohighlight">\(d_j\)</span>.</p>
 </section>
 <section id="making-variance-concrete">
-<h4>Making variance <em>concrete</em><a class="headerlink" href="#making-variance-concrete" title="Permalink to this headline">#</a></h4>
+<h4>Making variance <em>concrete</em><a class="headerlink" href="#making-variance-concrete" title="Permalink to this heading">#</a></h4>
 <p>One way to think about <strong>variance</strong> is: <em>how much does a given parameter <span class="math notranslate nohighlight">\(\beta_i\)</span> change across samples</em>?</p>
 <ul class="simple">
 <li><p>If your parameters change a lot across samples, your model has higher variance.</p></li>
@@ -1424,7 +760,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="bias-variance-trade-off">
-<h3>Bias-variance trade-off<a class="headerlink" href="#bias-variance-trade-off" title="Permalink to this headline">#</a></h3>
+<h3>Bias-variance trade-off<a class="headerlink" href="#bias-variance-trade-off" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>The <strong>bias-variance trade-off</strong> is that models with low bias tend to have higher variance, and models with low variance tend to have high bias.</p>
 </div></blockquote>
@@ -1435,7 +771,7 @@ title="Print to PDF"
 </ul>
 <p>Let’s see this trade-off in action.</p>
 <section id="step-1-define-our-true-function">
-<h4>Step 1: Define our “true” function<a class="headerlink" href="#step-1-define-our-true-function" title="Permalink to this headline">#</a></h4>
+<h4>Step 1: Define our “true” function<a class="headerlink" href="#step-1-define-our-true-function" title="Permalink to this heading">#</a></h4>
 <p>Let’s define our true function, which we’ll take to be a polynomial with degree <span class="math notranslate nohighlight">\(3\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1454,15 +790,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f9fc4c89f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x14b2872d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_31_1.png" src="../_images/17-overfitting_31_1.png" />
+<img alt="../_images/6ba940a422dbe2bfa177f58178e8a413ce2967c6fa7e186a7e9e02f3ee6146da.png" src="../_images/6ba940a422dbe2bfa177f58178e8a413ce2967c6fa7e186a7e9e02f3ee6146da.png" />
 </div>
 </div>
 </section>
 <section id="step-2-create-a-training-sample">
-<h4>Step 2: Create a “training” sample<a class="headerlink" href="#step-2-create-a-training-sample" title="Permalink to this headline">#</a></h4>
+<h4>Step 2: Create a “training” sample<a class="headerlink" href="#step-2-create-a-training-sample" title="Permalink to this heading">#</a></h4>
 <p>Now, let’s <strong>sample</strong> from this underlying function––and add normally distributed noise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1473,15 +809,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9fc5b3ae20&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14b34e7d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_33_1.png" src="../_images/17-overfitting_33_1.png" />
+<img alt="../_images/11c7cf50bc170e4beb1c7a460a0c8d56d2ddf4eee23ba6b1747260165fb48d12.png" src="../_images/11c7cf50bc170e4beb1c7a460a0c8d56d2ddf4eee23ba6b1747260165fb48d12.png" />
 </div>
 </div>
 </section>
 <section id="step-3-fit-different-polynomials">
-<h4>Step 3: Fit different polynomials<a class="headerlink" href="#step-3-fit-different-polynomials" title="Permalink to this headline">#</a></h4>
+<h4>Step 3: Fit different polynomials<a class="headerlink" href="#step-3-fit-different-polynomials" title="Permalink to this heading">#</a></h4>
 <p>Now, we’ll fit a range of <span class="math notranslate nohighlight">\(p\)</span> polynomials, ranging in complexity from <span class="math notranslate nohighlight">\(p = 1\)</span> to <span class="math notranslate nohighlight">\(p = 10\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1515,7 +851,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="step-4-look-at-results">
-<h4>Step 4: Look at results<a class="headerlink" href="#step-4-look-at-results" title="Permalink to this headline">#</a></h4>
+<h4>Step 4: Look at results<a class="headerlink" href="#step-4-look-at-results" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>To analyze our results, let’s plot <span class="math notranslate nohighlight">\(MSE\)</span>, i.e., the <strong>mean squared error</strong>.</p></li>
 <li><p>In general, <strong>error decreases as we add complexity</strong> (i.e., higher <span class="math notranslate nohighlight">\(p\)</span>).</p></li>
@@ -1528,15 +864,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;p&#39;, ylabel=&#39;mse&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;p&#39;, ylabel=&#39;mse&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_38_1.png" src="../_images/17-overfitting_38_1.png" />
+<img alt="../_images/971daed53f61bd7d86c43b1982753f034474fff2bd0d168e3ff0d1dc4c0d2ffa.png" src="../_images/971daed53f61bd7d86c43b1982753f034474fff2bd0d168e3ff0d1dc4c0d2ffa.png" />
 </div>
 </div>
 </section>
 <section id="step-5-test-on-another-sample">
-<h4>Step 5: Test on another “sample”<a class="headerlink" href="#step-5-test-on-another-sample" title="Permalink to this headline">#</a></h4>
+<h4>Step 5: Test on another “sample”<a class="headerlink" href="#step-5-test-on-another-sample" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Our model improves with higher <span class="math notranslate nohighlight">\(p\)</span>, but how well does this <em>generalize</em> to other samples?</p>
 <ul>
@@ -1562,15 +898,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9fd0a7e100&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14b2790d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_41_1.png" src="../_images/17-overfitting_41_1.png" />
+<img alt="../_images/258194f1086b97973ab77a41449f551a2e002d5e73611ca79486546a7230d836.png" src="../_images/258194f1086b97973ab77a41449f551a2e002d5e73611ca79486546a7230d836.png" />
 </div>
 </div>
 </section>
 <section id="step-6-repeat-train-test-with-different-p">
-<h4>Step 6: Repeat train/test with different <span class="math notranslate nohighlight">\(p\)</span><a class="headerlink" href="#step-6-repeat-train-test-with-different-p" title="Permalink to this headline">#</a></h4>
+<h4>Step 6: Repeat train/test with different <span class="math notranslate nohighlight">\(p\)</span><a class="headerlink" href="#step-6-repeat-train-test-with-different-p" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;y_obs ~ X&quot;</span>
@@ -1594,7 +930,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="step-7-look-at-results">
-<h4>Step 7: Look at results<a class="headerlink" href="#step-7-look-at-results" title="Permalink to this headline">#</a></h4>
+<h4>Step 7: Look at results<a class="headerlink" href="#step-7-look-at-results" title="Permalink to this heading">#</a></h4>
 <p>Now, let’s look at our results on the <strong>test set</strong>––i.e., the data the model didn’t get to see. <strong>What do we notice</strong>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1608,12 +944,12 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;MSE (Test Set)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_45_1.png" src="../_images/17-overfitting_45_1.png" />
+<img alt="../_images/2d33f7d83169347cb330fe53455561361c901238c746511b60fcfc544311bc51.png" src="../_images/2d33f7d83169347cb330fe53455561361c901238c746511b60fcfc544311bc51.png" />
 </div>
 </div>
 </section>
 <section id="step-7-comparing-train-test-error">
-<h4>Step 7: Comparing train/test error<a class="headerlink" href="#step-7-comparing-train-test-error" title="Permalink to this headline">#</a></h4>
+<h4>Step 7: Comparing train/test error<a class="headerlink" href="#step-7-comparing-train-test-error" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Train error usually decreases as <span class="math notranslate nohighlight">\(p\)</span> increases.</p></li>
 <li><p>But test error will not decrease monotonically!</p></li>
@@ -1629,16 +965,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9fc51a8d60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x14b548e90&gt;
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_47_1.png" src="../_images/17-overfitting_47_1.png" />
+<img alt="../_images/62dcfa251f52863751f00ea8dbc32358906a7b50ef94a5076fd42f1120302e8e.png" src="../_images/62dcfa251f52863751f00ea8dbc32358906a7b50ef94a5076fd42f1120302e8e.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="trade-off-illustrated">
-<h3>Trade-off illustrated<a class="headerlink" href="#trade-off-illustrated" title="Permalink to this headline">#</a></h3>
+<h3>Trade-off illustrated<a class="headerlink" href="#trade-off-illustrated" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Red line = test error.</p></li>
 <li><p>Blue line = train error.</p></li>
@@ -1648,7 +984,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="cross-validation">
-<h2>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h2>
+<h2>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>To avoid overfitting, researchers often use <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html"><strong>cross-validation</strong></a>: a technique that involves fitting a model on one portion (or “fold”) of a dataset and testing the model on another portion (or “fold”).</p>
 </div></blockquote>
@@ -1662,7 +998,7 @@ title="Print to PDF"
 <li><p>Better to test on <strong>held-out set</strong> (i.e., data a model hasn’t seen before).</p></li>
 </ul>
 <section id="an-analogy-cross-validation-in-the-classroom">
-<h3>An analogy: cross-validation in the classroom<a class="headerlink" href="#an-analogy-cross-validation-in-the-classroom" title="Permalink to this headline">#</a></h3>
+<h3>An analogy: cross-validation in the classroom<a class="headerlink" href="#an-analogy-cross-validation-in-the-classroom" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>As a rough analogy, a teacher shouldn’t give students the <em>exact</em> exam questions before the exam.</p></li>
 <li><p>The students will “overfit” to those questions.</p></li>
@@ -1672,7 +1008,7 @@ title="Print to PDF"
 <p>I.e., a test of <strong>generalization</strong>.</p>
 </section>
 <section id="using-train-test-split">
-<h3>Using <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code><a class="headerlink" href="#using-train-test-split" title="Permalink to this headline">#</a></h3>
+<h3>Using <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code><a class="headerlink" href="#using-train-test-split" title="Permalink to this heading">#</a></h3>
 <p>The simplest approach is to <strong>split</strong> your data into two sub-portions:</p>
 <ul class="simple">
 <li><p>A “training” portion: used to fit the model.</p></li>
@@ -1688,7 +1024,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="train-test-split-in-action">
-<h4><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> in action<a class="headerlink" href="#train-test-split-in-action" title="Permalink to this headline">#</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> in action<a class="headerlink" href="#train-test-split-in-action" title="Permalink to this heading">#</a></h4>
 <p>To use <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>, you must specify (in addition to the dataset):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">train_size</span></code>: what proportion of the data to use for training?</p></li>
@@ -1728,7 +1064,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id2">
-<h4>Check-in<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <p>How many observations (roughly) should we expect in our train/test datasets, respectively, if we used a 50/50 split on <code class="docutils literal notranslate"><span class="pre">df_gapminder</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1738,7 +1074,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="solution">
-<h5>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h5>
+<h5>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
 <p>With a 50/50 split, we expect an equal number of observations in our train and test datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1761,7 +1097,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="comparing-our-train-test-sets">
-<h4>Comparing our train/test sets<a class="headerlink" href="#comparing-our-train-test-sets" title="Permalink to this headline">#</a></h4>
+<h4>Comparing our train/test sets<a class="headerlink" href="#comparing-our-train-test-sets" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>We can think of our train/test datasets as <strong>samples</strong> of a broader population––the original dataset.</p></li>
 <li><p>Crucially, because we <strong>randomly split</strong> our data, these are <strong>random samples</strong>!</p></li>
@@ -1776,7 +1112,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7172.602156627266
-7314.796046261329
+7314.796046261328
 </pre></div>
 </div>
 </div>
@@ -1790,15 +1126,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5810702334558102
-0.5895365116149536
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.58107023345581
+0.5895365116149534
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="step-1-training">
-<h4>Step 1: training<a class="headerlink" href="#step-1-training" title="Permalink to this headline">#</a></h4>
+<h4>Step 1: training<a class="headerlink" href="#step-1-training" title="Permalink to this heading">#</a></h4>
 <p>To <strong>train</strong> a model, first <strong>fit</strong> it to your training set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1828,12 +1164,12 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Actual Life Expectancy&#39;)
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_65_1.png" src="../_images/17-overfitting_65_1.png" />
+<img alt="../_images/65518b1c40b3922b155e8593ea0498965c1568bed337065481a3e621513c5847.png" src="../_images/65518b1c40b3922b155e8593ea0498965c1568bed337065481a3e621513c5847.png" />
 </div>
 </div>
 </section>
 <section id="step-2-testing">
-<h4>Step 2: testing<a class="headerlink" href="#step-2-testing" title="Permalink to this headline">#</a></h4>
+<h4>Step 2: testing<a class="headerlink" href="#step-2-testing" title="Permalink to this heading">#</a></h4>
 <p>To <strong>test</strong> a model, use your <em>already-fit</em> model to generate predictions for your <strong>test</strong> set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1860,12 +1196,12 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Actual Life Expectancy (Test)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/17-overfitting_68_1.png" src="../_images/17-overfitting_68_1.png" />
+<img alt="../_images/f537a76537899c92c078ba999ea71dd476b010e9d090b07977f7a9f293e4927e.png" src="../_images/f537a76537899c92c078ba999ea71dd476b010e9d090b07977f7a9f293e4927e.png" />
 </div>
 </div>
 </section>
 <section id="step-3-compare-mse-for-train-vs-test-portion">
-<h4>Step 3: Compare <span class="math notranslate nohighlight">\(MSE\)</span> for train vs. test portion<a class="headerlink" href="#step-3-compare-mse-for-train-vs-test-portion" title="Permalink to this headline">#</a></h4>
+<h4>Step 3: Compare <span class="math notranslate nohighlight">\(MSE\)</span> for train vs. test portion<a class="headerlink" href="#step-3-compare-mse-for-train-vs-test-portion" title="Permalink to this heading">#</a></h4>
 <p><em>Typically</em>, your prediction error should be lower on the <strong>train set</strong> than the <strong>test set</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1875,7 +1211,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107.82480636789772
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107.82480636789775
 </pre></div>
 </div>
 </div>
@@ -1888,14 +1224,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>114.8822184353271
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>114.88221843532715
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="step-4-validating-across-multiple-splits">
-<h4>Step 4: Validating across multiple splits<a class="headerlink" href="#step-4-validating-across-multiple-splits" title="Permalink to this headline">#</a></h4>
+<h4>Step 4: Validating across multiple splits<a class="headerlink" href="#step-4-validating-across-multiple-splits" title="Permalink to this heading">#</a></h4>
 <p>To check this, we can perform <em>many</em> splits with different <code class="docutils literal notranslate"><span class="pre">random_state</span></code>s, and keep track of the <span class="math notranslate nohighlight">\(MSE\)</span> for the training/testing set each time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1963,7 +1299,7 @@ dtype: float64
 </div>
 </section>
 <section id="step-5-comparing-mse-for-train-test-sets">
-<h4>Step 5: Comparing <span class="math notranslate nohighlight">\(MSE\)</span> for train/test sets<a class="headerlink" href="#step-5-comparing-mse-for-train-test-sets" title="Permalink to this headline">#</a></h4>
+<h4>Step 5: Comparing <span class="math notranslate nohighlight">\(MSE\)</span> for train/test sets<a class="headerlink" href="#step-5-comparing-mse-for-train-test-sets" title="Permalink to this heading">#</a></h4>
 <p>The <strong>mean</strong> <span class="math notranslate nohighlight">\(MSE\)</span> is higher for our test sets than our train sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1974,7 +1310,7 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>109.3436122481434
-112.67709136443473
+112.67709136443476
 </pre></div>
 </div>
 </div>
@@ -1982,7 +1318,7 @@ dtype: float64
 </section>
 </section>
 <section id="leave-one-out-cross-validation">
-<h3>Leave-one-out cross-validation<a class="headerlink" href="#leave-one-out-cross-validation" title="Permalink to this headline">#</a></h3>
+<h3>Leave-one-out cross-validation<a class="headerlink" href="#leave-one-out-cross-validation" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>With <strong>leave-one-out cross-validation (LOOCV)</strong>, we select one observation as our “test” set, then train our model on the remaining data. We do this <span class="math notranslate nohighlight">\(n\)</span> times (for each point in the dataset.</p>
 </div></blockquote>
@@ -1990,7 +1326,7 @@ dtype: float64
 <p><img alt="title" src="../_images/loocv.png" /></p>
 <p><a class="reference external" href="https://hastie.su.domains/ElemStatLearn/">Screenshot from <em>The Elements of Statistical Learning</em></a>.</p>
 <section id="loocv-in-python">
-<h4>LOOCV in Python<a class="headerlink" href="#loocv-in-python" title="Permalink to this headline">#</a></h4>
+<h4>LOOCV in Python<a class="headerlink" href="#loocv-in-python" title="Permalink to this heading">#</a></h4>
 <p>Unlike <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>, the <code class="docutils literal notranslate"><span class="pre">LeaveOneOut</span></code> function gives you <em>indices</em> for each item in your dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2020,7 +1356,7 @@ dtype: float64
 </div>
 </section>
 <section id="using-loocv">
-<h4>Using LOOCV<a class="headerlink" href="#using-loocv" title="Permalink to this headline">#</a></h4>
+<h4>Using LOOCV<a class="headerlink" href="#using-loocv" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2050,7 +1386,7 @@ dtype: float64
 </div>
 </section>
 <section id="evaluating-results">
-<h4>Evaluating results<a class="headerlink" href="#evaluating-results" title="Permalink to this headline">#</a></h4>
+<h4>Evaluating results<a class="headerlink" href="#evaluating-results" title="Permalink to this heading">#</a></h4>
 <p>Again, we see that <span class="math notranslate nohighlight">\(MSE\)</span> tends to be higher on the <strong>test</strong> set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2060,8 +1396,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>109.93798502087066
-112.04420283606598
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>109.93798502087074
+112.0442028360662
 </pre></div>
 </div>
 </div>
@@ -2069,7 +1405,7 @@ dtype: float64
 </section>
 </section>
 <section id="k-fold-cross-validation">
-<h3>K-Fold Cross-validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">#</a></h3>
+<h3>K-Fold Cross-validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>With <strong>K-fold cross-validation</strong>, we split our data into <span class="math notranslate nohighlight">\(k\)</span> equally-sized folds; we then randomly select fold as the “test” set and the other folds as “training” sets. We repeat this procedure <span class="math notranslate nohighlight">\(k\)</span> times.</p>
 </div></blockquote>
@@ -2077,15 +1413,15 @@ dtype: float64
 <li><p>When <span class="math notranslate nohighlight">\(k = 2\)</span>, this is like doing a <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> with a 50/50 split.</p></li>
 </ul>
 <section id="id3">
-<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<h4>Check-in<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <p>When <span class="math notranslate nohighlight">\(k = n\)</span>, what does k-fold cross-validation amount to?</p>
 </section>
 <section id="when-k-n">
-<h4>When <span class="math notranslate nohighlight">\(k = n\)</span><a class="headerlink" href="#when-k-n" title="Permalink to this headline">#</a></h4>
+<h4>When <span class="math notranslate nohighlight">\(k = n\)</span><a class="headerlink" href="#when-k-n" title="Permalink to this heading">#</a></h4>
 <p>When <span class="math notranslate nohighlight">\(k = n\)</span>, K-fold cross-validation is the same as LOOCV!</p>
 </section>
 <section id="using-kfold-in-python">
-<h4>Using <code class="docutils literal notranslate"><span class="pre">KFold</span></code> in Python<a class="headerlink" href="#using-kfold-in-python" title="Permalink to this headline">#</a></h4>
+<h4>Using <code class="docutils literal notranslate"><span class="pre">KFold</span></code> in Python<a class="headerlink" href="#using-kfold-in-python" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
@@ -2108,7 +1444,7 @@ dtype: float64
 </div>
 </section>
 <section id="using-kfold-on-a-dataset">
-<h4>Using <code class="docutils literal notranslate"><span class="pre">KFold</span></code> on a dataset<a class="headerlink" href="#using-kfold-on-a-dataset" title="Permalink to this headline">#</a></h4>
+<h4>Using <code class="docutils literal notranslate"><span class="pre">KFold</span></code> on a dataset<a class="headerlink" href="#using-kfold-on-a-dataset" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2138,7 +1474,7 @@ dtype: float64
 </div>
 </section>
 <section id="id4">
-<h4>Evaluating results<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<h4>Evaluating results<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <p>Again, we see that <span class="math notranslate nohighlight">\(MSE\)</span> tends to be higher on the <strong>test</strong> set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2148,8 +1484,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>109.84441939854291
-111.77229749778971
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>109.84441939854294
+111.77229749778974
 </pre></div>
 </div>
 </div>
@@ -2158,7 +1494,7 @@ dtype: float64
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Statistical models can be more or less <strong>flexible</strong>.</p></li>
 <li><p>This flexibility relates to the bias-variance trade-off:</p>
@@ -2185,7 +1521,7 @@ dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lectures"
         },
         predefinedOutput: true
@@ -2193,50 +1529,175 @@ dtype: float64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="16-nonlinear-regression.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Non-linear regression</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="16-nonlinear-regression.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Non-linear regression</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="18-logistic-regression.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="18-logistic-regression.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Logistic Regression</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-of-this-lecture">Goals of this lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-question-of-complexity">A question of complexity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-of-overfitting">The problem of overfitting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-connection-samples-vs-populations">Making the connection: samples vs. populations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-overfitting-in-action">Review: overfitting in action</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-complex-polynomial">Fitting a complex polynomial</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bias-variance-trade-off">The <em>bias-variance trade-off</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-and-the-bed-of-procrustes">Bias, variance, and the bed of Procrustes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procrustean-models-the-problem-of-high-bias">Procrustean models: the problem of high bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-in">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-has-high-bias">Linear regression has high bias</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-intercept-only-model-also-has-high-bias">An <code class="docutils literal notranslate"><span class="pre">Intercept</span></code>-only model also has high bias</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression-is-low-er-bias">Polynomial regression is low(er) bias</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Polynomial regression is low(er) bias</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-are-usually-even-lower-bias">Neural networks are (usually) even lower bias</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-the-other-side-of-flexibility">Variance: the other side of flexibility</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-samples-vs-populations">Revisiting samples vs. populations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#making-variance-concrete">Making variance <em>concrete</em></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-trade-off">Bias-variance trade-off</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-our-true-function">Step 1: Define our “true” function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-a-training-sample">Step 2: Create a “training” sample</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-fit-different-polynomials">Step 3: Fit different polynomials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-look-at-results">Step 4: Look at results</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-test-on-another-sample">Step 5: Test on another “sample”</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-repeat-train-test-with-different-p">Step 6: Repeat train/test with different <span class="math notranslate nohighlight">\(p\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-look-at-results">Step 7: Look at results</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-comparing-train-test-error">Step 7: Comparing train/test error</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trade-off-illustrated">Trade-off illustrated</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross-validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-analogy-cross-validation-in-the-classroom">An analogy: cross-validation in the classroom</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-train-test-split">Using <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split-in-action"><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> in action</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Check-in</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-our-train-test-sets">Comparing our train/test sets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-training">Step 1: training</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-testing">Step 2: testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-compare-mse-for-train-vs-test-portion">Step 3: Compare <span class="math notranslate nohighlight">\(MSE\)</span> for train vs. test portion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-validating-across-multiple-splits">Step 4: Validating across multiple splits</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-comparing-mse-for-train-test-sets">Step 5: Comparing <span class="math notranslate nohighlight">\(MSE\)</span> for train/test sets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leave-one-out-cross-validation">Leave-one-out cross-validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loocv-in-python">LOOCV in Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-loocv">Using LOOCV</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-results">Evaluating results</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-fold-cross-validation">K-Fold Cross-validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Check-in</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-k-n">When <span class="math notranslate nohighlight">\(k = n\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-kfold-in-python">Using <code class="docutils literal notranslate"><span class="pre">KFold</span></code> in Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-kfold-on-a-dataset">Using <code class="docutils literal notranslate"><span class="pre">KFold</span></code> on a dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Evaluating results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Sean Trott<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Sean Trott
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
