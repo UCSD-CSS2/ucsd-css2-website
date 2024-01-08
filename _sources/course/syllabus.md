@@ -34,7 +34,7 @@ This course is designed to give students a range of conceptual and technical too
 
 | Who? | When? | Where? |
 | ---- | ----- | ------ |
-| Sean Trott | Wednesday 11-12 | CSB 259 |
+| Sean Trott | Monday 11-12 | CSB 259 |
 
 
 ### When/Where?:
