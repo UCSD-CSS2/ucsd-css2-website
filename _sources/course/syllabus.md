@@ -101,7 +101,7 @@ Instructors can be reached in the following ways:
 - Private message over Piazza.  
 - Email. 
 
-The course Piazza can be found here: https://piazza.com/ucsd/winter2023/602
+The course Piazza can be found here: https://piazza.com/ucsd/winter2024/602
 
 Note that in general, we prefer communication over Piazza as opposed to email. 
 
